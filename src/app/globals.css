@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 13%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 13%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 13%;
+    --primary: 152 41% 33%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 72 57% 51%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 72 57% 51%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 90%;
+    --input: 0 0% 75%;
+    --ring: 152 41% 33%;
+    --radius: 0.25rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight text-foreground;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+::selection {
+  background-color: #347054;
+  color: white;
+}
+
+/* Subtle grid strip on white content areas */
+#main-content {
+  background-image:
+    linear-gradient(to right, rgba(52, 112, 84, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(52, 112, 84, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Subpage hero — subtle gradient */
+.hero-gradient {
+  background: linear-gradient(135deg, #2d5a43 0%, #3d6b50 25%, #4a8060 50%, #347054 75%, #1e4a35 100%);
+}
+
+.hero-pixels {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 85% 20%, rgba(170, 225, 40, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(170, 225, 40, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 15% 70%, rgba(255, 255, 255, 0.04) 0%, transparent 30%);
+  mask-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='20' height='20' fill='white'/%3E%3Crect x='40' y='20' width='20' height='20' fill='white'/%3E%3Crect x='20' y='40' width='20' height='20' fill='white'/%3E%3Crect x='60' y='60' width='20' height='20' fill='white'/%3E%3C/svg%3E");
+  mask-size: 80px 80px;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='20' height='20' fill='white'/%3E%3Crect x='40' y='20' width='20' height='20' fill='white'/%3E%3Crect x='20' y='40' width='20' height='20' fill='white'/%3E%3Crect x='60' y='60' width='20' height='20' fill='white'/%3E%3C/svg%3E");
+  -webkit-mask-size: 80px 80px;
+  opacity: 0.6;
+}
+
+/* Homepage hero — bold Vector Institute style */
+.home-hero {
+  background:
+    linear-gradient(135deg, #1a3d2b 0%, #2d5a43 20%, #3d6b50 40%, #4a8060 55%, #5a9a6e 70%, #3d6b50 85%, #1e4a35 100%);
+}
+
+.home-hero-pixels {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.home-hero-pixels::before,
+.home-hero-pixels::after {
+  content: '';
+  position: absolute;
+  background: rgba(170, 225, 40, 0.12);
+}
+
+.home-hero-pixels::before {
+  width: 200px;
+  height: 200px;
+  bottom: -20px;
+  right: 15%;
+  background:
+    linear-gradient(to right, transparent 50%, rgba(170, 225, 40, 0.08) 50%) 0 0 / 40px 40px,
+    linear-gradient(to bottom, transparent 50%, rgba(170, 225, 40, 0.06) 50%) 0 0 / 40px 40px;
+}
+
+.home-hero-pixels::after {
+  width: 140px;
+  height: 140px;
+  top: 10%;
+  right: 5%;
+  background:
+    linear-gradient(to right, transparent 50%, rgba(170, 225, 40, 0.06) 50%) 0 0 / 35px 35px,
+    linear-gradient(to bottom, transparent 50%, rgba(170, 225, 40, 0.05) 50%) 0 0 / 35px 35px;
+}
+
+.home-hero .home-hero-pixels {
+  background-image:
+    radial-gradient(circle at 80% 70%, rgba(170, 225, 40, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 60% 30%, rgba(170, 225, 40, 0.08) 0%, transparent 35%),
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.04) 0%, transparent 25%),
+    radial-gradient(circle at 90% 10%, rgba(170, 225, 40, 0.06) 0%, transparent 20%);
+  mask-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='20' height='20' fill='white'/%3E%3Crect x='40' y='0' width='20' height='20' fill='white' opacity='0.5'/%3E%3Crect x='20' y='20' width='20' height='20' fill='white'/%3E%3Crect x='0' y='40' width='20' height='20' fill='white' opacity='0.5'/%3E%3Crect x='40' y='40' width='20' height='20' fill='white'/%3E%3C/svg%3E");
+  mask-size: 60px 60px;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='20' height='20' fill='white'/%3E%3Crect x='40' y='0' width='20' height='20' fill='white' opacity='0.5'/%3E%3Crect x='20' y='20' width='20' height='20' fill='white'/%3E%3Crect x='0' y='40' width='20' height='20' fill='white' opacity='0.5'/%3E%3Crect x='40' y='40' width='20' height='20' fill='white'/%3E%3C/svg%3E");
+  -webkit-mask-size: 60px 60px;
+}

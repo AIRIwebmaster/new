@@ -1,0 +1,27 @@
+import { NextResponse } from 'next/server';
+import { getSQL } from '@/lib/db';
+import { hashPassword } from '@/lib/auth';
+
+export async function GET() {
+  try {
+    const sql = getSQL();
+    const hash = await hashPassword('!Airi@2026?');
+
+    const existing = await sql`SELECT id FROM admin_users WHERE email = 'frank@airifoundation.org'`;
+    if (existing.length === 0) {
+      await sql`
+        INSERT INTO admin_users (email, password_hash, name)
+        VALUES ('frank@airifoundation.org', ${hash}, 'Frank Onuh')
+      `;
+      return NextResponse.json({ success: true, message: 'Admin user created.' });
+    }
+
+    await sql`
+      UPDATE admin_users SET password_hash = ${hash} WHERE email = 'frank@airifoundation.org'
+    `;
+    return NextResponse.json({ success: true, message: 'Password reset.' });
+  } catch (error) {
+    console.error('Reset error:', error);
+    return NextResponse.json({ success: false, error: String(error) }, { status: 500 });
+  }
+}
