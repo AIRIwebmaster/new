@@ -112,7 +112,7 @@ export default async function CareerPage({ params }: { params: Promise<{ locale:
     <>
       <PageHero
         title={t('heroTitle')}
-        subtitle={t('heroSubtitle')}
+        // subtitle={t('heroSubtitle')}
         breadcrumbs={[{ label: t('breadcrumbHome'), href: '/' }, { label: t('breadcrumbCareers') }]}
       />
 
@@ -152,6 +152,7 @@ export default async function CareerPage({ params }: { params: Promise<{ locale:
                 {[
                   { label: t('locationLabel'), value: t('locationValue') },
                   { label: t('eligibilityLabel'), value: t('eligibilityValue') },
+                  { label: t('deadlineLabel'), value: t('deadlineValue') },
                 ].map((detail) => (
                   <div key={detail.label} className="border-b border-grey-200 py-4">
                     <p className="text-xs font-medium uppercase tracking-wide text-grey">{detail.label}</p>

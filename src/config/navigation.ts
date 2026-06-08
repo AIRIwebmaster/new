@@ -52,41 +52,6 @@ export const mainNav: NavItem[] = [
     href: '/programs',
     children: [
       {
-        title: 'AI for Professionals',
-        key: 'forProfessionals',
-        href: '/programs/professionals',
-        description: 'Workshops & AI Solutions for Organizations',
-        descriptionKey: 'forProfessionalsDesc',
-      },
-      {
-        title: 'Code & AI Club',
-        key: 'codeAiClub',
-        href: '/programs/code-ai-club',
-        description: 'Youth coding program for Grades 6–9',
-        descriptionKey: 'codeAiClubDesc',
-      },
-      {
-        title: 'AI for New Canadians',
-        key: 'forNewCanadians',
-        href: '/programs/new-canadians',
-        description: 'Civic and cultural AI literacy',
-        descriptionKey: 'forNewCanadiansDesc',
-      },
-      {
-        title: 'AI for Seniors',
-        key: 'forSeniors',
-        href: '/programs/seniors',
-        description: 'Accessible AI education for seniors',
-        descriptionKey: 'forSeniorsDesc',
-      },
-    ],
-  },
-  {
-    title: 'Solutions',
-    key: 'solutions',
-    href: '/solutions',
-    children: [
-      {
         title: 'Operational Intelligence',
         key: 'operationalIntelligence',
         href: '/solutions#operational',
@@ -101,16 +66,68 @@ export const mainNav: NavItem[] = [
         descriptionKey: 'civicAiLiteracyDesc',
       },
       {
+        title: 'AI for Seniors',
+        key: 'forSeniors',
+        href: '/programs/seniors',
+        description: 'Accessible AI education for seniors',
+        descriptionKey: 'forSeniorsDesc',
+      },
+      {
+        title: 'Code & AI Club',
+        key: 'codeAiClub',
+        href: '/programs/code-ai-club',
+        description: 'Youth coding program for Grades 6–9',
+        descriptionKey: 'codeAiClubDesc',
+      },
+      {
         title: 'Applied R&D',
         key: 'appliedRd',
         href: '/solutions#research',
         description: 'Implementation-ready AI systems',
         descriptionKey: 'appliedRdDesc',
       },
+      // {
+      //   title: 'AI for Professionals',
+      //   key: 'forProfessionals',
+      //   href: '/programs/professionals',
+      //   description: 'Workshops & AI Solutions for Organizations',
+      //   descriptionKey: 'forProfessionalsDesc',
+      // },
+      
+      // {
+      //   title: 'AI for New Canadians',
+      //   key: 'forNewCanadians',
+      //   href: '/programs/new-canadians',
+      //   description: 'Civic and cultural AI literacy',
+      //   descriptionKey: 'forNewCanadiansDesc',
+      // },
+      
     ],
   },
-  { title: 'Volunteer', key: 'volunteer', href: '/volunteer' },
-  { title: 'Careers', key: 'careers', href: '/career' },
+  {
+    title: 'Opportunities',
+    key: 'opportunities',
+    href: '#',
+    children: [
+      {
+        title: 'Volunteer/Internship',
+        key: 'volunteer',
+        href: '/volunteer',
+        // description: 'Custom AI & automation for businesses',
+        // descriptionKey: 'operationalIntelligenceDesc',
+      },
+      {
+        title: 'Careers',
+        key: 'careers',
+        href: '/career',
+        // description: 'Custom AI & automation for businesses',
+        // descriptionKey: 'operationalIntelligenceDesc',
+      },
+      
+    ],
+  },
+  // { title: 'Volunteer', key: 'volunteer', href: '/volunteer' },
+  // { title: 'Careers', key: 'careers', href: '/career' },
   { title: 'Contact', key: 'contact', href: '/contact' },
 ];
 
@@ -124,12 +141,12 @@ export const footerNav = {
   opportunities: [
     { title: 'Volunteer & Internship', key: 'volunteerInternship', href: '/volunteer' },
     { title: 'Careers', key: 'careers', href: '/career' },
-    { title: 'Code & AI Club', key: 'codeAiClub', href: '/register-codeaiclub' },
+    // { title: 'Code & AI Club', key: 'codeAiClub', href: '/register-codeaiclub' },
   ],
   programs: [
     { title: 'AI for Professionals', key: 'forProfessionals', href: '/programs/professionals' },
     { title: 'Code & AI Club', key: 'codeAiClub', href: '/programs/code-ai-club' },
-    { title: 'AI for New Canadians', key: 'forNewCanadians', href: '/programs/new-canadians' },
+    // { title: 'AI for New Canadians', key: 'forNewCanadians', href: '/programs/new-canadians' },
     { title: 'AI for Seniors', key: 'forSeniors', href: '/programs/seniors' },
   ],
 };

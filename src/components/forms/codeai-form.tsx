@@ -95,7 +95,7 @@ export function CodeAIRegistrationForm() {
           <FormField control={form.control} name="studentAge" render={({ field }) => (
             <FormItem>
               <FormLabel className="text-sm font-medium">Age*</FormLabel>
-              <FormControl><input className={inputClass} type="number" min={10} max={18} placeholder="10-18" {...field} /></FormControl>
+              <FormControl><input className={inputClass} type="number" min={10} max={18} placeholder="8-16" {...field} /></FormControl>
               <FormMessage />
             </FormItem>
           )} />

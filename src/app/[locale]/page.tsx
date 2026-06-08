@@ -40,8 +40,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     : fallbackNews;
 
   const heroCards = [
-    { text: t('heroCard1'), href: '/programs/code-ai-club' },
-    { text: t('heroCard2'), href: '/programs/professionals' },
+    { text: t('heroCard1'), href: '/solutions#operational'},
+    { text: t('heroCard2'), href: '/solutions#operational'},
   ];
 
   const programs = [
@@ -89,7 +89,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             ))}
           </div>
           <p className="mt-8 max-w-2xl text-body-lg leading-relaxed text-white/70">
-            {t('heroTagline')}
+            {t('heroTagline')} <span style={{ fontWeight: 'bold' }}>you deserve to understand and use it well. </span>
           </p>
         </div>
       </section>
@@ -106,7 +106,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </section>
 
       {/* Two-column programs */}
-      <section className="border-t border-grey-200">
+      {/* <section className="border-t border-grey-200">
         <div className="container grid md:grid-cols-2">
           {programs.map((program) => (
             <div
@@ -125,7 +125,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* Solutions preview */}
       <section className="border-t border-grey-200 bg-grey-50">
@@ -157,7 +157,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <section className="border-b border-grey-200">
         <div className="container py-16 md:py-20">
           <h2 className="mb-4 text-h2">{t('partnersTitle')}</h2>
-          <p className="mb-10 max-w-2xl text-body text-grey">{t('partnersText')}</p>
+          {/* <p className="mb-10 max-w-2xl text-body text-grey">{t('partnersText')}</p> */}
           <PartnersGrid />
         </div>
       </section>
@@ -166,7 +166,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <section className="bg-primary">
         <div className="container py-16 md:py-20">
           <h2 className="mb-4 text-h2 text-white">{t('impactTitle')}</h2>
-          <p className="mb-10 max-w-2xl text-body text-white/80">{t('impactText')}</p>
+          {/* <p className="mb-10 max-w-2xl text-body text-white/80">{t('impactText')}</p> */}
           <BentoStats variant="dark" stats={impactStats} />
         </div>
       </section>

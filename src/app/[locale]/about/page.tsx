@@ -65,7 +65,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       <section className="bg-grey-50">
         <div className="container py-16 md:py-24">
           <h2 className="mb-4 text-h2">{t('whyTitle')}</h2>
-          <p className="mb-10 text-body text-grey">{t('whySubtitle')}</p>
+          {/* <p className="mb-10 text-body text-grey">{t('whySubtitle')}</p> */}
           <div className="grid gap-px border border-grey-200 bg-grey-200 sm:grid-cols-2">
             {values.map((value) => (
               <div key={value.title} className="bg-white p-8 md:p-10">
@@ -80,8 +80,15 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       {/* Team */}
       <section id="leadership" className="scroll-mt-20 container py-16 md:py-24">
         <h2 className="mb-4 text-h2">{t('leadershipTitle')}</h2>
-        <p className="mb-10 text-body text-grey">{t('leadershipSubtitle')}</p>
+        {/* <p className="mb-10 text-body text-grey">{t('leadershipSubtitle')}</p> */}
         <TeamGrid />
+      </section>
+
+      {/* Interns */}
+      <section id="leadership" className="scroll-mt-20 container py-16 md:py-24">
+        <h2 className="mb-4 text-h2">{t('internTitle')}</h2>
+        <p className="mb-10 text-body text-grey">{t('internSubtitle')}</p>
+        {/* <TeamGrid /> */}
       </section>
 
       {/* Impact — bento grid */}
@@ -99,9 +106,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       <section className="border-t border-grey-200">
         <div className="container py-16 md:py-20">
           <h2 className="mb-4 text-h2">{t('partnersTitle')}</h2>
-          <p className="mb-10 max-w-2xl text-body text-grey">
+          {/* <p className="mb-10 max-w-2xl text-body text-grey">
             {t('partnersText')}
-          </p>
+          </p> */}
           <PartnersGrid />
         </div>
       </section>
@@ -110,9 +117,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       <section className="bg-primary">
         <div className="container py-16 md:py-20">
           <h2 className="mb-4 text-h2 text-white">{t('ctaTitle')}</h2>
-          <p className="mb-8 max-w-xl text-body text-white/80">
+          {/* <p className="mb-8 max-w-xl text-body text-white/80">
             {t('ctaText')}
-          </p>
+          </p> */}
           <div className="flex flex-wrap gap-4">
             <Link
               href="/programs"

@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join AIRI Foundation</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+.portal,
+.portal *{
+  box-sizing:border-box;
+}
+.portal *{
+  margin:0;
+  padding:0;
+}
+.portal{
+  max-width:95%;
+  margin:0 auto;
+  padding:1.5rem 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+}
+.brand-bar{background:#084734;border-radius:12px;padding:1.75rem 2rem 1.5rem;margin-bottom:1.5rem;position:relative;overflow:hidden}
+.brand-bar::after{content:'';position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:#CEF17B;opacity:0.08}
+.brand-logo{display:flex;align-items:center;gap:12px;margin-bottom:0.6rem}
+.brand-name{font-size:21px;font-weight:600;color:#fff;overflow:hidden;white-space:nowrap}
+.brand-name .char{display:inline-block;opacity:0;transform:translateY(16px);animation:charIn 0.4s forwards}
+@keyframes charIn{to{opacity:1;transform:translateY(0)}}
+.brand-sub{font-size:14px;color:rgba(255,255,255,0.75);line-height:1.5}
+.progress-wrap{margin-bottom:1.5rem}
+.progress-steps{display:flex;gap:6px;margin-bottom:6px}
+.step-dot{flex:1;height:4px;border-radius:2px;background:#e2e8f0;transition:background 0.3s}
+.step-dot.done{background:#084734}
+.step-dot.active{background:#CEF17B}
+.step-label{font-size:12px;color:#64748b}
+.step-label span{color:#1e293b;font-weight:500}
+.card{background:#fff;border:0.5px solid #e2e8f0;border-radius:12px;padding:1.5rem;margin-bottom:1rem}
+.card-title{display:flex;align-items:center;gap:10px;margin-bottom:1.25rem}
+.card-icon{width:36px;height:36px;background:transparent;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#084734;font-size:18px;flex-shrink:0}
+.card-title h2{font-size:16px;font-weight:500;color:#1e293b}
+.card-title p{font-size:12px;color:#64748b;margin-top:2px}
+.field-group{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.field-group.full{grid-template-columns:1fr}
+.field{display:flex;flex-direction:column;gap:5px}
+.portal label{font-size:13px;color:#64748b;display:flex;align-items:center;gap:5px}
+.portal label .opt{font-size:11px;color:#94a3b8;font-style:italic}
+.portal input,.portal select,.portal textarea{width:100%;font-size:14px;color:#1e293b;background:#fff !important;border:1px solid #D9E2EC !important;border-radius:8px;padding:10px 12px;transition:border-color 0.15s ease,box-shadow 0.15s ease;outline:none;appearance:none;-webkit-appearance:none;-moz-appearance:none;}
+.portal input:focus,.portal select:focus,.portal textarea:focus{border-color:#084734 !important;box-shadow:0 0 0 3px rgba(8,71,52,0.08);}
+.portal input[type="checkbox"]{appearance:auto !important;-webkit-appearance:checkbox !important;-moz-appearance:checkbox !important;width:18px !important;height:18px !important;padding:0 !important;margin-top:2px !important;border:1px solid #D9E2EC !important;border-radius:5px !important;background:#fff !important;accent-color:#084734;cursor:pointer;flex-shrink:0;}
+.portal input[type="checkbox"]:checked{accent-color:#084734;}
+.portal select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='%2364748B' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:16px;padding-right:42px;}
+.portal textarea{resize:vertical;min-height:90px;}
+.section-divider{border:none;border-top:0.5px solid #e2e8f0;margin:1.25rem 0}
+.tag-group{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+.portal .tag{padding:5px 13px;border-radius:20px;border:1px solid #D9E2EC !important;font-size:12px;cursor:pointer;background:#fff !important;color:#1e293b;transition:all 0.15s;user-select:none;display:inline-flex;align-items:center;justify-content:center;text-transform:none !important;letter-spacing:normal !important;font-weight:normal !important;}
+.portal .tag:hover{border-color:#084734 !important;background:#f0f9f4 !important;color:#084734;}
+.portal .tag.selected{background:#084734 !important;color:#CEF17B !important;border-color:#084734 !important;text-transform:none !important;}
+.portal .tag.maxed{opacity:0.38;cursor:not-allowed;pointer-events:none;}
+.hours-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.portal .hour-opt{padding:8px 14px;border-radius:999px;border:1px solid #D9E2EC !important;font-size:12px;cursor:pointer;background:#fff !important;color:#1e293b;transition:all 0.15s;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;text-transform:none !important;}
+.portal .hour-opt:hover{border-color:#084734 !important;background:#f0f9f4 !important;}
+.portal .hour-opt.selected{background:#084734 !important;color:#CEF17B !important;border-color:#084734 !important;}
+.hours-exact{margin-top:8px;display:flex;align-items:center;gap:8px}
+.hours-exact input{width:130px;flex-shrink:0}
+.hours-exact span{font-size:12px;color:#64748b}
+.engage-cards{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.portal .engage-card{border:1px solid #D9E2EC !important;border-radius:12px !important;padding:16px !important;background:#fff !important;cursor:pointer;transition:border-color 0.15s;}
+.portal .engage-card:hover{border-color:#084734 !important;background:#f9fffb !important;}
+.portal .engage-card.selected{border:2px solid #084734 !important;background:#f0f9f4 !important;}
+.engage-card-top{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.engage-badge{font-size:11px;padding:4px 12px;border-radius:20px;font-weight:600}
+.badge-vol{background:#e8f5e9;color:#1b5e20}
+.badge-int{background:#e3f2fd;color:#0d47a1}
+.badge-adv{background:#f3e5f5;color:#4a148c}
+.engage-card-title{font-size:14px;font-weight:600;color:#1e293b}
+.engage-card-hours{font-size:12px;color:#64748b;margin-top:2px;font-style:italic}
+.commit-dots{display:flex;gap:3px;margin-top:6px}
+.commit-dot{width:8px;height:8px;border-radius:50%;background:#e2e8f0}
+.commit-dot.on{background:#084734}
+.inperson-notice{background:#fffbeb;border:0.5px solid #fcd34d;border-radius:8px;padding:10px 14px;margin-top:10px;font-size:12px;color:#78350f;display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+.demo-notice{background:#f0f9f4;border:0.5px solid #9FE1CB;border-radius:8px;padding:10px 14px;margin-bottom:1rem;font-size:12px;color:#0F6E56;display:flex;gap:8px;align-items:flex-start}
+.field-hint{font-size:11px;color:#64748b;margin-top:3px;line-height:1.4;font-style:italic}
+.field-hint a{color:#084734;text-decoration:underline}
+.agree-row{display:flex;gap:10px;align-items:flex-start;padding:10px 0}
+.agree-row label{font-size:13px;color:#1e293b;cursor:pointer}
+.nav-row{display:flex;gap:10px;margin-top:1rem}
+.portal .btn-back{flex:0 0 auto;padding:0 20px;height:40px;border-radius:8px;border:0.5px solid #e2e8f0;background:transparent !important;font-size:14px;cursor:pointer;color:#1e293b;}
+.portal .btn-back:hover{background:#f0f9f4 !important;}
+.portal .btn-next{flex:1;height:40px;border-radius:8px;border:none;background:#084734 !important;color:#CEF17B !important;font-size:14px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all 0.15s ease;}
+.portal .btn-next:hover{background:#0F6E56 !important;color:#CEF17B !important;}
+.required-star{color:#E24B4A;margin-left:2px}
+.max-note{font-size:11px;color:#94a3b8;margin-top:3px;font-style:italic}
+.sub-field{margin-top:8px}
+.cv-upload-area{border:1.5px dashed #D9E2EC;border-radius:10px;padding:24px;text-align:center;cursor:pointer;transition:all 0.2s;margin-top:4px;position:relative}
+.cv-upload-area:hover,.cv-upload-area.drag{border-color:#084734;background:#f0f9f4}
+.cv-upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.cv-icon{font-size:28px;color:#084734;margin-bottom:6px}
+.cv-upload-label{font-size:13px;color:#64748b;line-height:1.5}
+.cv-upload-label strong{color:#084734}
+.cv-selected{display:flex;align-items:center;gap:10px;background:#f0f9f4;border:0.5px solid #9FE1CB;border-radius:8px;padding:10px 14px;margin-top:8px}
+.cv-selected-name{font-size:13px;color:#084734;font-weight:500;flex:1}
+.cv-remove{font-size:12px;color:#E24B4A;cursor:pointer;background:none;border:none;padding:0}
+.submitting-overlay{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:3rem 1rem;text-align:center}
+.spinner{width:40px;height:40px;border:3px solid #e0e0e0;border-top-color:#084734;border-radius:50%;animation:spin 0.8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.success-wrap{text-align:center;padding:2rem 1rem}
+.success-icon{width:64px;height:64px;background:#084734;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;color:#CEF17B;font-size:28px}
+.success-wrap h2{font-size:20px;font-weight:500;margin-bottom:0.5rem;color:#1e293b}
+.success-wrap p{font-size:14px;color:#64748b;line-height:1.6;max-width:380px;margin:0 auto 1.5rem}
+.success-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:1.5rem}
+.chip{background:#f0f9f4;border:0.5px solid #9FE1CB;color:#0F6E56;font-size:12px;padding:5px 12px;border-radius:20px}
+
+.avail-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:13px}
+.avail-table th{background:#084734;color:#CEF17B;font-weight:500;padding:9px 10px;text-align:center;font-size:12px}
+.avail-table th:first-child{text-align:left;padding-left:12px;width:120px}
+.avail-table th.notes-th{text-align:left;width:190px}
+.avail-table td{border:1px solid #D9E2EC;padding:9px 10px;text-align:center;vertical-align:middle;color:#1e293b}
+.avail-table td:first-child{text-align:left;padding-left:12px;font-weight:500;background:#f8fafc;font-size:13px}
+.avail-table td.notes-cell{text-align:left}
+.avail-table tr:hover td{background:#f8fafc}
+.avail-table tr:hover td:first-child{background:#f0f9f4}
+.avail-cb{width:18px !important;height:18px !important;accent-color:#084734;cursor:pointer;vertical-align:middle;appearance:auto !important;-webkit-appearance:checkbox !important;border:1px solid #D9E2EC !important;border-radius:4px !important;background:#fff !important;padding:0 !important;margin:0 !important;flex-shrink:0}
+.all-day-btn{font-size:11px;color:#084734;background:#f0f9f4;border:0.5px solid #9FE1CB;border-radius:12px;padding:3px 10px;cursor:pointer;white-space:nowrap;font-family:inherit;transition:all 0.15s;line-height:1.4}
+.all-day-btn:hover,.all-day-btn.active{background:#084734;color:#CEF17B;border-color:#084734}
+.notes-input-cell{width:100%;font-size:12px;border:1px solid #D9E2EC;border-radius:6px;padding:5px 8px;background:#fff;font-family:inherit;color:#1e293b;outline:none}
+.notes-input-cell:focus{border-color:#084734}
+.avail-notice{background:#f0f9f4;border:0.5px solid #9FE1CB;border-radius:8px;padding:10px 14px;margin-bottom:1rem;font-size:12px;color:#0F6E56;display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="portal">
+  <div class="brand-bar">
+    <div class="brand-logo">
+      <div class="brand-name" id="brandName"></div>
+    </div>
+    <div class="brand-sub">Join our community of innovators and builders.</div>
+  </div>
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-steps" id="progressDots"></div>
+    <div class="step-label" id="stepLabel"></div>
+  </div>
+  <div id="formArea"></div>
+</div>
+
+<script>
+const SCRIPT_URL="https://script.google.com/macros/s/AKfycbw6UibWTIa7tp_B7FUDbrmq90CJfU2zdF-SckDTSIzItYiD4BKwEE6nmD2iqDLsnFTn/exec";
+
+(function(){
+  const el=document.getElementById('brandName');
+  const text='AIRI Foundation';
+  el.innerHTML=text.split('').map((ch,i)=>{
+    const delay=(i*0.045).toFixed(2);
+    const content=ch===' '?'&nbsp;':ch;
+    return `<span class="char" style="animation-delay:${delay}s">${content}</span>`;
+  }).join('');
+})();
+
+const STEPS=[
+  {id:'personal',label:'Personal info',icon:'ti-user'},
+  {id:'background',label:'Background',icon:'ti-school'},
+  {id:'engagement',label:'Engagement',icon:'ti-briefcase'},
+  {id:'availability',label:'Availability',icon:'ti-calendar'},
+  {id:'referral',label:'How you found us',icon:'ti-speakerphone'},
+  {id:'skills',label:'Skills',icon:'ti-tool'},
+  {id:'about',label:'About you',icon:'ti-message'},
+  {id:'demographics',label:'Demographics',icon:'ti-chart-pie'},
+  {id:'agreement',label:'Agreement',icon:'ti-shield-check'},
+];
+
+const COUNTRIES=["Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cabo Verde","Cambodia","Cameroon","Canada","Central African Republic","Chad","Chile","China","Colombia","Comoros","Congo","Costa Rica","Croatia","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia","Fiji","Finland","France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia","Nauru","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Korea","North Macedonia","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda","Saint Kitts and Nevis","Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor-Leste","Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"];
+
+const ROLES=['Junior AI developer','Machine learning engineer','Data scientist','Backend developer','Frontend developer','Full-stack developer','AI research assistant','Prompt engineer','AI ethics researcher','AI Safety Researcher','AI Policy Analyst / Researcher','Data Engineer','ML Ops / AI Infrastructure Engineer','Research Communications','AI Curriculum Developer / Learning Designer','Fundraising & Development','Product manager','UX / UI designer','Graphic designer','Content strategist','Social media manager','Video producer','Community engagement coordinator','Events coordinator','Partnership development','Grant research & writing','Policy & advocacy','People operations','Administrative support','Accessibility specialist','Other'];
+const SKILLS_BRING=['Python','JavaScript','TypeScript','SQL','C++','Rust','Machine learning','Deep learning','Natural language processing','Computer vision','Data analysis & visualization','Statistics & probability','PyTorch / TensorFlow','Hugging Face / LLM Frameworks','MLOps Tools','Data Annotation & Labelling','Qualitative Research Methods','Cloud computing (AWS / GCP / Azure)','Docker & containerization','API development','Database design','UI / UX design','Figma','Graphic design (Adobe / Canva)','Video editing','Technical writing','Research methodology','Community organizing','Event planning','Grant writing','Fundraising / Development','Social media management','Project management','Agile / Scrum','Public speaking','Translation','Other'];
+const SKILLS_DEVELOP=['Machine learning fundamentals','Large language model development','Responsible & ethical AI','AI product design','Data engineering','Cloud architecture','AI governance & policy','Prompt engineering','Research methodology','Community-centered AI design','Business strategy for AI ventures','Grant writing & fundraising','Nonprofit leadership','Public speaking & advocacy','Video & multimedia production','Product management','Entrepreneurship & venture building','AI literacy facilitation','Partnership & stakeholder engagement','AI Red-Teaming & Adversarial Testing','Stakeholder Interviews','AI Evaluation & Benchmarking','Data Privacy & Compliance','Technical Writing for AI'];
+const INTERESTS=['Responsible & ethical AI','AI for social good','AI governance & policy','Generative AI & large language models','Natural language processing','Computer vision','AI in healthcare','AI in education','AI for climate & environment','AI in agriculture & food systems','AI for economic inclusion','AI & accessibility','AI & misinformation / disinformation','Algorithmic bias & fairness','AI product development & commercialization','AI literacy & community empowerment','AI in nonprofit & civil society','AI & creative industries','AI entrepreneurship','Open-source AI','AI safety & alignment','AI & labor markets','AI & journalism','AI in African & Global South contexts','AI & human rights','Data privacy & digital rights','AI & mental health','AI & financial inclusion','AI & Democracy / Civic Participation','Agentic AI & Autonomous Systems'];
+
+let current=0;
+let cvFile=null;
+const data={roles:[],skillsBring:[],skillsDevelop:[],interests:[],rolesOtherList:[],skillsBringOtherList:[],skillsDevOtherList:[],interestsOtherList:[],availNotes:{},referralSources:[]};
+
+function render(){
+  const fa=document.getElementById('formArea');
+  const pd=document.getElementById('progressDots');
+  const sl=document.getElementById('stepLabel');
+  pd.innerHTML=STEPS.map((s,i)=>`<div class="step-dot ${i<current?'done':i===current?'active':''}"></div>`).join('');
+  sl.innerHTML=`Step <span>${current+1} of ${STEPS.length}</span> — ${STEPS[current].label}`;
+  if(current===STEPS.length){renderSuccess(fa);return;}
+  const s=STEPS[current];
+  let html=`<div class="card"><div class="card-title"><div class="card-icon"><i class="ti ${s.icon}" aria-hidden="true"></i></div><div><h2>${s.label}</h2><p>${stepSub(s.id)}</p></div></div>`;
+
+  if(s.id==='personal') html+=`
+    <div class="field-group">
+      <div class="field"><label>First name<span class="required-star">*</span></label><input id="firstName" value="${esc(data.firstName)}" placeholder="Jane"></div>
+      <div class="field"><label>Last name<span class="required-star">*</span></label><input id="lastName" value="${esc(data.lastName)}" placeholder="Smith"></div>
+    </div>
+    <div class="field-group">
+      <div class="field"><label>Email<span class="required-star">*</span></label><input id="email" type="email" value="${esc(data.email)}" placeholder="jane@example.com"></div>
+      <div class="field"><label>Phone <span class="opt">(optional)</span></label><input id="phone" value="${esc(data.phone)}" placeholder="+1 (403) 000-0000"></div>
+    </div>
+    <div class="field-group">
+      <div class="field"><label>City / Town<span class="required-star">*</span></label><input id="city" value="${esc(data.city)}" placeholder="Lethbridge"></div>
+      <div class="field"><label>Province / Region<span class="required-star">*</span></label><input id="province" value="${esc(data.province)}" placeholder="e.g. Alberta, Lagos State"></div>
+    </div>
+    <div class="field-group full"><div class="field"><label>Country<span class="required-star">*</span></label>
+      <select id="country">
+        <option value="">Select your country</option>
+        ${COUNTRIES.map(c=>`<option value="${c}"${data.country===c?' selected':''}>${c}</option>`).join('')}
+      </select>
+    </div></div>`;
+
+  if(s.id==='background'){
+    const isOngoing=data.education==="Bachelor's degree (ongoing)";
+    html+=`
+    <div class="field-group full"><div class="field"><label>Highest education level<span class="required-star">*</span></label>
+      <select id="education" onchange="handleEdu(this.value)">
+        <option value="">Select one</option>
+        ${['High school','Some post-secondary','College diploma',"Bachelor's degree","Bachelor's degree (ongoing)",'Master\'s degree','Doctoral degree','Professional degree','Trade / vocational'].map(e=>`<option ${data.education===e?'selected':''}>${e}</option>`).join('')}
+      </select>
+      ${isOngoing?`<div class="sub-field"><div class="field-group" style="margin-bottom:0;margin-top:8px">
+        <div class="field"><label>Current year <span class="opt">(optional)</span></label><select id="bscYear">
+          <option value="">Select</option>
+          ${['1st year','2nd year','3rd year','4th year','5th year+'].map(y=>`<option ${data.bscYear===y?'selected':''}>${y}</option>`).join('')}
+        </select></div>
+        <div class="field"><label>Department / Program <span class="opt">(optional)</span></label><input id="bscProgram" value="${esc(data.bscProgram)}" placeholder="e.g. Computer Science"></div>
+      </div></div>`:''}
+    </div></div>
+    <div class="field-group">
+      <div class="field">
+        <label>Current or most recent organization<span class="required-star">*</span> <span class="opt">(or "Not currently employed / studying")</span></label>
+        <input id="institution" value="${esc(data.institution)}" placeholder="Where do you study or work?">
+        <span class="field-hint">This can be a university, college, company, organization, or any place you are currently or were recently affiliated with. If you are not currently working or studying, write "Not currently employed / studying".</span>
+      </div>
+      <div class="field"><label>Field of study or area of work <span class="opt">(optional)</span></label><input id="fieldOfStudy" value="${esc(data.fieldOfStudy)}" placeholder="e.g. Computer Science, Marketing, Engineering"></div>
+    </div>
+    <div class="field-group">
+      <div class="field">
+        <label>LinkedIn profile<span class="required-star">*</span></label>
+        <input id="linkedin" value="${esc(data.linkedin)}" placeholder="linkedin.com/in/yourname">
+        <span class="field-hint">Don't have a LinkedIn profile yet? <a href="https://linkedin.com/signup" target="_blank" rel="noopener">Create one free here</a> — it takes less than 5 minutes and helps us match you to the right opportunity.</span>
+      </div>
+      <div class="field">
+        <label>GitHub <span class="opt">(optional)</span></label>
+        <input id="github" value="${esc(data.github)}" placeholder="github.com/yourname">
+      </div>
+    </div>
+    <div class="field-group full"><div class="field">
+      <label>Portfolio or personal website <span class="opt">(optional)</span></label>
+      <input id="portfolio" value="${esc(data.portfolio)}" placeholder="yourportfolio.com">
+      <span class="field-hint">If you have a portfolio, website, Behance, Dribbble, or any link that showcases your work — include it. It significantly helps us match you to the projects where you will thrive.</span>
+    </div></div>`;
+  }
+
+  if(s.id==='engagement') html+=`
+    <div class="field-group full"><div class="field"><label>Engagement type<span class="required-star">*</span></label>
+      <div class="engage-cards">
+        ${[
+          {val:'Volunteer',badge:'badge-vol',hours:'&lt; 18 hrs / week',desc:'Give your time, skills, and ideas to a mission that matters. In return you get mentorship, training, a certificate of service, and a reference letter.',dots:1},
+          {val:'Intern',badge:'badge-int',hours:'19 – 25 hrs / week',desc:'A structured, role-based experience for students and recent graduates building real-world skills in AI, product, operations, or community innovation. May be paid depending on funding.',dots:2},
+          {val:'Advanced Intern',badge:'badge-adv',hours:'≥ 26 hrs / week',desc:'For experienced individuals — graduate students, professionals, or those with demonstrated expertise — who want to go deeper. First considered for paid roles and client-facing opportunities.',dots:3}
+        ].map(e=>`
+          <div class="engage-card${data.engagementType===e.val?' selected':''}" onclick="selectEngage('${e.val}')">
+            <div class="engage-card-top">
+              <span class="engage-badge ${e.badge}">${e.val}</span>
+            </div>
+            <div class="engage-card-hours">${e.hours}</div>
+            <div style="font-size:12px;color:#64748b;line-height:1.5;margin-top:6px">${e.desc}</div>
+            <div class="commit-dots">${[1,2,3].map(d=>`<div class="commit-dot${d<=e.dots?' on':''}"></div>`).join('')}</div>
+          </div>`).join('')}
+      </div>
+    </div></div>
+    <hr class="section-divider">
+    <div class="field-group full"><div class="field"><label>Hours available per week<span class="required-star">*</span></label>
+      <div class="hours-options">
+        ${['< 10','10 – 14','15 – 18','19 – 22','23 – 25','26 – 30','31 – 35','36+'].map(h=>`<div class="hour-opt${data.hours===h?' selected':''}" onclick="selectHours(this,'${h}')">${h} hrs</div>`).join('')}
+      </div>
+      <div class="hours-exact">
+        <input type="number" id="hoursExact" min="1" max="60" placeholder="Or type exact" value="${esc(data.hoursExact)}" oninput="data.hoursExact=this.value">
+        <span>hours per week</span>
+      </div>
+    </div></div>
+    <div class="field-group full"><div class="field"><label>Work preference<span class="required-star">*</span></label>
+      <select id="workPref" onchange="handleWorkPref(this.value)">
+        <option value="">Select one</option>
+        ${['In-person (Lethbridge, AB)','Remote','Hybrid'].map(e=>`<option ${data.workPref===e?'selected':''}>${e}</option>`).join('')}
+      </select>
+      <div id="inpersonNotice" style="display:${data.workPref==='In-person (Lethbridge, AB)'||data.workPref==='Hybrid'?'flex':'none'}" class="inperson-notice">
+        <i class="ti ti-map-pin" style="font-size:15px;margin-top:1px;flex-shrink:0" aria-hidden="true"></i>
+        <span>Some AIRI Foundation opportunities require in-person presence at our Lethbridge, Alberta office. If you are based outside Lethbridge or outside Canada, remote and hybrid pathways are available for most roles — we will work with you to find the right fit. In-person requirements will always be communicated clearly and in advance.</span>
+      </div>
+    </div></div>`;
+
+
+  if(s.id==='availability'){
+    const DAYS=['Monday','Tuesday','Wednesday','Thursday','Friday'];
+    html+=`
+      <div class="avail-notice"><i class="ti ti-info-circle" style="font-size:15px;margin-top:1px;flex-shrink:0" aria-hidden="true"></i><span>We understand that schedules shift — especially for students. What you share here is a starting point, not a contract. AIRI Foundation will work with you to find a rhythm that fits your life.</span></div>
+      <label style="font-size:13px;color:#64748b;margin-bottom:6px;display:block">Weekly availability <span style="color:#E24B4A;margin-left:2px">*</span> <span style="font-size:11px;color:#94a3b8;font-style:italic">(tick all that apply — AIRI hours are 9 am to 4:30 pm)</span></label>
+      <table class="avail-table">
+        <thead><tr>
+          <th>Day</th>
+          <th>Morning<br><span style="font-weight:400;font-size:11px;color:rgba(206,241,123,0.85)">9 am – 12 pm</span></th>
+          <th>Afternoon<br><span style="font-weight:400;font-size:11px;color:rgba(206,241,123,0.85)">12 pm – 4:30 pm</span></th>
+          <th>All day</th>
+          <th class="notes-th">Notes / exceptions</th>
+        </tr></thead>
+        <tbody>${DAYS.map((day,i)=>`<tr>
+          <td>${day}</td>
+          <td><input class="avail-cb" type="checkbox" id="avM${i}" onchange="syncAllDay(${i})"></td>
+          <td><input class="avail-cb" type="checkbox" id="avA${i}" onchange="syncAllDay(${i})"></td>
+          <td><button type="button" class="all-day-btn" id="avAll${i}" onclick="toggleAllDay(${i})">All day</button></td>
+          <td class="notes-cell"><input class="notes-input-cell" type="text" id="avN${i}" value="${esc((data.availNotes||{})[day]||'')}" placeholder="e.g. not before 10am"></td>
+        </tr>`).join('')}</tbody>
+      </table>
+    `;
+  }
+
+
+  if(s.id==='referral'){
+    html+=`
+      <div class="field-group full"><div class="field">
+        <label>How did you hear about AIRI Foundation?<span class="required-star">*</span></label>
+        <div class="tag-group" style="margin-top:8px">
+          ${['LinkedIn','University / college posting','Word of mouth / referral','Social media (Instagram, Facebook, X)','AIRI Foundation website','Google / online search','Community event or workshop','A professor or instructor','A friend or colleague','News article or media coverage'].map(r=>`<div class="tag${(data.referralSources||[]).includes(r)?' selected':''}" onclick="toggleReferral(this,'${r}')">${r}</div>`).join('')}
+        </div>
+      </div></div>
+      <div class="field-group full" style="margin-top:12px"><div class="field">
+        <label>Anything specific? <span class="opt">(optional — e.g. a person's name, a post link, an event name)</span></label>
+        <input id="referralDetail" value="${esc(data.referralDetail||'')}" placeholder="e.g. Referred by Jane Smith, or saw post on LinkedIn by Frank Onuh">
+      </div></div>
+    `;
+  }
+
+  if(s.id==='skills') html+=`
+    <div class="field-group full"><div class="field"><label>Role interests<span class="required-star">*</span> <span class="opt">(select all that apply)</span></label>
+      <div class="tag-group">${ROLES.map(r=>`<div class="tag${(data.roles||[]).includes(r)?' selected':''}" onclick="toggleTag(this,'roles','${r}',99)">${r}</div>`).join('')}</div>
+      <div style="margin-top:10px;display:flex;align-items:center;gap:8px"><input id="rolesOther" style="max-width:320px" value="${esc(data.rolesOther||'')}" placeholder="Don't see your role? Type it here and press Enter" onkeydown="addOther(event,'roles','rolesOther',99)"><span style="font-size:11px;color:#94a3b8">Press Enter to add</span></div>
+    </div></div>
+    <hr class="section-divider">
+    <div class="field-group full"><div class="field"><label>Skills you bring<span class="required-star">*</span> <span class="opt">(select all that apply)</span></label>
+      <div class="tag-group">${SKILLS_BRING.map(r=>`<div class="tag${(data.skillsBring||[]).includes(r)?' selected':''}" onclick="toggleTag(this,'skillsBring','${r}',99)">${r}</div>`).join('')}</div>
+      <div style="margin-top:10px;display:flex;align-items:center;gap:8px"><input id="skillsBringOther" style="max-width:320px" value="${esc(data.skillsBringOther||'')}" placeholder="Don't see your skill? Type it here and press Enter" onkeydown="addOther(event,'skillsBring','skillsBringOther',99)"><span style="font-size:11px;color:#94a3b8">Press Enter to add</span></div>
+    </div></div>
+    <hr class="section-divider">
+    <div class="field-group full"><div class="field">
+      <label>Skills you want to develop<span class="required-star">*</span> <span class="opt">(choose up to 6)</span></label>
+      <div class="max-note" id="devNote">Selected: ${(data.skillsDevelop||[]).length} / 6</div>
+      <div class="tag-group" id="devTags">${SKILLS_DEVELOP.map(r=>{
+        const sel=(data.skillsDevelop||[]).includes(r);
+        const maxed=(data.skillsDevelop||[]).length>=3&&!sel;
+        return `<div class="tag${sel?' selected':''}${maxed?' maxed':''}" onclick="toggleDev(this,'${r}')">${r}</div>`;
+      }).join('')}</div>
+    </div></div>
+    <hr class="section-divider">
+    <div class="field-group full"><div class="field"><label>Areas of AI interest<span class="required-star">*</span> <span class="opt">(choose up to 6)</span></label>
+      <div class="max-note" id="intNote">Selected: ${(data.interests||[]).length} / 6</div>
+      <div class="tag-group" id="interestTags">${INTERESTS.map(r=>{const sel=(data.interests||[]).includes(r);const maxed=(data.interests||[]).length>=6&&!sel;return `<div class="tag${sel?' selected':''}${maxed?' maxed':''}" onclick="toggleInt(this,'${r}')">${r}</div>`;}).join('')}</div>
+      <div style="margin-top:10px;display:flex;align-items:center;gap:8px"><input id="intOther" style="max-width:320px" value="${esc(data.intOther||'')}" placeholder="Don't see your area? Type it here and press Enter" onkeydown="addOther(event,'interests','intOther',6)"><span style="font-size:11px;color:#94a3b8">Press Enter to add (max 6)</span></div>
+    </div></div>`;
+
+  if(s.id==='about') html+=`
+    <div class="field-group full"><div class="field"><label>Why AIRI Foundation?<span class="required-star">*</span></label><textarea id="whyAiri" placeholder="Tell us what drew you to AIRI and what you hope to experience here...">${esc(data.whyAiri)}</textarea></div></div>
+    <div class="field-group full"><div class="field"><label>Your product idea <span class="opt">(optional)</span></label><textarea id="productIdea" placeholder="What problem do you see in the world that you would love to solve with AI? Describe a product or tool you would want to build — it does not have to be technical...">${esc(data.productIdea)}</textarea></div></div>
+    <div class="field-group full"><div class="field"><label>Anything else? <span class="opt">(optional)</span></label><textarea id="anythingElse" placeholder="Anything else you want us to know about you, your background, or your goals...">${esc(data.anythingElse)}</textarea></div></div>
+    <hr class="section-divider">
+    <div class="field-group full"><div class="field">
+      <label>Upload your CV <span class="opt">(optional but strongly encouraged)</span></label>
+      <div class="cv-upload-area" id="cvArea" ondragover="event.preventDefault();this.classList.add('drag')" ondragleave="this.classList.remove('drag')" ondrop="handleDrop(event)">
+        <input type="file" accept=".pdf,application/pdf" onchange="handleCvSelect(this)">
+        <div class="cv-icon"><i class="ti ti-file-type-pdf" aria-hidden="true"></i></div>
+        <div class="cv-upload-label"><strong>Click to upload</strong> or drag and drop<br>PDF only · Max 5MB</div>
+      </div>
+      ${cvFile?`<div class="cv-selected"><i class="ti ti-file-description" style="color:#084734;font-size:18px" aria-hidden="true"></i><span class="cv-selected-name">${cvFile.name}</span><button class="cv-remove" onclick="removeCV()">Remove</button></div>`:''}
+    </div></div>`;
+
+  if(s.id==='demographics') html+=`
+    <div class="demo-notice"><i class="ti ti-info-circle" style="font-size:16px;margin-top:1px;flex-shrink:0" aria-hidden="true"></i><span>All fields on this page are completely optional. This information is collected solely for program reporting and equity monitoring purposes and will never influence decisions about your application.</span></div>
+    <div class="field-group">
+      <div class="field"><label>Age range<span class="required-star">*</span></label><select id="ageRange">
+        <option value="">Prefer not to say</option>
+        ${['Under 18','18 – 24','25 – 34','35 – 44','45 – 54','55+'].map(e=>`<option ${data.ageRange===e?'selected':''}>${e}</option>`).join('')}
+      </select></div>
+      <div class="field"><label>Ethnic or cultural identity <span class="opt">(optional)</span></label><input id="ethnicity" value="${esc(data.ethnicity)}" placeholder="e.g. Black / African Canadian, South Asian..."></div>
+    </div>
+
+    <div class="field-group">
+      <div class="field"><label>Do you have a disability? <span class="opt">(optional)</span></label><select id="disability">
+        <option value="">Prefer not to say</option>
+        ${['Yes','No','Prefer not to say'].map(e=>`<option ${data.disability===e?'selected':''}>${e}</option>`).join('')}
+      </select></div>
+      <div class="field"><label>First-generation post-secondary? <span class="opt">(optional)</span></label><select id="firstGen">
+        <option value="">Prefer not to say</option>
+        ${['Yes','No','Prefer not to say'].map(e=>`<option ${data.firstGen===e?'selected':''}>${e}</option>`).join('')}
+      </select></div>
+    </div>
+    <div class="field-group full"><div class="field"><label>Newcomer to Canada? <span class="opt">(optional)</span></label><select id="newcomer">
+      <option value="">Prefer not to say</option>
+      ${['Less than 1 year','1 – 2 years','2 – 3 years','3 – 4 years','4 – 5 years','More than 5 years','Not a newcomer','Prefer not to say'].map(e=>`<option ${data.newcomer===e?'selected':''}>${e}</option>`).join('')}
+    </select></div></div>`;
+
+  if(s.id==='agreement') html+=`
+    <div class="field-group full"><div class="field"><label>Full legal name<span class="required-star">*</span></label><input id="legalName" value="${esc(data.legalName)}" placeholder=""></div></div>
+    <div class="field-group full"><div class="field"><label>Date<span class="required-star">*</span></label><input id="signDate" type="date" value="${data.signDate||new Date().toISOString().split('T')[0]}"></div></div>
+    <hr class="section-divider">
+    <div class="agree-row"><input type="checkbox" id="chkNda" ${data.chkNda?'checked':''}><label for="chkNda">I understand that prior to commencing any activities with AIRI Foundation I will be required to sign the Non-Disclosure, Intellectual Property Assignment and Confidentiality Agreement, and that all work I produce during my engagement is the intellectual property of AIRI Foundation.</label></div>
+    <div class="agree-row"><input type="checkbox" id="chkInnovate" ${data.chkInnovate?'checked':''}><label for="chkInnovate">I understand that AIRI Foundation expects all team members to think as innovators and creators.</label></div>
+    <div class="agree-row"><input type="checkbox" id="chkContact" ${data.chkContact?'checked':''}><label for="chkContact">I consent to AIRI Foundation contacting me by email and phone regarding my application and onboarding.</label></div>
+    <div class="agree-row"><input type="checkbox" id="chkAccurate" ${data.chkAccurate?'checked':''}><label for="chkAccurate">I confirm that all information provided in this application is accurate and complete to the best of my knowledge.</label></div>`;
+
+  html+=`</div><div class="nav-row">
+    ${current>0?`<button class="btn-back" onclick="goBack()">&#8592; Back</button>`:''}
+    <button class="btn-next" onclick="goNext()" id="nextBtn">
+      ${current===STEPS.length-1?'Submit application':'Next step'}
+    </button>
+  </div>`;
+  fa.innerHTML=html;
+}
+
+function esc(v){return (v||'').toString().replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function stepSub(id){
+  return{personal:'Tell us who you are.',background:'Share your background. All fields except education level and LinkedIn are optional.',engagement:'Let us know how you want to get involved and how much time you can give.',availability:'Tell us when you are generally available. This is a starting point — not a contract.',referral:'Help us understand how people are finding us.',skills:'Tell us what you bring and what you want to grow.',about:'Speak directly to us. There are no wrong answers.',demographics:'Entirely optional. Helps us understand and serve our community better.',agreement:'Read carefully before submitting.'}[id]||'';
+}
+
+function handleEdu(val){data.education=val;render();}
+function selectEngage(val){data.engagementType=val;render();}
+function selectHours(el,val){data.hours=val;document.querySelectorAll('.hour-opt').forEach(e=>e.classList.remove('selected'));el.classList.add('selected');}
+function handleWorkPref(val){data.workPref=val;const n=document.getElementById('inpersonNotice');if(n)n.style.display=(val==='In-person (Lethbridge, AB)'||val==='Hybrid')?'flex':'none';}
+function handleCvSelect(input){const file=input.files[0];if(!file)return;if(file.type!=='application/pdf'){alert('Please upload a PDF file only.');input.value='';return;}if(file.size>5*1024*1024){alert('File size must be under 5MB.');input.value='';return;}cvFile=file;['whyAiri','productIdea','anythingElse'].forEach(f=>{const el=document.getElementById(f);if(el)data[f]=el.value;});render();}
+function handleDrop(e){e.preventDefault();document.getElementById('cvArea').classList.remove('drag');const file=e.dataTransfer.files[0];if(!file)return;if(file.type!=='application/pdf'){alert('Please upload a PDF file only.');return;}if(file.size>5*1024*1024){alert('File size must be under 5MB.');return;}cvFile=file;['whyAiri','productIdea','anythingElse'].forEach(f=>{const el=document.getElementById(f);if(el)data[f]=el.value;});render();}
+function removeCV(){['whyAiri','productIdea','anythingElse'].forEach(f=>{const el=document.getElementById(f);if(el)data[f]=el.value;});cvFile=null;render();}
+function addOther(event,key,inputId,max){
+  if(event.key!=='Enter') return;
+  event.preventDefault();
+  const input=document.getElementById(inputId);
+  if(!input) return;
+  const val=input.value.trim();
+  if(!val) return;
+  const arr=data[key]||[];
+  if(arr.includes(val)||arr.length>=max) return;
+  arr.push(val);
+  data[key]=arr;
+  data[inputId]=val;
+  render();
+}
+function toggleInt(el,val){
+  const arr=data.interests||[];
+  if(arr.includes(val)){data.interests=arr.filter(v=>v!==val);el.classList.remove('selected');}
+  else{if(arr.length>=6)return;arr.push(val);data.interests=arr;el.classList.add('selected');}
+  const note=document.getElementById('intNote');if(note)note.textContent=`Selected: ${data.interests.length} / 6`;
+  document.querySelectorAll('#interestTags .tag').forEach(t=>{if(!t.classList.contains('selected')){if(data.interests.length>=6)t.classList.add('maxed');else t.classList.remove('maxed');}});
+}
+
+function toggleTag(el,key,val,max){
+  const arr=data[key]||[];
+  if(arr.includes(val)){data[key]=arr.filter(v=>v!==val);el.classList.remove('selected');}
+  else{if(arr.length>=max)return;arr.push(val);data[key]=arr;el.classList.add('selected');}
+}
+function toggleDev(el,val){
+  const arr=data.skillsDevelop||[];
+  if(arr.includes(val)){data.skillsDevelop=arr.filter(v=>v!==val);el.classList.remove('selected');}
+  else{if(arr.length>=6)return;arr.push(val);data.skillsDevelop=arr;el.classList.add('selected');}
+  const note=document.getElementById('devNote');if(note)note.textContent=`Selected: ${data.skillsDevelop.length} / 6`;
+  document.querySelectorAll('#devTags .tag').forEach(t=>{if(!t.classList.contains('selected')){if(data.skillsDevelop.length>=6)t.classList.add('maxed');else t.classList.remove('maxed');}});
+}
+
+
+function addOther(e,key,inputId){
+  if(e.key!=='Enter') return;
+  e.preventDefault();
+  const input=document.getElementById(inputId);
+  const val=(input.value||'').trim();
+  if(!val) return;
+  const listKey=key+'OtherList';
+  if(!(data[listKey]||[]).includes(val)){
+    data[listKey]=data[listKey]||[];
+    data[listKey].push(val);
+    data[key]=data[key]||[];
+    if(!data[key].includes(val)) data[key].push(val);
+  }
+  input.value='';
+  render();
+}
+function removeOtherTag(key,listKey,val,el){
+  data[listKey]=(data[listKey]||[]).filter(v=>v!==val);
+  data[key]=(data[key]||[]).filter(v=>v!==val);
+  el.remove();
+}
+function addOtherDev(e,inputId){
+  if(e.key!=='Enter') return;
+  e.preventDefault();
+  const input=document.getElementById(inputId);
+  const val=(input.value||'').trim();
+  if(!val) return;
+  if((data.skillsDevOtherList||[]).includes(val)){input.value='';return;}
+  if((data.skillsDevelop||[]).length>=6){input.value='';return;}
+  data.skillsDevOtherList=data.skillsDevOtherList||[];
+  data.skillsDevOtherList.push(val);
+  data.skillsDevelop=data.skillsDevelop||[];
+  data.skillsDevelop.push(val);
+  input.value='';
+  render();
+}
+function removeOtherDevTag(val,el){
+  data.skillsDevOtherList=(data.skillsDevOtherList||[]).filter(v=>v!==val);
+  data.skillsDevelop=(data.skillsDevelop||[]).filter(v=>v!==val);
+  el.remove();
+  const note=document.getElementById('devNote');if(note)note.textContent=`Selected: ${data.skillsDevelop.length} / 6`;
+}
+function addOtherInt(e,inputId){
+  if(e.key!=='Enter') return;
+  e.preventDefault();
+  const input=document.getElementById(inputId);
+  const val=(input.value||'').trim();
+  if(!val) return;
+  if((data.interestsOtherList||[]).includes(val)){input.value='';return;}
+  if((data.interests||[]).length>=6){input.value='';return;}
+  data.interestsOtherList=data.interestsOtherList||[];
+  data.interestsOtherList.push(val);
+  data.interests=data.interests||[];
+  data.interests.push(val);
+  input.value='';
+  render();
+}
+function removeOtherIntTag(val,el){
+  data.interestsOtherList=(data.interestsOtherList||[]).filter(v=>v!==val);
+  data.interests=(data.interests||[]).filter(v=>v!==val);
+  el.remove();
+  const note=document.getElementById('intNote');if(note)note.textContent=`Selected: ${data.interests.length} / 6`;
+}
+
+function toggleAllDay(i){
+  const m=document.getElementById('avM'+i);
+  const a=document.getElementById('avA'+i);
+  const allOn=m.checked&&a.checked;
+  m.checked=a.checked=!allOn;
+  updateAllDayBtn(i);
+}
+function syncAllDay(i){updateAllDayBtn(i);}
+function updateAllDayBtn(i){
+  const m=document.getElementById('avM'+i);
+  const a=document.getElementById('avA'+i);
+  const btn=document.getElementById('avAll'+i);
+  if(!btn) return;
+  if(m&&a&&m.checked&&a.checked){btn.classList.add('active');}
+  else{btn.classList.remove('active');}
+}
+function toggleReferral(el,val){
+  data.referralSources=data.referralSources||[];
+  const arr=data.referralSources;
+  if(arr.includes(val)){data.referralSources=arr.filter(v=>v!==val);el.classList.remove('selected');}
+  else{arr.push(val);el.classList.add('selected');}
+}
+function getAvailability(){
+  const DAYS=['Monday','Tuesday','Wednesday','Thursday','Friday'];
+  const result={};
+  DAYS.forEach((day,i)=>{
+    const m=document.getElementById('avM'+i);
+    const a=document.getElementById('avA'+i);
+    const n=document.getElementById('avN'+i);
+    const slots=[];
+    if(m&&m.checked) slots.push('Morning');
+    if(a&&a.checked) slots.push('Afternoon');
+    result[day]={slots:slots.join(' & ')||'Not available',notes:(n&&n.value)||''};
+  });
+  return result;
+}
+function saveAvailability(){
+  const DAYS=['Monday','Tuesday','Wednesday','Thursday','Friday'];
+  const notes={};
+  DAYS.forEach((day,i)=>{
+    const n=document.getElementById('avN'+i);
+    if(n) notes[day]=n.value;
+  });
+  data.availNotes=notes;
+}
+function saveStep(){
+  const s=STEPS[current];
+  if(s.id==='personal'){['firstName','lastName','email','phone','city','province','country'].forEach(f=>{const el=document.getElementById(f);if(el)data[f]=el.value;});}
+  if(s.id==='background'){['education','institution','fieldOfStudy','linkedin','github','portfolio'].forEach(f=>{const el=document.getElementById(f);if(el)data[f]=el.value;});const yr=document.getElementById('bscYear');if(yr)data.bscYear=yr.value;const pr=document.getElementById('bscProgram');if(pr)data.bscProgram=pr.value;}
+  if(s.id==='demographics') return 'Please select your age range';
+  if(s.id==='skills'){
+    if(!(data.roles||[]).length) return 'Please select at least one role interest';
+    if(!(data.skillsBring||[]).length) return 'Please select at least one skill you bring';
+    if(!(data.skillsDevelop||[]).length) return 'Please select at least one skill to develop';
+    if(!(data.interests||[]).length) return 'Please select at least one area of AI interest';
+  }
+  if(s.id==='availability'){const DAYS=['Monday','Tuesday','Wednesday','Thursday','Friday'];const anyTicked=DAYS.some((_,i)=>{const m=document.getElementById('avM'+i);const a=document.getElementById('avA'+i);return(m&&m.checked)||(a&&a.checked);});return anyTicked;}
+  if(s.id==='referral'){return(data.referralSources||[]).length>0;}
+  if(s.id==='availability') return 'Please tick at least one available time slot';
+  if(s.id==='referral') return 'Please select at least one option';
+  if(s.id==='engagement'){const wp=document.getElementById('workPref');if(wp)data.workPref=wp.value;const he=document.getElementById('hoursExact');if(he)data.hoursExact=he.value;}
+  if(s.id==='availability'){saveAvailability();}
+  if(s.id==='referral'){const rd=document.getElementById('referralDetail');if(rd)data.referralDetail=rd.value;}
+  if(s.id==='demographics') return 'Please select your age range';
+  if(s.id==='skills'){['rolesOther','skillsBringOther','skillsDevOther','intOther'].forEach(f=>{const el=document.getElementById(f);if(el)data[f]=el.value;});}
+  if(s.id==='about'){['whyAiri','productIdea','anythingElse'].forEach(f=>{const el=document.getElementById(f);if(el)data[f]=el.value;});}
+  if(s.id==='demographics'){['ageRange','ethnicity','disability','firstGen','newcomer'].forEach(f=>{const el=document.getElementById(f);if(el)data[f]=el.value;});}
+  if(s.id==='agreement'){['legalName','signDate'].forEach(f=>{const el=document.getElementById(f);if(el)data[f]=el.value;});['chkNda','chkInnovate','chkContact','chkAccurate'].forEach(f=>{const el=document.getElementById(f);if(el)data[f]=el.checked;});}
+}
+
+function validate(){
+  const s=STEPS[current];
+  if(s.id==='personal') return (data.firstName||'').trim()&&(data.lastName||'').trim()&&(data.email||'').trim()&&(data.city||'').trim()&&(data.country||'').trim();
+  if(s.id==='background') return (data.education||'').trim()&&(data.linkedin||'').trim()&&(data.institution||'').trim();
+  if(s.id==='demographics') return 'Please select your age range';
+  if(s.id==='skills'){
+    if(!(data.roles||[]).length) return 'Please select at least one role interest';
+    if(!(data.skillsBring||[]).length) return 'Please select at least one skill you bring';
+    if(!(data.skillsDevelop||[]).length) return 'Please select at least one skill to develop';
+    if(!(data.interests||[]).length) return 'Please select at least one area of AI interest';
+  }
+  if(s.id==='availability'){const DAYS=['Monday','Tuesday','Wednesday','Thursday','Friday'];const anyTicked=DAYS.some((_,i)=>{const m=document.getElementById('avM'+i);const a=document.getElementById('avA'+i);return(m&&m.checked)||(a&&a.checked);});return anyTicked;}
+  if(s.id==='referral'){return(data.referralSources||[]).length>0;}
+  if(s.id==='engagement'){
+    if(!(data.engagementType||'').trim()) return false;
+    if(!((data.hours||'').trim()||(data.hoursExact||'').trim())) return false;
+    if(!(data.workPref||'').trim()) return false;
+    return !getHourMismatch();
+  }
+  if(s.id==='skills') return (data.roles||[]).length>0&&(data.skillsBring||[]).length>0&&(data.skillsDevelop||[]).length>0&&(data.interests||[]).length>0;
+  if(s.id==='demographics') return (data.ageRange||'').trim();
+  if(s.id==='about') return (data.whyAiri||'').trim();
+  if(s.id==='agreement') return (data.legalName||'').trim()&&data.chkNda&&data.chkInnovate&&data.chkContact&&data.chkAccurate;
+  return true;
+}
+
+function getHourMismatch(){
+  const type=data.engagementType||'';
+  const exact=parseInt(data.hoursExact||'0',10)||0;
+  const range=data.hours||'';
+  // Map range labels to numeric midpoints for checking
+  const rangeMids={'< 10':7,'10 – 14':12,'15 – 18':16,'19 – 22':20,'23 – 25':24,'26 – 30':28,'31 – 35':33,'36+':38};
+  const hrs=exact||rangeMids[range]||0;
+  if(!type||!hrs) return null;
+  if(type==='Volunteer'&&hrs>=19) return `Volunteer engagements are typically < 18 hrs/week. Your selected hours (${hrs}) suggest an Intern or Advanced Intern. Please adjust your hours or change your engagement type.`;
+  if(type==='Intern'&&(hrs<19||hrs>25)) return `Intern engagements are 19 – 25 hrs/week. Your selected hours (${hrs}) don't match. Please adjust your hours or change your engagement type.`;
+  if(type==='Advanced Intern'&&hrs<26) return `Advanced Intern engagements are ≥ 26 hrs/week. Your selected hours (${hrs}) are too low. Please adjust your hours or change your engagement type.`;
+  return null;
+}
+
+function getValidationMessage(){
+  const s=STEPS[current];
+  if(s.id==='background'){
+    if(!(data.education||'').trim()) return 'Please select your education level';
+    if(!(data.institution||'').trim()) return 'Please enter your current or most recent organization';
+    if(!(data.institution||'').trim()) return 'Please enter your current or most recent organization (or "Not currently employed / studying")';
+    if(!(data.linkedin||'').trim()) return 'Please enter your LinkedIn profile URL';
+  }
+  if(s.id==='demographics') return 'Please select your age range';
+  if(s.id==='skills'){
+    if(!(data.roles||[]).length) return 'Please select at least one role interest';
+    if(!(data.skillsBring||[]).length) return 'Please select at least one skill you bring';
+    if(!(data.skillsDevelop||[]).length) return 'Please select at least one skill to develop';
+    if(!(data.interests||[]).length) return 'Please select at least one area of AI interest';
+  }
+  if(s.id==='availability'){const DAYS=['Monday','Tuesday','Wednesday','Thursday','Friday'];const anyTicked=DAYS.some((_,i)=>{const m=document.getElementById('avM'+i);const a=document.getElementById('avA'+i);return(m&&m.checked)||(a&&a.checked);});return anyTicked;}
+  if(s.id==='referral'){return(data.referralSources||[]).length>0;}
+  if(s.id==='engagement'){
+    if(!(data.engagementType||'').trim()) return 'Please select an engagement type';
+    if(!(data.workPref||'').trim()) return 'Please select a work preference';
+    if(!((data.hours||'').trim()||(data.hoursExact||'').trim())) return 'Please select or enter your hours per week';
+    const mismatch=getHourMismatch();
+    if(mismatch) return mismatch;
+    if(!(data.workPref||'').trim()) return 'Please select a work preference';
+  }
+  if(s.id==='about'){
+    if(!(data.whyAiri||'').trim()) return 'Please tell us why AIRI Foundation';
+    if(!cvFile) return 'Please upload your CV (PDF)';
+  }
+  return 'Please complete required fields';
+}
+
+async function submitForm(){
+  const fa=document.getElementById('formArea');
+  document.getElementById('progressWrap').style.display='none';
+  fa.innerHTML=`<div class="card submitting-overlay"><div class="spinner"></div><p style="font-size:14px;color:#64748b">Submitting your application...<br><span style="font-size:12px;color:#94a3b8">This may take a moment if you uploaded a CV.</span></p></div>`;
+  let cvData=null,cvName=null,cvType=null;
+  if(cvFile){
+    cvData=await new Promise((res,rej)=>{const reader=new FileReader();reader.onload=e=>res(e.target.result.split(',')[1]);reader.onerror=rej;reader.readAsDataURL(cvFile);});
+    cvName=cvFile.name;cvType=cvFile.type;
+  }
+  try{
+    const availability=getAvailability();
+    await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:JSON.stringify({...data,availability:JSON.stringify(availability),referralSources:(data.referralSources||[]).join(', '),cvData,cvName,cvType})});
+    renderSuccess(fa);
+  }catch(err){
+    fa.innerHTML=`<div class="card" style="text-align:center;padding:2rem"><p style="color:#E24B4A;font-size:14px">Something went wrong. Please email us directly at <strong>contact@airifoundation.org</strong> and we will sort it out.</p><button class="btn-next" style="margin-top:1rem;max-width:200px" onclick="location.reload()">Try again</button></div>`;
+    document.getElementById('progressWrap').style.display='block';
+  }
+}
+
+function goNext(){
+  saveStep();
+  if(!validate()){
+    const btn=document.getElementById('nextBtn');
+    const orig=btn.innerHTML;
+    btn.style.background='#E24B4A !important';
+    btn.style.cssText='background:#E24B4A !important;color:#fff !important;flex:1;min-height:40px;height:auto;padding:8px 12px;border-radius:8px;border:none;font-size:13px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;text-align:center;white-space:normal;line-height:1.4;';
+    btn.innerHTML=getValidationMessage();
+    setTimeout(()=>{btn.style.cssText='background:#084734 !important;color:#CEF17B !important;flex:1;height:40px;border-radius:8px;border:none;font-size:14px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;';btn.innerHTML=orig;},3200);
+    return;
+  }
+  if(current===STEPS.length-1){submitForm();return;}
+  current++;render();
+}
+
+function goBack(){saveStep();current--;render();}
+
+function renderSuccess(fa){
+  document.getElementById('progressWrap').style.display='none';
+  fa.innerHTML=`<div class="card success-wrap">
+    <div class="success-icon"><i class="ti ti-check" aria-hidden="true"></i></div>
+    <h2>Application submitted</h2>
+    <p>Thank you, <strong>${esc(data.firstName)}</strong>, for applying as a <strong>${esc(data.engagementType||'team member')}</strong>. We have received your application.</p>
+    <div class="success-chips">
+      <div class="chip"><i class="ti ti-mail" style="font-size:12px;margin-right:4px" aria-hidden="true"></i>Our team will reach out to you within 48hrs via career@airifoundation.org.</div>
+    </div>
+  </div>`;
+}
+
+render();
+</script>
+</body>
+</html>

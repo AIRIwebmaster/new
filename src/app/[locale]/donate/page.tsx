@@ -24,7 +24,7 @@ export default async function DonatePage({ params }: { params: Promise<{ locale:
     <>
       <PageHero
         title={t('heroTitle')}
-        subtitle={t('heroSubtitle')}
+        // subtitle={t('heroSubtitle')}
       />
 
       <section className="border-t border-grey-200">

@@ -117,7 +117,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-3 text-sm font-semibold text-foreground">{t('programs')}</h3>
+            <h3 className="mb-3 text-sm font-semibold text-foreground">Solutions</h3>
             <ul className="space-y-2">
               {footerNav.programs.map((link) => (
                 <li key={link.href}>
@@ -146,13 +146,13 @@ export function Footer() {
             <h3 className="mb-3 text-sm font-semibold text-foreground">{t('contactUs')}</h3>
             <ul className="space-y-2 text-sm text-grey">
               <li>
-                <a href={`mailto:${siteConfig.emails.enquiry}`} className="hover:text-foreground">
-                  {siteConfig.emails.enquiry}
+                <a href={`mailto:${siteConfig.emails.contact}`} className="hover:text-foreground">
+                  {siteConfig.emails.contact}
                 </a>
-              </li>
+              </li> 
               <li>
-                {siteConfig.address.street}<br />
-                {siteConfig.address.city}, {siteConfig.address.province} {siteConfig.address.postalCode}
+                {siteConfig.address.street},
+                {siteConfig.address.city}, {siteConfig.address.province},  &nbsp; {siteConfig.address.postalCode}
               </li>
             </ul>
             <div className="mt-4 flex gap-4">
@@ -185,10 +185,10 @@ export function Footer() {
             <div className="flex items-center gap-4">
               <Link href="/about" className="font-medium hover:text-foreground">{t('about')}</Link>
               <Link href="/contact" className="font-medium hover:text-foreground">{t('contact')}</Link>
-              <Link href="/programs" className="font-medium hover:text-foreground">{t('programs')}</Link>
+              <Link href="/programs" className="font-medium hover:text-foreground">Solutions</Link>
             </div>
-            <span className="hidden text-grey-200 sm:inline">·</span>
-            <p>{t('builtBy')} <a href="https://thedgit.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-foreground hover:text-primary">THEDGIT</a></p>
+            {/* <span className="hidden text-grey-200 sm:inline">·</span>
+            <p>{t('builtBy')} <a href="https://thedgit.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-foreground hover:text-primary">THEDGIT</a></p> */}
           </div>
         </div>
       </div>

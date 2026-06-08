@@ -17,19 +17,19 @@ export default async function RegisterCodeAIClubPage({ params }: { params: Promi
   const details = [
     { label: t('schedule'), value: t('scheduleVal') },
     { label: t('time'), value: t('timeVal') },
-    { label: t('dates'), value: t('datesVal') },
+    // { label: t('dates'), value: t('datesVal') },
     { label: t('location'), value: t('locationVal') },
-    { label: t('duration'), value: t('durationVal') },
+    // { label: t('duration'), value: t('durationVal') },
     { label: t('ages'), value: t('agesVal') },
     { label: t('spots'), value: t('spotsVal') },
-    { label: t('cost'), value: t('costVal') },
+    // { label: t('cost'), value: t('costVal') },
   ];
 
   return (
     <>
       <PageHero
         title={t('heroTitle')}
-        subtitle={t('heroSubtitle')}
+        // subtitle={t('heroSubtitle')}
         breadcrumbs={[{ label: t('breadcrumbPrograms'), href: '/programs' }, { label: t('breadcrumbClub') }]}
       />
 

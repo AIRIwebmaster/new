@@ -58,10 +58,10 @@ export function BentoStats({ variant = 'dark', stats }: BentoStatsProps) {
   const t = useTranslations('impact');
 
   const defaultStats: StatItem[] = [
-    { value: 527, suffix: '', label: t('defaultStat1Label'), description: t('defaultStat1Desc'), featured: true },
-    { value: 18, suffix: '', label: t('defaultStat2Label'), description: t('defaultStat2Desc') },
-    { value: 7, suffix: '', label: t('defaultStat3Label'), description: t('defaultStat3Desc') },
-    { value: 43, suffix: '', label: t('defaultStat4Label'), description: t('defaultStat4Desc') },
+    { value: 1625, suffix: '', label: t('defaultStat1Label'), description: t('defaultStat1Desc'), featured: true },
+    { value: 165,suffix: '', label: t('defaultStat2Label'), description: t('defaultStat2Desc') },
+    { value: 49, suffix: '', label: t('defaultStat3Label'), description: t('defaultStat3Desc') },
+    { value: 48,suffix: '', label: t('defaultStat4Label'), description: t('defaultStat4Desc') },
   ];
 
   const data = stats && stats.length > 0 ? stats : defaultStats;
@@ -83,11 +83,11 @@ export function BentoStats({ variant = 'dark', stats }: BentoStatsProps) {
             {featured.label}
           </p>
         </div>
-        {featured.description && (
+        {/* {featured.description && (
           <p className={`mt-6 text-body leading-relaxed ${isDark ? 'text-white/70' : 'text-white/80'}`}>
             {featured.description}
           </p>
-        )}
+        )} */}
       </div>
 
       {rest.map((stat) => (
@@ -107,11 +107,11 @@ export function BentoStats({ variant = 'dark', stats }: BentoStatsProps) {
               {stat.label}
             </p>
           </div>
-          {stat.description && (
+          {/* {stat.description && (
             <p className={`mt-4 text-sm leading-relaxed ${isDark ? 'text-white/60' : 'text-grey'}`}>
               {stat.description}
             </p>
-          )}
+          )} */}
         </div>
       ))}
 
@@ -125,9 +125,9 @@ export function BentoStats({ variant = 'dark', stats }: BentoStatsProps) {
           <p className={`text-h4 font-bold leading-snug ${isDark ? 'text-white' : 'text-foreground'}`}>
             {t('joinTitle')}
           </p>
-          <p className={`mt-3 text-sm leading-relaxed ${isDark ? 'text-white/60' : 'text-grey'}`}>
+          {/* <p className={`mt-3 text-sm leading-relaxed ${isDark ? 'text-white/60' : 'text-grey'}`}>
             {t('joinText')}
-          </p>
+          </p> */}
         </div>
         <div className="mt-6 flex gap-4">
           <Link

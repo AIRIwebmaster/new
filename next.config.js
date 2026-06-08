@@ -15,7 +15,7 @@ const nextConfig = {
     {
       source: '/(.*)',
       headers: [
-        { key: 'X-Frame-Options', value: 'DENY' },
+        // { key: 'X-Frame-Options', value: 'DENY' },
         { key: 'X-Content-Type-Options', value: 'nosniff' },
         { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
         { key: 'X-DNS-Prefetch-Control', value: 'on' },
@@ -31,12 +31,12 @@ const nextConfig = {
           key: 'Content-Security-Policy',
           value: [
             "default-src 'self'",
-            "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com",
-            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-            "font-src 'self' https://fonts.gstatic.com",
+            "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://script.google.com https://script.googleusercontent.com",
+            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net",
+            "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net data:",
             "img-src 'self' data: https://airifoundation.org",
-            "frame-src https://challenges.cloudflare.com",
-            "connect-src 'self' https://challenges.cloudflare.com",
+            "frame-src 'self'",
+            "connect-src 'self' https://challenges.cloudflare.com https://script.google.com https://script.googleusercontent.com",
           ].join('; '),
         },
       ],

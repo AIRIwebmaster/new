@@ -159,12 +159,15 @@ export function ContactForm() {
                   onChange={field.onChange}
                   placeholder="Select a subject"
                   options={[
-                    { value: 'workshop', label: 'Book a Workshop' },
-                    { value: 'partnership', label: 'Partnership Inquiry' },
-                    { value: 'speaking', label: 'Speaking Engagement' },
-                    { value: 'programs', label: 'Program Information' },
-                    { value: 'media', label: 'Media Inquiry' },
-                    { value: 'general', label: 'General Question' },
+                    { value: 'Workflow and Process Automation', label: 'Workflow and Process Automation' },
+                    { value: 'Custom Software Development', label: 'Custom Software Development' },
+                    { value: 'Corporate AI Training and Consulting', label: 'Corporate AI Training and Consulting' },
+                    { value: 'Academic and AI Research Inquiries', label: 'Academic and AI Research Inquiries' },
+                    { value: 'Code and AI Creators Club', label: 'Code and AI Creators Club' },
+                    { value: 'Seniors AI Literacy and Workshops', label: 'Seniors AI Literacy and Workshops' },
+                    { value: 'Partnership and Collaboration Opportunities', label: 'Partnership and Collaboration Opportunities' },
+                    { value: 'Careers Co-ops and Volunteering', label: 'Careers Co-ops and Volunteering' },
+                    { value: 'General Enquiries', label: 'General Enquiries' },
                   ]}
                 />
               </FormControl>

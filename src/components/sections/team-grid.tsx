@@ -157,7 +157,7 @@ export function TeamGrid() {
               />
             </div>
             <h3 className="text-center text-[15px] font-semibold group-hover:text-primary">{member.name}</h3>
-            <p className="mt-0.5 text-center text-sm text-grey group-hover:text-primary">{member.role}</p>
+            {/* <p className="mt-0.5 text-center text-sm text-grey group-hover:text-primary">{member.role}</p> */}
           </button>
         ))}
       </div>

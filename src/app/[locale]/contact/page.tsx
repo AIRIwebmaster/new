@@ -17,11 +17,11 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   const t = await getTranslations('contact');
 
   const departments = [
-    {
-      name: t('dept1Name'),
-      email: siteConfig.emails.enquiry,
-      description: t('dept1Desc'),
-    },
+    // {
+    //   name: t('dept1Name'),
+    //   email: siteConfig.emails.enquiry,
+    //   description: t('dept1Desc'),
+    // },
     {
       name: t('dept2Name'),
       email: siteConfig.emails.career,
@@ -38,7 +38,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
     <>
       <PageHero
         title={t('heroTitle')}
-        subtitle={t('heroSubtitle')}
+        // subtitle={t('heroSubtitle')}
         breadcrumbs={[{ label: t('breadcrumbHome'), href: '/' }, { label: t('breadcrumbContact') }]}
       />
 

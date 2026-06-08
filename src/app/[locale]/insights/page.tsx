@@ -75,7 +75,7 @@ export default async function InsightsPage({
     <>
       <PageHero
         title={t('title')}
-        subtitle={t('subtitle')}
+        // subtitle={t('subtitle')}
         breadcrumbs={[{ label: t('breadcrumbHome'), href: '/' }, { label: t('title') }]}
       />
 

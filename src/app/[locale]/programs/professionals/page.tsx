@@ -30,7 +30,7 @@ export default async function ProfessionalsPage({ params }: { params: Promise<{ 
     <>
       <PageHero
         title={t('heroTitle')}
-        subtitle={t('heroSubtitle')}
+        // subtitle={t('heroSubtitle')}
         breadcrumbs={[{ label: t('breadcrumbPrograms'), href: '/programs' }, { label: t('breadcrumbProfessionals') }]}
       />
 

@@ -16,7 +16,7 @@ export default async function CodeAIClubPage({ params }: { params: Promise<{ loc
 
   const details = [
     { label: t('schedule'), value: t('scheduleVal') },
-    { label: t('dates'), value: t('datesVal') },
+    // { label: t('dates'), value: t('datesVal') },
     { label: t('time'), value: t('timeVal') },
     { label: t('location'), value: t('locationVal') },
     { label: t('ages'), value: t('agesVal') },
@@ -30,13 +30,15 @@ export default async function CodeAIClubPage({ params }: { params: Promise<{ loc
     t('learn4'),
     t('learn5'),
     t('learn6'),
+    t('learn7'),
+    t('learn8'),
   ];
 
   const features = [
     t('feat1'),
-    t('feat2'),
-    t('feat3'),
-    t('feat4'),
+    // t('feat2'),
+    // t('feat3'),
+    // t('feat4'),
   ];
 
   return (

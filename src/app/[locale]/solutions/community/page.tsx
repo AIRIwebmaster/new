@@ -16,7 +16,7 @@ export default async function CommunityInquiryPage({ params }: { params: Promise
     <>
       <PageHero
         title={t('heroTitle')}
-        subtitle={t('heroSubtitle')}
+        // subtitle={t('heroSubtitle')}
         breadcrumbs={[
           { label: t('breadcrumbHome'), href: '/' },
           { label: t('breadcrumbSolutions'), href: '/solutions' },
