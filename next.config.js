@@ -28,17 +28,17 @@ const nextConfig = {
           value: 'camera=(), microphone=(), geolocation=()',
         },
         {
-          key: 'Content-Security-Policy',
-          value: [
-            "default-src 'self'",
-            "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://script.google.com https://script.googleusercontent.com",
-            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net",
-            "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net data:",
-            "img-src 'self' data: https://airifoundation.org",
-            "frame-src 'self'",
-            "connect-src 'self' https://challenges.cloudflare.com https://script.google.com https://script.googleusercontent.com",
-          ].join('; '),
-        },
+  key: 'Content-Security-Policy',
+  value: [
+    "default-src 'self'",
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://script.google.com https://script.googleusercontent.com",
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net",
+    "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net data:",
+    "img-src 'self' data: https://airifoundation.org",
+    "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://challenges.cloudflare.com",
+    "connect-src 'self' https://challenges.cloudflare.com https://script.google.com https://script.googleusercontent.com",
+  ].join('; '),
+}
       ],
     },
   ],

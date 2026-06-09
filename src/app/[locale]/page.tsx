@@ -17,6 +17,21 @@ function formatInsightDate(dateStr: string) {
   };
 }
 
+export function VideoSection() {
+  return (
+    <div className="flex justify-center items-center w-full py-10">
+      <div className="relative w-full max-w-4xl overflow-hidden rounded-xl pb-[56.25%]">
+        <iframe
+          className="absolute top-0 left-0 h-full w-full"
+          src="https://www.youtube.com/embed/d1QolvxB8Pc"
+          title="Creating your AI solutions"
+          allowFullScreen
+        />
+      </div>
+    </div>
+  );
+}
+
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
@@ -41,7 +56,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   const heroCards = [
     { text: t('heroCard1'), href: '/solutions#operational'},
-    { text: t('heroCard2'), href: '/solutions#operational'},
+    { text: t('heroCard2'), href: '/solutions#civic'},
   ];
 
   const programs = [
@@ -60,7 +75,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const solutions = [
     { title: t('solution1Title'), description: t('solution1Desc'), href: '/solutions#operational' },
     { title: t('solution2Title'), description: t('solution2Desc'), href: '/solutions#civic' },
-    { title: t('solution3Title'), description: t('solution3Desc'), href: '/solutions#research' },
+    // { title: t('solution3Title'), description: t('solution3Desc'), href: '/solutions#research' },
   ];
 
   return (
@@ -97,12 +112,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       {/* Intro */}
       <section className="container py-16 md:py-24">
         <div className="flex flex-col items-center gap-10 md:flex-row md:gap-16">
-          <div className="flex-1">
+          {/* <div className="flex-1">
             <h2 className="mb-6 text-h2 md:text-h1">{t('introTitle')}</h2>
             <p className="text-body-lg text-grey">{t('introText')}</p>
-          </div>
-          <VideoPlayButton />
+          </div> */}
+          <VideoSection />
         </div>
+
+        
       </section>
 
       {/* Two-column programs */}
@@ -132,7 +149,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <div className="container py-16 md:py-20">
           <h2 className="mb-4 text-h2">{t('solutionsTitle')}</h2>
           <p className="mb-10 max-w-2xl text-body text-grey">{t('solutionsSubtitle')}</p>
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2">
             {solutions.map((solution) => (
               <Link
                 key={solution.title}

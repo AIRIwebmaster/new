@@ -117,7 +117,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-3 text-sm font-semibold text-foreground">Solutions</h3>
+            <h3 className="mb-3 text-sm font-semibold text-foreground">Programs</h3>
             <ul className="space-y-2">
               {footerNav.programs.map((link) => (
                 <li key={link.href}>
@@ -178,7 +178,7 @@ export function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-grey-200">
+      {/* <div className="border-t border-grey-200">
         <div className="container flex flex-col items-center justify-between gap-2 py-6 text-xs text-grey sm:flex-row">
           <p>{t('copyright', { year: new Date().getFullYear() })}</p>
           <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4">
@@ -187,11 +187,11 @@ export function Footer() {
               <Link href="/contact" className="font-medium hover:text-foreground">{t('contact')}</Link>
               <Link href="/programs" className="font-medium hover:text-foreground">Solutions</Link>
             </div>
-            {/* <span className="hidden text-grey-200 sm:inline">·</span>
-            <p>{t('builtBy')} <a href="https://thedgit.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-foreground hover:text-primary">THEDGIT</a></p> */}
+            <span className="hidden text-grey-200 sm:inline">·</span>
+            <p>{t('builtBy')} <a href="https://thedgit.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-foreground hover:text-primary">THEDGIT</a></p>
           </div>
         </div>
-      </div>
+      </div> */}
     </footer>
   );
 }

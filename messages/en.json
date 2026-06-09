@@ -13,7 +13,7 @@
     "codeAiClubDesc": "Youth coding program for Grades 6–9",
     "forProfessionals": "For Professionals",
     "forProfessionalsDesc": "Workshops & AI Solutions for Organizations",
-    "forSeniors": "For Seniors",
+    "forSeniors": "AI for Seniors",
     "forSeniorsDesc": "Accessible AI education for seniors",
     "forNewCanadians": "For New Canadians",
     "forNewCanadiansDesc": "Civic and cultural AI literacy",
@@ -47,7 +47,7 @@
     "programsTitle2": "Community programs for everyone",
     "programsDesc2": "From seniors learning to use AI assistants to newcomers building digital skills, our community programs meet people where they are with accessible, jargon-free education.",
     "learnMore": "Learn more",
-    "solutionsTitle": "What we build",
+    "solutionsTitle": "Programs",
     "solutionsSubtitle": "Tell us what you need. We'll figure out the rest.",
     "solution1Title": "Operational Intelligence & Automation",
     "solution1Desc": "Custom AI and automation solutions for businesses and organizations — from workflow automation to decision-support systems.",
@@ -301,10 +301,10 @@
     "newCanadiansTitle": "For New Canadians"
   },
   "solutions": {
-    "heroTitle": "Solutions",
+    "heroTitle": "Programs",
     "heroSubtitle": "Tell us what you need. We'll figure out the rest.",
     "breadcrumbHome": "Home",
-    "breadcrumbSolutions": "Solutions",
+    "breadcrumbSolutions": "Programs",
     "opLabel": "Discover. Design. Build. Deploy. Integrate. Deliver",
     "opTitle": "Operational Intelligence & Automation",
     "opText1": "Your competition isn't using AI because it's trendy. They're using it because it works. And if you're still trying to figure out where to start, you're already behind.",
@@ -455,7 +455,7 @@
     "heroTitle": "Talk to Us About Your Organization",
     "heroSubtitle": "Tell us what you need. We'll figure out the rest.",
     "breadcrumbHome": "Home",
-    "breadcrumbSolutions": "Solutions",
+    "breadcrumbSolutions": "Programs",
     "breadcrumbBusiness": "Business Inquiry",
     "introText": "Whether you need workflow automation, internal AI tools, or a clear strategy for where AI fits in your operations, this is where we start. Fill out the form below and our team will reach out to schedule a call."
   },
@@ -463,7 +463,7 @@
     "heroTitle": "Find a Session for Your Community",
     "heroSubtitle": "We'll work with you to design something that fits.",
     "breadcrumbHome": "Home",
-    "breadcrumbSolutions": "Solutions",
+    "breadcrumbSolutions": "Programs",
     "breadcrumbCommunity": "Community Inquiry",
     "introText": "Whether you need a one-time introductory session, a recurring workshop series, or help designing a custom program, tell us about your community and goals and we will be in touch."
   },

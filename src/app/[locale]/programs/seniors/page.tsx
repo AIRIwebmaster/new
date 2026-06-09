@@ -73,13 +73,14 @@ export default async function SeniorsPage({ params }: { params: Promise<{ locale
           {/* <p className="mb-10 text-body text-grey">{t('whySubtitle')}</p> */}
           <div className="grid gap-px border border-grey-200 bg-grey-200 sm:grid-cols-3">
             {topics.map((topic) => (
-              <div key={topic} className="bg-white p-8 md:p-10">
-                <h3 className="mb-3 text-h4">{topic.title}</h3>
-                <p className="text-sm leading-relaxed text-grey">{topic.description}</p>
-              </div>
-            ))}
+  <div key={topic.title} className="bg-white p-8 md:p-10">
+    <h3 className="mb-3 text-h4">{topic.title}</h3>
+    <p className="text-sm leading-relaxed text-grey">{topic.description}</p>
+  </div>
+))}
+
           </div> <br></br>
-          <h2 className="mb-4 text-h2 text-dark">Click the button below to view our Profile</h2>
+          <h2 className="mb-4 text-h2 text-dark">See our Seniors program brochure</h2>
           {/* <p className="mb-8 max-w-xl text-body text-white/80">
             {t('ctaText')}
           </p> */}

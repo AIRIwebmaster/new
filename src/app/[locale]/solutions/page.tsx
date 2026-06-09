@@ -17,7 +17,7 @@ export default async function SolutionsPage({ params }: { params: Promise<{ loca
     <>
       <PageHero
         title={t('heroTitle')}
-        // subtitle={t('heroSubtitle')}
+        subtitle={t('heroSubtitle')}
         breadcrumbs={[{ label: t('breadcrumbHome'), href: '/' }, { label: t('breadcrumbSolutions') }]}
       />
 
