@@ -17,7 +17,7 @@ function formatInsightDate(dateStr: string) {
   };
 }
 
-export function VideoSection() {
+function VideoSection() {
   return (
     <div className="flex justify-center items-center w-full py-10">
       <div className="relative w-full max-w-4xl overflow-hidden rounded-xl pb-[56.25%]">
