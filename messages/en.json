@@ -32,7 +32,7 @@
     "menu": "Menu",
     "close": "Close",
     "volunteerInternship": "Volunteer & Internship",
-    "insights": "Insights",
+    "insights": "AI News",
     "insightsDesc": "News, updates and stories"
   },
   "home": {
@@ -59,8 +59,8 @@
     "partnersText": "Our partnerships connect cutting-edge AI education with real-world communities, driving understanding while ensuring AI development is done responsibly.",
     "impactTitle": "Impacts",
     "impactText": "Since 2024, AIRI Foundation has been building Canada's AI-literate communities, connecting educators with learners and delivering programs that drive real understanding.",
-    "insightsTitle": "The AI Briefing",
-    "seeAllInsights": "See all insights",
+    "insightsTitle": "AI News",
+    "seeAllInsights": "View All",
     "ctaTitle": "Join our team — explore open positions at AIRI Foundation",
     "ctaApply": "Apply",
     "ctaTeamText": "Our team is building Canada's AI-literate future.",
@@ -534,10 +534,10 @@
     "contact": "Contact"
   },
   "insights": {
-    "title": "Insights",
+    "title": "AI News",
     "subtitle": "News, updates, and stories from AIRI Foundation.",
     "breadcrumbHome": "Home",
-    "noInsights": "No insights published yet. Check back soon.",
+    "noInsights": "No AI News published yet. Check back soon.",
     "noArticlesOnPage": "No articles on this page.",
     "goToFirstPage": "Go to first page",
     "previous": "Previous",

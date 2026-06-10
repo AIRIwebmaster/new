@@ -7,7 +7,7 @@ import { getVisibleInsights, getVisibleInsightsCount } from '@/lib/data';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Insights',
+  title: 'AI News',
   description: 'News, updates, and stories from AIRI Foundation.',
 };
 

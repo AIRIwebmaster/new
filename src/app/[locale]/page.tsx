@@ -191,8 +191,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       {/* News */}
       <section className="border-b border-grey-200">
         <div className="container py-16 md:py-20">
-          <h2 className="mb-10 text-h2">{t('insightsTitle')}</h2>
-          <div className="border-t border-grey-200">
+          {/* <h2 className="mb-10 text-h2">{t('insightsTitle')}</h2> */}
+          {/* <div className="border-t border-grey-200">
             {newsItems.map((item) => (
               <Link
                 key={item.headline}
@@ -209,8 +209,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 </div>
               </Link>
             ))}
-          </div>
-          <div className="mt-8 text-center">
+          </div> */}
+          {/* <div className="mt-8 text-center">
             <Link
               href="/insights"
               className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-lime-600"
@@ -218,7 +218,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               {t('seeAllInsights')}
               <ArrowRight className="h-4 w-4" />
             </Link>
-          </div>
+          </div> */}
         </div>
       </section>
 

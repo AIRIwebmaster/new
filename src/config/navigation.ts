@@ -144,9 +144,10 @@ export const footerNav = {
     // { title: 'Code & AI Club', key: 'codeAiClub', href: '/register-codeaiclub' },
   ],
   programs: [
-    { title: 'AI for Professionals', key: 'forProfessionals', href: '/programs/professionals' },
-    { title: 'Code & AI Club', key: 'codeAiClub', href: '/programs/code-ai-club' },
-    // { title: 'AI for New Canadians', key: 'forNewCanadians', href: '/programs/new-canadians' },
+    { title: 'Operational Intelligence', key: 'operationalIntelligence', href: '/solutions#operational' },
+    { title: 'Civic & Cultural AI Literacy', key: 'civicAiLiteracy', href: '/solutions#civic' },
     { title: 'AI for Seniors', key: 'forSeniors', href: '/programs/seniors' },
+    { title: 'Code & AI Club', key: 'codeAiClub', href: '/programs/code-ai-club' },
+    { title: 'Applied R&D', key: 'appliedRd', href: '/solutions#research' },
   ],
 };
