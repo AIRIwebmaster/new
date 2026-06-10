@@ -11,7 +11,7 @@ const saira = Saira({
 
 export const metadata: Metadata = {
   title: {
-    default: 'AIRI Foundation | AI Literacy for Everyone',
+    default: 'AIRI Foundation | AI literacy training and adoption for all Canadians and organizations',
     template: '%s | AIRI Foundation',
   },
   description:
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     apple: '/images/favicon.png',
   },
   openGraph: {
-    title: 'AIRI Foundation | AI Literacy for Everyone',
+    title: 'AIRI Foundation | AI literacy training and adoption for all Canadians and organizations',
     description:
       'Breaking barriers to AI education across Canada. From boardrooms to community centers.',
     url: 'https://airifoundation.org',
