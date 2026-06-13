@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
     }
 
     const cleanEmail = sanitize(email);
-    // const sql = sql;
+  
 
     await sql`
       CREATE TABLE IF NOT EXISTS newsletter_subscribers (
