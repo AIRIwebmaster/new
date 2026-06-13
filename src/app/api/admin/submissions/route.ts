@@ -2,44 +2,93 @@ import { NextRequest, NextResponse } from 'next/server';
 import { sql } from '@/lib/db';
 import { getSession } from '@/lib/auth';
 
+
 async function queryTable(table: string, limit: number, offset: number) {
-  const sql = sql;
   switch (table) {
-    case 'contact':
-      return {
-        rows: await sql`SELECT * FROM contact_submissions ORDER BY created_at DESC LIMIT ${limit} OFFSET ${offset}`,
-        count: (await sql`SELECT COUNT(*)::int as count FROM contact_submissions`)[0]?.count ?? 0,
-      };
-    case 'newsletter':
-      return {
-        rows: await sql`SELECT * FROM newsletter_subscribers ORDER BY created_at DESC LIMIT ${limit} OFFSET ${offset}`,
-        count: (await sql`SELECT COUNT(*)::int as count FROM newsletter_subscribers`)[0]?.count ?? 0,
-      };
-    case 'volunteer':
-      return {
-        rows: await sql`SELECT * FROM volunteer_applications ORDER BY created_at DESC LIMIT ${limit} OFFSET ${offset}`,
-        count: (await sql`SELECT COUNT(*)::int as count FROM volunteer_applications`)[0]?.count ?? 0,
-      };
-    case 'workshop':
-      return {
-        rows: await sql`SELECT * FROM workshop_bookings ORDER BY created_at DESC LIMIT ${limit} OFFSET ${offset}`,
-        count: (await sql`SELECT COUNT(*)::int as count FROM workshop_bookings`)[0]?.count ?? 0,
-      };
-    case 'codeai':
-      return {
-        rows: await sql`SELECT * FROM codeai_registrations ORDER BY created_at DESC LIMIT ${limit} OFFSET ${offset}`,
-        count: (await sql`SELECT COUNT(*)::int as count FROM codeai_registrations`)[0]?.count ?? 0,
-      };
-    case 'business':
-      return {
-        rows: await sql`SELECT * FROM business_inquiries ORDER BY created_at DESC LIMIT ${limit} OFFSET ${offset}`,
-        count: (await sql`SELECT COUNT(*)::int as count FROM business_inquiries`)[0]?.count ?? 0,
-      };
-    case 'community':
-      return {
-        rows: await sql`SELECT * FROM community_inquiries ORDER BY created_at DESC LIMIT ${limit} OFFSET ${offset}`,
-        count: (await sql`SELECT COUNT(*)::int as count FROM community_inquiries`)[0]?.count ?? 0,
-      };
+    case 'contact': {
+      const rows = await sql`
+        SELECT * FROM contact_submissions
+        ORDER BY created_at DESC
+        LIMIT ${limit} OFFSET ${offset}
+      `;
+      const countResult = await sql`
+        SELECT COUNT(*)::int as count FROM contact_submissions
+      `;
+      return { rows, count: countResult[0]?.count ?? 0 };
+    }
+
+    case 'newsletter': {
+      const rows = await sql`
+        SELECT * FROM newsletter_subscribers
+        ORDER BY created_at DESC
+        LIMIT ${limit} OFFSET ${offset}
+      `;
+      const countResult = await sql`
+        SELECT COUNT(*)::int as count FROM newsletter_subscribers
+      `;
+      return { rows, count: countResult[0]?.count ?? 0 };
+    }
+
+    case 'volunteer': {
+      const rows = await sql`
+        SELECT * FROM volunteer_applications
+        ORDER BY created_at DESC
+        LIMIT ${limit} OFFSET ${offset}
+      `;
+      const countResult = await sql`
+        SELECT COUNT(*)::int as count FROM volunteer_applications
+      `;
+      return { rows, count: countResult[0]?.count ?? 0 };
+    }
+
+    case 'workshop': {
+      const rows = await sql`
+        SELECT * FROM workshop_bookings
+        ORDER BY created_at DESC
+        LIMIT ${limit} OFFSET ${offset}
+      `;
+      const countResult = await sql`
+        SELECT COUNT(*)::int as count FROM workshop_bookings
+      `;
+      return { rows, count: countResult[0]?.count ?? 0 };
+    }
+
+    case 'codeai': {
+      const rows = await sql`
+        SELECT * FROM codeai_registrations
+        ORDER BY created_at DESC
+        LIMIT ${limit} OFFSET ${offset}
+      `;
+      const countResult = await sql`
+        SELECT COUNT(*)::int as count FROM codeai_registrations
+      `;
+      return { rows, count: countResult[0]?.count ?? 0 };
+    }
+
+    case 'business': {
+      const rows = await sql`
+        SELECT * FROM business_inquiries
+        ORDER BY created_at DESC
+        LIMIT ${limit} OFFSET ${offset}
+      `;
+      const countResult = await sql`
+        SELECT COUNT(*)::int as count FROM business_inquiries
+      `;
+      return { rows, count: countResult[0]?.count ?? 0 };
+    }
+
+    case 'community': {
+      const rows = await sql`
+        SELECT * FROM community_inquiries
+        ORDER BY created_at DESC
+        LIMIT ${limit} OFFSET ${offset}
+      `;
+      const countResult = await sql`
+        SELECT COUNT(*)::int as count FROM community_inquiries
+      `;
+      return { rows, count: countResult[0]?.count ?? 0 };
+    }
+
     default:
       return null;
   }
