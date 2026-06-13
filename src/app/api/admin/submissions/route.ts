@@ -95,7 +95,7 @@ async function queryTable(table: string, limit: number, offset: number) {
 }
 
 async function getCounts() {
-  const sql = sql;
+  // const sql = sql;
   const [contact, newsletter, volunteer, workshop, codeai, business, community] = await Promise.all([
     sql`SELECT COUNT(*)::int as count FROM contact_submissions`,
     sql`SELECT COUNT(*)::int as count FROM newsletter_subscribers`,
