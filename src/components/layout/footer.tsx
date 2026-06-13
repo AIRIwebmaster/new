@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { siteConfig } from '@/config/site';
 import { footerNav } from '@/config/navigation';
-import { Turnstile } from '@/components/ui/turnstile';
+// import { Turnstile } from '@/components/ui/turnstile';
 import { Linkedin, Instagram, Facebook } from 'lucide-react';
 
 export function Footer() {
@@ -73,13 +73,12 @@ export function Footer() {
                     />
                     <button
                       type="submit"
-                      disabled={status === 'loading' || !turnstileToken}
                       className="bg-primary px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-600 disabled:opacity-50"
                     >
                       {status === 'loading' ? tForms('submitting') : tForms('submit')}
                     </button>
                   </div>
-                  <Turnstile onVerify={handleVerify} onExpire={handleExpire} />
+                  
                   {status === 'error' && (
                     <p className="text-xs text-destructive">{message}</p>
                   )}

@@ -23,7 +23,7 @@ const team: TeamMember[] = [
     fullBio: 'Frank Onuh is the Executive Director of AIRI Foundation and a member of Alberta Machine Intelligence Institute. He has extensive leadership and R&D experience in Applied Generative AI and misinformation studies.\n\nFrank is a consistent voice in AI ethics and digital empowerment and has designed and led major cross-sectoral projects that span AI literacy and capacity building, including designing low-cost AI-powered auto systems. As part of this work on de-biasing GenAI outputs, he developed the AI Bias Detection Canvas, a structured framework for identifying and mitigating algorithmic inequities. Frank has facilitated digital training partnerships that help provide training to BIPOC professionals in the data science and AI fields across Canada.',
   },
   {
-    name: 'Dr. Sidney Shapiro',
+    name: 'Sidney Shapiro',
     role: 'Business Analytics',
     photo: '/images/team/sidney-shapiro.png',
     bio: 'Assistant Professor of Business Analytics at the Dhillon School of Business, University of Lethbridge. PhD in Multi/Interdisciplinary Studies.',
@@ -47,7 +47,7 @@ const team: TeamMember[] = [
     fullBio: "Osasu Imarhiagbe is a Computer Scientist, Machine Learning Engineer, and technology entrepreneur specializing in applied artificial intelligence, machine learning, and intelligent systems. His work focuses on developing responsible AI solutions for healthcare, public safety, and education, with expertise spanning multimodal AI, large language models, computer vision, and intelligent decision-support systems. Osasu holds an MSc in Computer Science from the University of Lethbridge, where his research advanced boundary-aware deep learning architectures and spatial-temporal transformer models for medical imaging and schizophrenia analysis. His work has been presented at international conferences and contributes to the growing field of trustworthy and human-centered artificial intelligence. \n\nBeyond academia, Osasu serves as the Founder and CEO of Xyricon Technologies Inc., a Canadian technology company focused on advancing innovative AI-driven solutions. His professional experience spans machine learning, software engineering, cloud-native systems, intelligent automation, and the deployment of production-scale AI applications. He has led multidisciplinary initiatives that bridge research and industry, translating emerging technologies into practical solutions with real-world impact. \n\nAs a member of AIRI Foundation's leadership team, Osasu brings a unique perspective shaped by research, entrepreneurship, and community engagement. He is passionate about advancing responsible AI adoption, expanding access to AI education, fostering innovation, and ensuring that emerging technologies are developed in ways that are ethical, inclusive, and beneficial to society.",
   },
   {
-    name: 'Dr. Ignatius Ezeani',
+    name: 'Ignatius Ezeani',
     role: 'Advisor',
     photo: '/images/team/ignatius-ezeani.jpeg',
     bio: 'Research Fellow at Lancaster University. Former Visiting Researcher at Microsoft Research Africa.',
@@ -71,7 +71,7 @@ const team: TeamMember[] = [
     fullBio: 'James Yékú holds a PhD in English from the University of Saskatchewan and is an associate professor at the University of Kansas, where he teaches courses in postcolonial digital humanities and African literature. He is the author of the monographs The Algorithmic Age of Personality: African Literature and Cancel Culture and Cultural Netizenship: Social Media, Popular Culture, and Performance in Nigeria, as well as two poetry books and a nonfiction collection.\n\nHe is a joint winner of the Pius Adesanmi Early Career Research Excellence Award of the Canadian African Studies Association and a recipient of the Alexander von Humboldt fellowship. James lives in Lawrence, Kansas.',
   },
   {
-    name: 'Dr. Presley Ifukor',
+    name: 'Presley Ifukor',
     role: 'Advisor',
     photo: '/images/team/presley-ifukor.jpg',
     bio: 'Chair and Research Director at the Alberta Centre for Emerging Democracies. Expert in AI, computational linguistics, and professional training.',

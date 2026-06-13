@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useCallback } from 'react';
-import { Turnstile } from '@/components/ui/turnstile';
+// import { Turnstile } from '@/components/ui/turnstile';
 
 interface ImpactStat {
   id: number;
@@ -308,7 +308,7 @@ export default function ImpactsPage() {
                 </div>
               </div>
 
-              <Turnstile onVerify={handleVerify} onExpire={handleExpire} />
+              
 
               <div className="flex gap-3 pt-1">
                 <button

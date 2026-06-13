@@ -2,13 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { sql } from '@/lib/db';
 import { verifyPassword, createToken, sessionCookieOptions } from '@/lib/auth';
-import { verifyTurnstile } from '@/lib/turnstile';
 import { rateLimit } from '@/lib/rate-limit';
 
 const loginSchema = z.object({
   email: z.string().email().max(255),
   password: z.string().min(1).max(128),
-  turnstileToken: z.string().optional().default(''),
 });
 
 export async function POST(request: NextRequest) {
@@ -22,17 +20,9 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { email, password, turnstileToken } = loginSchema.parse(body);
+    const { email, password } = loginSchema.parse(body);
 
-    if (turnstileToken) {
-      const verified = await verifyTurnstile(turnstileToken);
-      if (!verified) {
-        return NextResponse.json(
-          { success: false, message: 'Verification failed.' },
-          { status: 403 }
-        );
-      }
-    }
+    
 
     const users = await sql`
       SELECT id, email, password_hash, name FROM admin_users WHERE email = ${email}

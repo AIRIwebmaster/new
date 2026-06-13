@@ -13,7 +13,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { CustomSelect } from '@/components/ui/custom-select';
-import { Turnstile } from '@/components/ui/turnstile';
+// import { Turnstile } from '@/components/ui/turnstile';
 
 const businessSchema = z.object({
   organizationName: z.string().min(2, 'Organization name is required'),
@@ -159,11 +159,10 @@ export function BusinessInquiryForm() {
           </FormItem>
         )} />
 
-        <Turnstile onVerify={handleVerify} onExpire={handleExpire} />
+        
 
         <button
           type="submit"
-          disabled={formState.status === 'submitting' || !turnstileToken}
           className="bg-primary px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-600 disabled:opacity-50"
         >
           {formState.status === 'submitting' ? 'Submitting...' : 'Submit'}

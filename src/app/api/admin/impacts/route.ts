@@ -12,7 +12,6 @@ const impactSchema = z.object({
   sort_order: z.number().int().optional().default(0),
   featured: z.boolean().optional().default(false),
   description: z.string().max(500).optional().default(''),
-  turnstileToken: z.string().optional().default(''),
 });
 
 const updateSchema = impactSchema.extend({
@@ -37,14 +36,7 @@ export async function POST(request: NextRequest) {
 
   try {
     const body = await request.json();
-    const { turnstileToken, ...data } = impactSchema.parse(body);
-
-    if (turnstileToken) {
-      const verified = await verifyTurnstile(turnstileToken);
-      if (!verified) {
-        return NextResponse.json({ error: 'Verification failed.' }, { status: 403 });
-      }
-    }
+    const data = impactSchema.parse(body);
 
     const clean = sanitizeObject(data);
 
@@ -76,14 +68,7 @@ export async function PUT(request: NextRequest) {
 
   try {
     const body = await request.json();
-    const { turnstileToken, id, ...data } = updateSchema.parse(body);
-
-    if (turnstileToken) {
-      const verified = await verifyTurnstile(turnstileToken);
-      if (!verified) {
-        return NextResponse.json({ error: 'Verification failed.' }, { status: 403 });
-      }
-    }
+    const { id, ...data } = updateSchema.parse(body);
 
     const clean = sanitizeObject(data);
 

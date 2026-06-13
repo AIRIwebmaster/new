@@ -89,7 +89,7 @@ export default function LoginPage() {
             />
           </div>
 
-          <Turnstile onVerify={handleVerify} onExpire={handleExpire} />
+          
 
           <button
             type="submit"

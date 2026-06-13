@@ -16,7 +16,8 @@ const communitySchema = z.object({
   participantCount: z.string().min(1).max(50),
   preferredTiming: z.string().min(1).max(100),
   additionalInfo: z.string().max(500).optional().or(z.literal('')),
-  turnstileToken: z.string().min(1, 'Please complete the verification'),
+  // turnstileToken: z.string().min(1, 'Please complete the verification'),
+  turnstileToken: z.string().optional(),
 });
 
 export async function POST(request: NextRequest) {
@@ -34,13 +35,16 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { turnstileToken, ...data } = communitySchema.parse(body);
 
-    const verified = await verifyTurnstile(turnstileToken);
-    if (!verified) {
-      return NextResponse.json(
-        { success: false, message: 'Verification failed. Please try again.' },
-        { status: 403 }
-      );
-    }
+    if (turnstileToken) {
+  const verified = await verifyTurnstile(turnstileToken);
+
+  if (!verified) {
+    return NextResponse.json(
+      { success: false, message: 'Verification failed. Please try again.' },
+      { status: 403 }
+    );
+  }
+}
 
     const clean = sanitizeObject(data);
     

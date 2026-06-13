@@ -12,8 +12,11 @@ const businessSchema = z.object({
   whatToImprove: z.string().min(10).max(500),
   organizationType: z.string().max(100).optional().or(z.literal('')),
   biggestChallenge: z.string().max(500).optional().or(z.literal('')),
-  turnstileToken: z.string().min(1, 'Please complete the verification'),
+  // turnstileToken: z.string().min(1, 'Please complete the verification'),
+  turnstileToken: z.string().optional(),
 });
+
+
 
 export async function POST(request: NextRequest) {
   try {
@@ -29,30 +32,32 @@ export async function POST(request: NextRequest) {
 
     const body = await request.json();
     const { turnstileToken, ...data } = businessSchema.parse(body);
+    if (turnstileToken) {
+  const verified = await verifyTurnstile(turnstileToken);
 
-    const verified = await verifyTurnstile(turnstileToken);
-    if (!verified) {
-      return NextResponse.json(
-        { success: false, message: 'Verification failed. Please try again.' },
-        { status: 403 }
-      );
-    }
+  if (!verified) {
+    return NextResponse.json(
+      { success: false, message: 'Verification failed. Please try again.' },
+      { status: 403 }
+    );
+  }
+}
 
     const clean = sanitizeObject(data);
     
 
-    await sql`
-      CREATE TABLE IF NOT EXISTS business_inquiries (
-        id SERIAL PRIMARY KEY,
-        organization_name VARCHAR(255) NOT NULL,
-        your_name VARCHAR(255) NOT NULL,
-        work_email VARCHAR(255) NOT NULL,
-        what_to_improve TEXT NOT NULL,
-        organization_type VARCHAR(100),
-        biggest_challenge TEXT,
-        created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-      )
-    `;
+    // await sql`
+    //   CREATE TABLE IF NOT EXISTS business_inquiries (
+    //     id SERIAL PRIMARY KEY,
+    //     organization_name VARCHAR(255) NOT NULL,
+    //     your_name VARCHAR(255) NOT NULL,
+    //     work_email VARCHAR(255) NOT NULL,
+    //     what_to_improve TEXT NOT NULL,
+    //     organization_type VARCHAR(100),
+    //     biggest_challenge TEXT,
+    //     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+    //   )
+    // `;
 
     await sql`
       INSERT INTO business_inquiries (organization_name, your_name, work_email, what_to_improve, organization_type, biggest_challenge)

@@ -7,7 +7,8 @@ import { rateLimit } from '@/lib/rate-limit';
 
 const schema = z.object({
   email: z.string().email('Please enter a valid email address').max(255),
-  turnstileToken: z.string().min(1, 'Please complete the verification'),
+  // turnstileToken: z.string().min(1, 'Please complete the verification'),
+  turnstileToken: z.string().optional(),
 });
 
 export async function POST(request: NextRequest) {
@@ -25,13 +26,13 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { email, turnstileToken } = schema.parse(body);
 
-    const verified = await verifyTurnstile(turnstileToken);
-    if (!verified) {
-      return NextResponse.json(
-        { success: false, message: 'Verification failed. Please try again.' },
-        { status: 403 }
-      );
-    }
+    // const verified = await verifyTurnstile(turnstileToken);
+    // if (!verified) {
+    //   return NextResponse.json(
+    //     { success: false, message: 'Verification failed. Please try again.' },
+    //     { status: 403 }
+    //   );
+    // }
 
     const cleanEmail = sanitize(email);
   

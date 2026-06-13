@@ -13,7 +13,8 @@ const volunteerSchema = z.object({
   availability: z.string().min(1, 'Please select your availability').max(100),
   experience: z.string().max(1000).optional().or(z.literal('')),
   message: z.string().max(1000).optional().or(z.literal('')),
-  turnstileToken: z.string().min(1, 'Please complete the verification'),
+  // turnstileToken: z.string().min(1, 'Please complete the verification'),
+  turnstileToken: z.string().optional(),
 });
 
 export async function POST(request: NextRequest) {
@@ -31,13 +32,16 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { turnstileToken, ...data } = volunteerSchema.parse(body);
 
-    const verified = await verifyTurnstile(turnstileToken);
-    if (!verified) {
-      return NextResponse.json(
-        { success: false, message: 'Verification failed. Please try again.' },
-        { status: 403 }
-      );
-    }
+    if (turnstileToken) {
+  const verified = await verifyTurnstile(turnstileToken);
+
+  if (!verified) {
+    return NextResponse.json(
+      { success: false, message: 'Verification failed. Please try again.' },
+      { status: 403 }
+    );
+  }
+}
 
     const clean = sanitizeObject(data);
 

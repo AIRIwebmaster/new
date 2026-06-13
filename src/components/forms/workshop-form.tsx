@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { workshopSchema, type WorkshopFormData } from '@/lib/validations/workshop';
 import { submitWorkshopForm } from '@/lib/actions/send-form';
 import { Button } from '@/components/ui/button';
-import { Turnstile } from '@/components/ui/turnstile';
+// import { Turnstile } from '@/components/ui/turnstile';
 import {
   Form,
   FormControl,
@@ -261,13 +261,12 @@ export function WorkshopForm() {
             )}
           />
 
-          <Turnstile onVerify={handleVerify} onExpire={handleExpire} />
+         
 
           {/* Submit Button */}
           <Button
             type="submit"
             className="w-full bg-primary hover:bg-primary-600"
-            disabled={formState.status === 'submitting' || !turnstileToken}
           >
             {formState.status === 'submitting' ? (
               <>

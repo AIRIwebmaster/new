@@ -13,7 +13,8 @@ const registrationSchema = z.object({
   parentPhone: z.string().min(7, 'Please enter a valid phone number').max(50),
   experienceLevel: z.string().min(1, 'Please select experience level').max(100),
   howHeard: z.string().max(200).optional().or(z.literal('')),
-  turnstileToken: z.string().min(1, 'Please complete the verification'),
+  // turnstileToken: z.string().min(1, 'Please complete the verification'),
+  turnstileToken: z.string().optional(),
 });
 
 export async function POST(request: NextRequest) {
@@ -29,22 +30,39 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { turnstileToken, ...data } = registrationSchema.parse(body);
+    const { turnstileToken, ...raw } = registrationSchema.parse(body);
+    const clean = sanitizeObject(raw);
 
-    const verified = await verifyTurnstile(turnstileToken);
-    if (!verified) {
-      return NextResponse.json(
-        { success: false, message: 'Verification failed. Please try again.' },
-        { status: 403 }
-      );
-    }
+    // const verified = await verifyTurnstile(turnstileToken);
+    // if (!verified) {
+    //   return NextResponse.json(
+    //     { success: false, message: 'Verification failed. Please try again.' },
+    //     { status: 403 }
+    //   );
+    // }
 
-    const clean = sanitizeObject(data);
+    // const clean = sanitizeObject(data);
 
     await sql`
-      INSERT INTO codeai_registrations (student_name, student_age, parent_name, parent_email, parent_phone, experience_level, how_heard)
-      VALUES (${clean.studentName}, ${data.studentAge}, ${clean.parentName}, ${clean.parentEmail}, ${clean.parentPhone}, ${clean.experienceLevel}, ${clean.howHeard || null})
-    `;
+  INSERT INTO codeai_registrations (
+    student_name,
+    student_age,
+    parent_name,
+    parent_email,
+    parent_phone,
+    experience_level,
+    how_heard
+  )
+  VALUES (
+    ${clean.studentName},
+    ${clean.studentAge},
+    ${clean.parentName},
+    ${clean.parentEmail},
+    ${clean.parentPhone},
+    ${clean.experienceLevel},
+    ${clean.howHeard || null}
+  )
+`;
 
     return NextResponse.json({
       success: true,
