@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     }
 
     const clean = sanitizeObject(data);
-    const sql = sql;
+    
 
     await sql`
       CREATE TABLE IF NOT EXISTS community_inquiries (
