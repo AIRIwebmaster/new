@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
-import { getSQL } from '@/lib/db';
+import { sql } from '@/lib/db';
 import { hashPassword } from '@/lib/auth';
 
 export async function GET() {
   try {
-    const sql = getSQL();
+    const sql = sql;
     const hash = await hashPassword('!Airi@2026?');
 
     const existing = await sql`SELECT id FROM admin_users WHERE email = 'frank@airifoundation.org'`;

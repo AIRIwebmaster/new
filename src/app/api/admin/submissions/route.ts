@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getSQL } from '@/lib/db';
+import { sql } from '@/lib/db';
 import { getSession } from '@/lib/auth';
 
 async function queryTable(table: string, limit: number, offset: number) {
-  const sql = getSQL();
+  const sql = sql;
   switch (table) {
     case 'contact':
       return {
@@ -46,7 +46,7 @@ async function queryTable(table: string, limit: number, offset: number) {
 }
 
 async function getCounts() {
-  const sql = getSQL();
+  const sql = sql;
   const [contact, newsletter, volunteer, workshop, codeai, business, community] = await Promise.all([
     sql`SELECT COUNT(*)::int as count FROM contact_submissions`,
     sql`SELECT COUNT(*)::int as count FROM newsletter_subscribers`,

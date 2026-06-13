@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { getSQL } from '@/lib/db';
+import { sql } from '@/lib/db';
 import { verifyTurnstile } from '@/lib/turnstile';
 import { sanitize } from '@/lib/sanitize';
 import { rateLimit } from '@/lib/rate-limit';
@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
     }
 
     const cleanEmail = sanitize(email);
-    const sql = getSQL();
+    const sql = sql;
 
     await sql`
       CREATE TABLE IF NOT EXISTS newsletter_subscribers (

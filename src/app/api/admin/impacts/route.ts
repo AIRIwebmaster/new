@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { getSQL } from '@/lib/db';
+import { sql } from '@/lib/db';
 import { getSession } from '@/lib/auth';
 import { verifyTurnstile } from '@/lib/turnstile';
 import { sanitizeObject } from '@/lib/sanitize';
@@ -25,7 +25,7 @@ export async function GET() {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const stats = await getSQL()`SELECT * FROM impact_stats ORDER BY sort_order ASC, id ASC`;
+  const stats = await sql`SELECT * FROM impact_stats ORDER BY sort_order ASC, id ASC`;
   return NextResponse.json(stats);
 }
 
@@ -49,10 +49,10 @@ export async function POST(request: NextRequest) {
     const clean = sanitizeObject(data);
 
     if (data.featured) {
-      await getSQL()`UPDATE impact_stats SET featured = false`;
+      await sql`UPDATE impact_stats SET featured = false`;
     }
 
-    const result = await getSQL()`
+    const result = await sql`
       INSERT INTO impact_stats (label, value, suffix, sort_order, featured, description)
       VALUES (${clean.label}, ${data.value}, ${clean.suffix}, ${data.sort_order}, ${data.featured}, ${clean.description})
       RETURNING *
@@ -88,10 +88,10 @@ export async function PUT(request: NextRequest) {
     const clean = sanitizeObject(data);
 
     if (data.featured) {
-      await getSQL()`UPDATE impact_stats SET featured = false WHERE id != ${id}`;
+      await sql`UPDATE impact_stats SET featured = false WHERE id != ${id}`;
     }
 
-    const result = await getSQL()`
+    const result = await sql`
       UPDATE impact_stats
       SET label = ${clean.label}, value = ${data.value}, suffix = ${clean.suffix},
           sort_order = ${data.sort_order}, featured = ${data.featured},
@@ -122,7 +122,7 @@ export async function DELETE(request: NextRequest) {
 
   try {
     const { id } = await request.json();
-    await getSQL()`DELETE FROM impact_stats WHERE id = ${id}`;
+    await sql`DELETE FROM impact_stats WHERE id = ${id}`;
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json({ error: 'Something went wrong.' }, { status: 500 });

@@ -60,7 +60,7 @@ export default async function InsightsPage({
   const safePage = Math.min(currentPage, totalPages);
 
   const insights = dbInsights && dbInsights.length > 0
-    ? dbInsights.map((i) => ({
+    ? dbInsights.map((i: any) => ({
         ...formatInsightDate(i.published_date, locale),
         headline: i.headline,
         slug: i.slug,

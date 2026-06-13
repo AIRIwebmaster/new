@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { getSQL } from '@/lib/db';
+import { sql } from '@/lib/db';
 import { getSession } from '@/lib/auth';
 import { sanitizeObject } from '@/lib/sanitize';
 
@@ -24,7 +24,7 @@ export async function GET() {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const insights = await getSQL()`SELECT * FROM insights ORDER BY published_date DESC, id DESC`;
+  const insights = await sql`SELECT * FROM insights ORDER BY published_date DESC, id DESC`;
   return NextResponse.json(insights);
 }
 
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
       excerpt: data.excerpt,
     });
 
-    const result = await getSQL()`
+    const result = await sql`
       INSERT INTO insights (headline, slug, href, excerpt, content, published_date, visible)
       VALUES (
         ${clean.headline}, ${clean.slug}, ${clean.href}, ${clean.excerpt},
@@ -81,7 +81,7 @@ export async function PUT(request: NextRequest) {
       excerpt: data.excerpt,
     });
 
-    const result = await getSQL()`
+    const result = await sql`
       UPDATE insights
       SET headline = ${clean.headline}, slug = ${clean.slug}, href = ${clean.href},
           excerpt = ${clean.excerpt}, content = ${data.content},
@@ -113,7 +113,7 @@ export async function DELETE(request: NextRequest) {
 
   try {
     const { id } = await request.json();
-    await getSQL()`DELETE FROM insights WHERE id = ${id}`;
+    await sql`DELETE FROM insights WHERE id = ${id}`;
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json({ error: 'Something went wrong.' }, { status: 500 });

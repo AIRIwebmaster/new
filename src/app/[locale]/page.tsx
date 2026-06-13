@@ -51,7 +51,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   ];
 
   const newsItems = dbInsights && dbInsights.length > 0
-    ? dbInsights.map((i) => ({ ...formatInsightDate(i.published_date), headline: i.headline, href: i.href }))
+    ? dbInsights.map((i: any) => ({ ...formatInsightDate(i.published_date), headline: i.headline, href: i.href }))
     : fallbackNews;
 
   const heroCards = [

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { getSQL } from '@/lib/db';
+import { sql } from '@/lib/db';
 import { verifyTurnstile } from '@/lib/turnstile';
 import { sanitizeObject } from '@/lib/sanitize';
 import { rateLimit } from '@/lib/rate-limit';
@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
 
     const clean = sanitizeObject(data);
 
-    await getSQL()`
+    await sql`
       INSERT INTO volunteer_applications (full_name, email, phone, interest, availability, experience, message)
       VALUES (${clean.fullName}, ${clean.email}, ${clean.phone || null}, ${clean.interest}, ${clean.availability}, ${clean.experience || null}, ${clean.message || null})
     `;

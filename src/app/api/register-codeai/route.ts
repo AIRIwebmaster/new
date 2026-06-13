@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { getSQL } from '@/lib/db';
+import { sql } from '@/lib/db';
 import { verifyTurnstile } from '@/lib/turnstile';
 import { sanitizeObject } from '@/lib/sanitize';
 import { rateLimit } from '@/lib/rate-limit';
@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
 
     const clean = sanitizeObject(data);
 
-    await getSQL()`
+    await sql`
       INSERT INTO codeai_registrations (student_name, student_age, parent_name, parent_email, parent_phone, experience_level, how_heard)
       VALUES (${clean.studentName}, ${data.studentAge}, ${clean.parentName}, ${clean.parentEmail}, ${clean.parentPhone}, ${clean.experienceLevel}, ${clean.howHeard || null})
     `;

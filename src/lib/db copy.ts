@@ -8,12 +8,12 @@ function createSQL() {
   return neon(DATABASE_URL);
 }
 
-export function getSQL() {
+export function sql {
   return createSQL();
 }
 
 export async function initializeDatabase() {
-  await getSQL()`
+  await sql`
     CREATE TABLE IF NOT EXISTS contact_submissions (
       id SERIAL PRIMARY KEY,
       full_name VARCHAR(255) NOT NULL,
@@ -26,7 +26,7 @@ export async function initializeDatabase() {
     )
   `;
 
-  await getSQL()`
+  await sql`
     CREATE TABLE IF NOT EXISTS newsletter_subscribers (
       id SERIAL PRIMARY KEY,
       email VARCHAR(255) UNIQUE NOT NULL,
@@ -34,7 +34,7 @@ export async function initializeDatabase() {
     )
   `;
 
-  await getSQL()`
+  await sql`
     CREATE TABLE IF NOT EXISTS workshop_bookings (
       id SERIAL PRIMARY KEY,
       full_name VARCHAR(255) NOT NULL,
@@ -51,7 +51,7 @@ export async function initializeDatabase() {
     )
   `;
 
-  await getSQL()`
+  await sql`
     CREATE TABLE IF NOT EXISTS volunteer_applications (
       id SERIAL PRIMARY KEY,
       full_name VARCHAR(255) NOT NULL,
@@ -65,7 +65,7 @@ export async function initializeDatabase() {
     )
   `;
 
-  await getSQL()`
+  await sql`
     CREATE TABLE IF NOT EXISTS codeai_registrations (
       id SERIAL PRIMARY KEY,
       student_name VARCHAR(255) NOT NULL,
@@ -79,7 +79,7 @@ export async function initializeDatabase() {
     )
   `;
 
-  await getSQL()`
+  await sql`
     CREATE TABLE IF NOT EXISTS business_inquiries (
       id SERIAL PRIMARY KEY,
       organization_name VARCHAR(255) NOT NULL,
@@ -92,7 +92,7 @@ export async function initializeDatabase() {
     )
   `;
 
-  await getSQL()`
+  await sql`
     CREATE TABLE IF NOT EXISTS community_inquiries (
       id SERIAL PRIMARY KEY,
       organization_name VARCHAR(255) NOT NULL,
@@ -109,7 +109,7 @@ export async function initializeDatabase() {
     )
   `;
 
-  await getSQL()`
+  await sql`
     CREATE TABLE IF NOT EXISTS admin_users (
       id SERIAL PRIMARY KEY,
       email VARCHAR(255) UNIQUE NOT NULL,
@@ -119,7 +119,7 @@ export async function initializeDatabase() {
     )
   `;
 
-  await getSQL()`
+  await sql`
     CREATE TABLE IF NOT EXISTS impact_stats (
       id SERIAL PRIMARY KEY,
       label VARCHAR(255) NOT NULL,
@@ -132,7 +132,7 @@ export async function initializeDatabase() {
     )
   `;
 
-  await getSQL()`
+  await sql`
     CREATE TABLE IF NOT EXISTS insights (
       id SERIAL PRIMARY KEY,
       headline VARCHAR(500) NOT NULL,
@@ -148,21 +148,21 @@ export async function initializeDatabase() {
   `;
 
   // Migrations for existing tables
-  await getSQL()`ALTER TABLE impact_stats ADD COLUMN IF NOT EXISTS description TEXT DEFAULT ''`;
-  await getSQL()`ALTER TABLE insights ADD COLUMN IF NOT EXISTS slug VARCHAR(500)`;
-  await getSQL()`ALTER TABLE insights ADD COLUMN IF NOT EXISTS excerpt TEXT DEFAULT ''`;
-  await getSQL()`ALTER TABLE insights ADD COLUMN IF NOT EXISTS content TEXT DEFAULT ''`;
-  await getSQL()`ALTER TABLE insights ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()`;
+  await sql`ALTER TABLE impact_stats ADD COLUMN IF NOT EXISTS description TEXT DEFAULT ''`;
+  await sql`ALTER TABLE insights ADD COLUMN IF NOT EXISTS slug VARCHAR(500)`;
+  await sql`ALTER TABLE insights ADD COLUMN IF NOT EXISTS excerpt TEXT DEFAULT ''`;
+  await sql`ALTER TABLE insights ADD COLUMN IF NOT EXISTS content TEXT DEFAULT ''`;
+  await sql`ALTER TABLE insights ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()`;
 
-  const existing = await getSQL()`SELECT id FROM admin_users WHERE email = 'frank@airifoundation.org'`;
+  const existing = await sql`SELECT id FROM admin_users WHERE email = 'frank@airifoundation.org'`;
   const hash = '$2b$12$YzOkiPN9vIj4aJwdInVvuO55pGVwB7h.gUcTThJtWJExQUK9OKRUG';
   if (existing.length === 0) {
-    await getSQL()`
+    await sql`
       INSERT INTO admin_users (email, password_hash, name)
       VALUES ('frank@airifoundation.org', ${hash}, 'Frank Onuh')
     `;
   } else {
-    await getSQL()`
+    await sql`
       UPDATE admin_users SET password_hash = ${hash} WHERE email = 'frank@airifoundation.org'
     `;
   }

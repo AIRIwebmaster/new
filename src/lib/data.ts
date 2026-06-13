@@ -1,8 +1,8 @@
-import { getSQL } from '@/lib/db';
+import { sql } from '@/lib/db';
 
 export async function getImpactStats() {
   try {
-    const rows = await getSQL()`SELECT * FROM impact_stats ORDER BY sort_order ASC, id ASC`;
+    const rows = await sql`SELECT * FROM impact_stats ORDER BY sort_order ASC, id ASC`;
     return rows as { id: number; label: string; value: number; suffix: string; featured: boolean; description: string }[];
   } catch {
     return null;
@@ -20,7 +20,7 @@ export interface InsightSummary {
 
 export async function getVisibleInsights(limit = 50, offset = 0) {
   try {
-    const rows = await getSQL()`
+    const rows = await sql`
       SELECT id, headline, slug, href, excerpt, published_date
       FROM insights
       WHERE visible = true
@@ -35,7 +35,7 @@ export async function getVisibleInsights(limit = 50, offset = 0) {
 
 export async function getVisibleInsightsCount() {
   try {
-    const rows = await getSQL()`SELECT COUNT(*)::int as count FROM insights WHERE visible = true`;
+    const rows = await sql`SELECT COUNT(*)::int as count FROM insights WHERE visible = true`;
     return rows[0]?.count ?? 0;
   } catch {
     return 0;
@@ -44,7 +44,7 @@ export async function getVisibleInsightsCount() {
 
 export async function getInsightBySlug(slug: string) {
   try {
-    const rows = await getSQL()`
+    const rows = await sql`
       SELECT id, headline, slug, href, excerpt, content, published_date, visible
       FROM insights
       WHERE slug = ${slug} AND visible = true
