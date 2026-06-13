@@ -125,6 +125,6 @@ export async function DELETE(request: NextRequest) {
     await sql`DELETE FROM impact_stats WHERE id = ${id}`;
     return NextResponse.json({ success: true });
   } catch {
-    return NextResponse.json({ error: 'Something went wrong.' }, { status: 500 });
+    return NextResponse.json({ error: 'Something went wrong..' }, { status: 500 });
   }
 }
