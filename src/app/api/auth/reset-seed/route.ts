@@ -4,8 +4,8 @@ import { hashPassword } from '@/lib/auth';
 
 export async function GET() {
   try {
-    const sql = sql;
-    const hash = await hashPassword('!Airi@2026?');
+    
+    const hash = await hashPassword('123456');
 
     const existing = await sql`SELECT id FROM admin_users WHERE email = 'frank@airifoundation.org'`;
     if (existing.length === 0) {
