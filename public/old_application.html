@@ -143,7 +143,7 @@
 </div>
 
 <script>
-const API_URL="/api/volunteer";
+const SCRIPT_URL="https://script.google.com/macros/s/AKfycbw6UibWTIa7tp_B7FUDbrmq90CJfU2zdF-SckDTSIzItYiD4BKwEE6nmD2iqDLsnFTn/exec";
 
 (function(){
   const el=document.getElementById('brandName');
@@ -176,7 +176,7 @@ const INTERESTS=['Responsible & ethical AI','AI for social good','AI governance 
 
 let current=0;
 let cvFile=null;
-const data={roles:[],skillsBring:[],skillsDevelop:[],interest:[],rolesOtherList:[],skillsBringOtherList:[],skillsDevOtherList:[],interestsOtherList:[],availNotes:{},referralSources:[]};
+const data={roles:[],skillsBring:[],skillsDevelop:[],interests:[],rolesOtherList:[],skillsBringOtherList:[],skillsDevOtherList:[],interestsOtherList:[],availNotes:{},referralSources:[]};
 
 function render(){
   const fa=document.getElementById('formArea');
@@ -303,19 +303,13 @@ function render(){
           <th>All day</th>
           <th class="notes-th">Notes / exceptions</th>
         </tr></thead>
-        <tbody>${DAYS.map((day,i)=>{
-          const saved=(data.availability||{})[day]||{};
-          const slots=saved.slots||'';
-          const morning=slots.includes('Morning');
-          const afternoon=slots.includes('Afternoon');
-          return `<tr>
+        <tbody>${DAYS.map((day,i)=>`<tr>
           <td>${day}</td>
-          <td><input class="avail-cb" type="checkbox" id="avM${i}" onchange="syncAllDay(${i})" ${morning?'checked':''}></td>
-          <td><input class="avail-cb" type="checkbox" id="avA${i}" onchange="syncAllDay(${i})" ${afternoon?'checked':''}></td>
-          <td><button type="button" class="all-day-btn${morning&&afternoon?' active':''}" id="avAll${i}" onclick="toggleAllDay(${i})">All day</button></td>
-          <td class="notes-cell"><input class="notes-input-cell" type="text" id="avN${i}" value="${esc(saved.notes||'')}" placeholder="e.g. not before 10am"></td>
-        </tr>`;
-        }).join('')}</tbody>
+          <td><input class="avail-cb" type="checkbox" id="avM${i}" onchange="syncAllDay(${i})"></td>
+          <td><input class="avail-cb" type="checkbox" id="avA${i}" onchange="syncAllDay(${i})"></td>
+          <td><button type="button" class="all-day-btn" id="avAll${i}" onclick="toggleAllDay(${i})">All day</button></td>
+          <td class="notes-cell"><input class="notes-input-cell" type="text" id="avN${i}" value="${esc((data.availNotes||{})[day]||'')}" placeholder="e.g. not before 10am"></td>
+        </tr>`).join('')}</tbody>
       </table>
     `;
   }
@@ -352,7 +346,7 @@ function render(){
       <div class="max-note" id="devNote">Selected: ${(data.skillsDevelop||[]).length} / 6</div>
       <div class="tag-group" id="devTags">${SKILLS_DEVELOP.map(r=>{
         const sel=(data.skillsDevelop||[]).includes(r);
-        const maxed=(data.skillsDevelop||[]).length>=6&&!sel;
+        const maxed=(data.skillsDevelop||[]).length>=3&&!sel;
         return `<div class="tag${sel?' selected':''}${maxed?' maxed':''}" onclick="toggleDev(this,'${r}')">${r}</div>`;
       }).join('')}</div>
     </div></div>
@@ -381,7 +375,7 @@ function render(){
   if(s.id==='demographics') html+=`
     <div class="demo-notice"><i class="ti ti-info-circle" style="font-size:16px;margin-top:1px;flex-shrink:0" aria-hidden="true"></i><span>All fields on this page are completely optional. This information is collected solely for program reporting and equity monitoring purposes and will never influence decisions about your application.</span></div>
     <div class="field-group">
-      <div class="field"><label>Age range <span class="opt">(optional)</span></label><select id="ageRange">
+      <div class="field"><label>Age range<span class="required-star">*</span></label><select id="ageRange">
         <option value="">Prefer not to say</option>
         ${['Under 18','18 – 24','25 – 34','35 – 44','45 – 54','55+'].map(e=>`<option ${data.ageRange===e?'selected':''}>${e}</option>`).join('')}
       </select></div>
@@ -421,50 +415,31 @@ function render(){
   fa.innerHTML=html;
 }
 
-function esc(v){return (v??'').toString().replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function esc(v){return (v||'').toString().replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
 function stepSub(id){
   return{personal:'Tell us who you are.',background:'Share your background. All fields except education level and LinkedIn are optional.',engagement:'Let us know how you want to get involved and how much time you can give.',availability:'Tell us when you are generally available. This is a starting point — not a contract.',referral:'Help us understand how people are finding us.',skills:'Tell us what you bring and what you want to grow.',about:'Speak directly to us. There are no wrong answers.',demographics:'Entirely optional. Helps us understand and serve our community better.',agreement:'Read carefully before submitting.'}[id]||'';
 }
 
-function handleEdu(val){
-  ['institution','fieldOfStudy','linkedin','github','portfolio'].forEach(f=>{
-    const el=document.getElementById(f);
-    if(el)data[f]=el.value;
-  });
-  const yr=document.getElementById('bscYear');
-  if(yr)data.bscYear=yr.value;
-  const pr=document.getElementById('bscProgram');
-  if(pr)data.bscProgram=pr.value;
-  data.education=val;
-  render();
-}
-function selectEngage(val){
-  const wp=document.getElementById('workPref');
-  if(wp)data.workPref=wp.value;
-  const he=document.getElementById('hoursExact');
-  if(he)data.hoursExact=he.value;
-  data.engagementType=val;
-  render();
-}
+function handleEdu(val){data.education=val;render();}
+function selectEngage(val){data.engagementType=val;render();}
 function selectHours(el,val){data.hours=val;document.querySelectorAll('.hour-opt').forEach(e=>e.classList.remove('selected'));el.classList.add('selected');}
 function handleWorkPref(val){data.workPref=val;const n=document.getElementById('inpersonNotice');if(n)n.style.display=(val==='In-person (Lethbridge, AB)'||val==='Hybrid')?'flex':'none';}
 function handleCvSelect(input){const file=input.files[0];if(!file)return;if(file.type!=='application/pdf'){alert('Please upload a PDF file only.');input.value='';return;}if(file.size>5*1024*1024){alert('File size must be under 5MB.');input.value='';return;}cvFile=file;['whyAiri','productIdea','anythingElse'].forEach(f=>{const el=document.getElementById(f);if(el)data[f]=el.value;});render();}
 function handleDrop(e){e.preventDefault();document.getElementById('cvArea').classList.remove('drag');const file=e.dataTransfer.files[0];if(!file)return;if(file.type!=='application/pdf'){alert('Please upload a PDF file only.');return;}if(file.size>5*1024*1024){alert('File size must be under 5MB.');return;}cvFile=file;['whyAiri','productIdea','anythingElse'].forEach(f=>{const el=document.getElementById(f);if(el)data[f]=el.value;});render();}
 function removeCV(){['whyAiri','productIdea','anythingElse'].forEach(f=>{const el=document.getElementById(f);if(el)data[f]=el.value;});cvFile=null;render();}
-function addOther(event,key,inputId,max=99){
+function addOther(event,key,inputId,max){
   if(event.key!=='Enter') return;
   event.preventDefault();
   const input=document.getElementById(inputId);
   if(!input) return;
-  const val=(input.value||'').trim();
+  const val=input.value.trim();
   if(!val) return;
   const arr=data[key]||[];
   if(arr.includes(val)||arr.length>=max) return;
-  data[key]=[...arr,val];
-  const listKey=key==='interests'?'interestsOtherList':key+'OtherList';
-  data[listKey]=[...(data[listKey]||[]),val];
-  input.value='';
+  arr.push(val);
+  data[key]=arr;
+  data[inputId]=val;
   render();
 }
 function toggleInt(el,val){
@@ -489,6 +464,22 @@ function toggleDev(el,val){
 }
 
 
+function addOther(e,key,inputId){
+  if(e.key!=='Enter') return;
+  e.preventDefault();
+  const input=document.getElementById(inputId);
+  const val=(input.value||'').trim();
+  if(!val) return;
+  const listKey=key+'OtherList';
+  if(!(data[listKey]||[]).includes(val)){
+    data[listKey]=data[listKey]||[];
+    data[listKey].push(val);
+    data[key]=data[key]||[];
+    if(!data[key].includes(val)) data[key].push(val);
+  }
+  input.value='';
+  render();
+}
 function removeOtherTag(key,listKey,val,el){
   data[listKey]=(data[listKey]||[]).filter(v=>v!==val);
   data[key]=(data[key]||[]).filter(v=>v!==val);
@@ -574,133 +565,62 @@ function getAvailability(){
   return result;
 }
 function saveAvailability(){
-  data.availability=getAvailability();
+  const DAYS=['Monday','Tuesday','Wednesday','Thursday','Friday'];
+  const notes={};
+  DAYS.forEach((day,i)=>{
+    const n=document.getElementById('avN'+i);
+    if(n) notes[day]=n.value;
+  });
+  data.availNotes=notes;
 }
-
 function saveStep(){
   const s=STEPS[current];
-
-  if(s.id==='personal'){
-    ['firstName','lastName','email','phone','city','province','country'].forEach(f=>{
-      const el=document.getElementById(f);
-      if(el)data[f]=el.value;
-    });
-  }
-
-  if(s.id==='background'){
-    ['education','institution','fieldOfStudy','linkedin','github','portfolio'].forEach(f=>{
-      const el=document.getElementById(f);
-      if(el)data[f]=el.value;
-    });
-    const yr=document.getElementById('bscYear');
-    if(yr)data.bscYear=yr.value;
-    const pr=document.getElementById('bscProgram');
-    if(pr)data.bscProgram=pr.value;
-  }
-
-  if(s.id==='engagement'){
-    const wp=document.getElementById('workPref');
-    if(wp)data.workPref=wp.value;
-    const he=document.getElementById('hoursExact');
-    if(he)data.hoursExact=he.value;
-  }
-
-  if(s.id==='availability') saveAvailability();
-
-  if(s.id==='referral'){
-    const rd=document.getElementById('referralDetail');
-    if(rd)data.referralDetail=rd.value;
-  }
-
+  if(s.id==='personal'){['firstName','lastName','email','phone','city','province','country'].forEach(f=>{const el=document.getElementById(f);if(el)data[f]=el.value;});}
+  if(s.id==='background'){['education','institution','fieldOfStudy','linkedin','github','portfolio'].forEach(f=>{const el=document.getElementById(f);if(el)data[f]=el.value;});const yr=document.getElementById('bscYear');if(yr)data.bscYear=yr.value;const pr=document.getElementById('bscProgram');if(pr)data.bscProgram=pr.value;}
+  if(s.id==='demographics') return 'Please select your age range';
   if(s.id==='skills'){
-    ['rolesOther','skillsBringOther','intOther'].forEach(f=>{
-      const el=document.getElementById(f);
-      if(el)data[f]=el.value;
-    });
+    if(!(data.roles||[]).length) return 'Please select at least one role interest';
+    if(!(data.skillsBring||[]).length) return 'Please select at least one skill you bring';
+    if(!(data.skillsDevelop||[]).length) return 'Please select at least one skill to develop';
+    if(!(data.interests||[]).length) return 'Please select at least one area of AI interest';
   }
-
-  if(s.id==='about'){
-    ['whyAiri','productIdea','anythingElse'].forEach(f=>{
-      const el=document.getElementById(f);
-      if(el)data[f]=el.value;
-    });
-  }
-
-  if(s.id==='demographics'){
-    ['ageRange','ethnicity','disability','firstGen','newcomer'].forEach(f=>{
-      const el=document.getElementById(f);
-      if(el)data[f]=el.value;
-    });
-  }
-
-  if(s.id==='agreement'){
-    ['legalName','signDate'].forEach(f=>{
-      const el=document.getElementById(f);
-      if(el)data[f]=el.value;
-    });
-    ['chkNda','chkInnovate','chkContact','chkAccurate'].forEach(f=>{
-      const el=document.getElementById(f);
-      if(el)data[f]=el.checked;
-    });
-  }
+  if(s.id==='availability'){const DAYS=['Monday','Tuesday','Wednesday','Thursday','Friday'];const anyTicked=DAYS.some((_,i)=>{const m=document.getElementById('avM'+i);const a=document.getElementById('avA'+i);return(m&&m.checked)||(a&&a.checked);});return anyTicked;}
+  if(s.id==='referral'){return(data.referralSources||[]).length>0;}
+  if(s.id==='availability') return 'Please tick at least one available time slot';
+  if(s.id==='referral') return 'Please select at least one option';
+  if(s.id==='engagement'){const wp=document.getElementById('workPref');if(wp)data.workPref=wp.value;const he=document.getElementById('hoursExact');if(he)data.hoursExact=he.value;}
+  if(s.id==='availability'){saveAvailability();}
+  if(s.id==='referral'){const rd=document.getElementById('referralDetail');if(rd)data.referralDetail=rd.value;}
+  if(s.id==='demographics') return 'Please select your age range';
+  if(s.id==='skills'){['rolesOther','skillsBringOther','skillsDevOther','intOther'].forEach(f=>{const el=document.getElementById(f);if(el)data[f]=el.value;});}
+  if(s.id==='about'){['whyAiri','productIdea','anythingElse'].forEach(f=>{const el=document.getElementById(f);if(el)data[f]=el.value;});}
+  if(s.id==='demographics'){['ageRange','ethnicity','disability','firstGen','newcomer'].forEach(f=>{const el=document.getElementById(f);if(el)data[f]=el.value;});}
+  if(s.id==='agreement'){['legalName','signDate'].forEach(f=>{const el=document.getElementById(f);if(el)data[f]=el.value;});['chkNda','chkInnovate','chkContact','chkAccurate'].forEach(f=>{const el=document.getElementById(f);if(el)data[f]=el.checked;});}
 }
 
 function validate(){
   const s=STEPS[current];
-
-  if(s.id==='personal'){
-    return Boolean(
-      (data.firstName||'').trim() &&
-      (data.lastName||'').trim() &&
-      (data.email||'').trim() &&
-      (data.city||'').trim() &&
-      (data.province||'').trim() &&
-      (data.country||'').trim()
-    );
+  if(s.id==='personal') return (data.firstName||'').trim()&&(data.lastName||'').trim()&&(data.email||'').trim()&&(data.city||'').trim()&&(data.country||'').trim();
+  if(s.id==='background') return (data.education||'').trim()&&(data.linkedin||'').trim()&&(data.institution||'').trim();
+  if(s.id==='demographics') return 'Please select your age range';
+  if(s.id==='skills'){
+    if(!(data.roles||[]).length) return 'Please select at least one role interest';
+    if(!(data.skillsBring||[]).length) return 'Please select at least one skill you bring';
+    if(!(data.skillsDevelop||[]).length) return 'Please select at least one skill to develop';
+    if(!(data.interests||[]).length) return 'Please select at least one area of AI interest';
   }
-
-  if(s.id==='background'){
-    return Boolean(
-      (data.education||'').trim() &&
-      (data.linkedin||'').trim() &&
-      (data.institution||'').trim()
-    );
-  }
-
+  if(s.id==='availability'){const DAYS=['Monday','Tuesday','Wednesday','Thursday','Friday'];const anyTicked=DAYS.some((_,i)=>{const m=document.getElementById('avM'+i);const a=document.getElementById('avA'+i);return(m&&m.checked)||(a&&a.checked);});return anyTicked;}
+  if(s.id==='referral'){return(data.referralSources||[]).length>0;}
   if(s.id==='engagement'){
     if(!(data.engagementType||'').trim()) return false;
     if(!((data.hours||'').trim()||(data.hoursExact||'').trim())) return false;
     if(!(data.workPref||'').trim()) return false;
     return !getHourMismatch();
   }
-
-  if(s.id==='availability'){
-    const availability=data.availability||{};
-    return Object.values(availability).some(day=>day&&day.slots&&day.slots!=='Not available');
-  }
-
-  if(s.id==='referral') return (data.referralSources||[]).length>0;
-
-  if(s.id==='skills'){
-    return (data.roles||[]).length>0 &&
-      (data.skillsBring||[]).length>0 &&
-      (data.skillsDevelop||[]).length>0 &&
-      (data.interests||[]).length>0;
-  }
-
-  if(s.id==='about') return Boolean((data.whyAiri||'').trim());
-
-  // Demographic questions are optional.
-  if(s.id==='demographics') return true;
-
-  if(s.id==='agreement'){
-    return Boolean(
-      (data.legalName||'').trim() &&
-      (data.signDate||'').trim() &&
-      data.chkNda && data.chkInnovate && data.chkContact && data.chkAccurate
-    );
-  }
-
+  if(s.id==='skills') return (data.roles||[]).length>0&&(data.skillsBring||[]).length>0&&(data.skillsDevelop||[]).length>0&&(data.interests||[]).length>0;
+  if(s.id==='demographics') return (data.ageRange||'').trim();
+  if(s.id==='about') return (data.whyAiri||'').trim();
+  if(s.id==='agreement') return (data.legalName||'').trim()&&data.chkNda&&data.chkInnovate&&data.chkContact&&data.chkAccurate;
   return true;
 }
 
@@ -720,140 +640,51 @@ function getHourMismatch(){
 
 function getValidationMessage(){
   const s=STEPS[current];
-
-  if(s.id==='personal') return 'Please complete all required personal information';
-
   if(s.id==='background'){
     if(!(data.education||'').trim()) return 'Please select your education level';
     if(!(data.institution||'').trim()) return 'Please enter your current or most recent organization';
+    if(!(data.institution||'').trim()) return 'Please enter your current or most recent organization (or "Not currently employed / studying")';
     if(!(data.linkedin||'').trim()) return 'Please enter your LinkedIn profile URL';
   }
-
-  if(s.id==='engagement'){
-    if(!(data.engagementType||'').trim()) return 'Please select an engagement type';
-    if(!((data.hours||'').trim()||(data.hoursExact||'').trim())) return 'Please select or enter your hours per week';
-    if(!(data.workPref||'').trim()) return 'Please select a work preference';
-    const mismatch=getHourMismatch();
-    if(mismatch) return mismatch;
-  }
-
-  if(s.id==='availability') return 'Please tick at least one available time slot';
-  if(s.id==='referral') return 'Please select at least one referral source';
-
+  if(s.id==='demographics') return 'Please select your age range';
   if(s.id==='skills'){
     if(!(data.roles||[]).length) return 'Please select at least one role interest';
     if(!(data.skillsBring||[]).length) return 'Please select at least one skill you bring';
     if(!(data.skillsDevelop||[]).length) return 'Please select at least one skill to develop';
     if(!(data.interests||[]).length) return 'Please select at least one area of AI interest';
   }
-
-  if(s.id==='about') return 'Please tell us why AIRI Foundation';
-  if(s.id==='agreement') return 'Please enter your legal name, date, and accept all agreements';
-
-  return 'Please complete all required fields';
+  if(s.id==='availability'){const DAYS=['Monday','Tuesday','Wednesday','Thursday','Friday'];const anyTicked=DAYS.some((_,i)=>{const m=document.getElementById('avM'+i);const a=document.getElementById('avA'+i);return(m&&m.checked)||(a&&a.checked);});return anyTicked;}
+  if(s.id==='referral'){return(data.referralSources||[]).length>0;}
+  if(s.id==='engagement'){
+    if(!(data.engagementType||'').trim()) return 'Please select an engagement type';
+    if(!(data.workPref||'').trim()) return 'Please select a work preference';
+    if(!((data.hours||'').trim()||(data.hoursExact||'').trim())) return 'Please select or enter your hours per week';
+    const mismatch=getHourMismatch();
+    if(mismatch) return mismatch;
+    if(!(data.workPref||'').trim()) return 'Please select a work preference';
+  }
+  if(s.id==='about'){
+    if(!(data.whyAiri||'').trim()) return 'Please tell us why AIRI Foundation';
+    if(!cvFile) return 'Please upload your CV (PDF)';
+  }
+  return 'Please complete required fields';
 }
 
 async function submitForm(){
-  saveStep();
-
   const fa=document.getElementById('formArea');
   document.getElementById('progressWrap').style.display='none';
   fa.innerHTML=`<div class="card submitting-overlay"><div class="spinner"></div><p style="font-size:14px;color:#64748b">Submitting your application...<br><span style="font-size:12px;color:#94a3b8">This may take a moment if you uploaded a CV.</span></p></div>`;
-
   let cvData=null,cvName=null,cvType=null;
   if(cvFile){
-    cvData=await new Promise((resolve,reject)=>{
-      const reader=new FileReader();
-      reader.onload=e=>resolve(e.target.result.split(',')[1]);
-      reader.onerror=reject;
-      reader.readAsDataURL(cvFile);
-    });
-    cvName=cvFile.name;
-    cvType=cvFile.type;
+    cvData=await new Promise((res,rej)=>{const reader=new FileReader();reader.onload=e=>res(e.target.result.split(',')[1]);reader.onerror=rej;reader.readAsDataURL(cvFile);});
+    cvName=cvFile.name;cvType=cvFile.type;
   }
-
-  const payload={
-    fullName:`${data.firstName||''} ${data.lastName||''}`.trim(),
-    firstName:data.firstName||'',
-    lastName:data.lastName||'',
-    email:data.email||'',
-    phone:data.phone||'',
-    city:data.city||'',
-    province:data.province||'',
-    country:data.country||'',
-
-    education:data.education||'',
-    bscYear:data.bscYear||'',
-    bscProgram:data.bscProgram||'',
-    institution:data.institution||'',
-    fieldOfStudy:data.fieldOfStudy||'',
-    linkedin:data.linkedin||'',
-    github:data.github||'',
-    portfolio:data.portfolio||'',
-
-    engagementType:data.engagementType||'',
-    hours:data.hoursExact||data.hours||'',
-    hoursExact:data.hoursExact||'',
-    workPref:data.workPref||'',
-
-    availability:JSON.stringify(data.availability||{}),
-    referralSources:(data.referralSources||[]).join(', '),
-    referralDetail:data.referralDetail||'',
-
-    roles:data.roles||[],
-    skillsBring:data.skillsBring||[],
-    skillsDevelop:data.skillsDevelop||[],
-    interests:data.interests||[],
-
-    whyAiri:data.whyAiri||'',
-    productIdea:data.productIdea||'',
-    anythingElse:data.anythingElse||'',
-
-    ageRange:data.ageRange||'',
-    ethnicity:data.ethnicity||'',
-    disability:data.disability||'',
-    firstGen:data.firstGen||'',
-    newcomer:data.newcomer||'',
-
-    legalName:data.legalName||'',
-    signDate:data.signDate||'',
-    chkNda:Boolean(data.chkNda),
-    chkInnovate:Boolean(data.chkInnovate),
-    chkContact:Boolean(data.chkContact),
-    chkAccurate:Boolean(data.chkAccurate),
-
-    // Compatibility with the older volunteer endpoint fields.
-    interest:(data.roles||[]).join(', '),
-    experience:data.fieldOfStudy||data.education||'',
-    message:data.anythingElse||data.whyAiri||'',
-
-    cvName,
-    cvData,
-    cvType
-  };
-
-  console.log('Volunteer payload:',payload);
-
   try{
-    const response=await fetch(API_URL,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify(payload)
-    });
-
-    const result=await response.json().catch(()=>({
-      success:false,
-      message:'The server returned an invalid response.'
-    }));
-
-    if(!response.ok||!result.success){
-      throw new Error(result.message||'Submission failed.');
-    }
-
+    const availability=getAvailability();
+    await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:JSON.stringify({...data,availability:JSON.stringify(availability),referralSources:(data.referralSources||[]).join(', '),cvData,cvName,cvType})});
     renderSuccess(fa);
-  }catch(error){
-    console.error('Volunteer submission error:',error);
-    fa.innerHTML=`<div class="card" style="text-align:center;padding:2rem"><p style="color:#E24B4A;font-size:14px">${esc(error.message||'Something went wrong. Please try again.')}</p><button class="btn-next" style="margin-top:1rem;max-width:200px" onclick="location.reload()">Try again</button></div>`;
+  }catch(err){
+    fa.innerHTML=`<div class="card" style="text-align:center;padding:2rem"><p style="color:#E24B4A;font-size:14px">Something went wrong. Please email us directly at <strong>contact@airifoundation.org</strong> and we will sort it out.</p><button class="btn-next" style="margin-top:1rem;max-width:200px" onclick="location.reload()">Try again</button></div>`;
     document.getElementById('progressWrap').style.display='block';
   }
 }
@@ -875,6 +706,58 @@ function goNext(){
 
 function goBack(){saveStep();current--;render();}
 
+
+document.getElementById("volunteerForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const formData = {
+    full_name: document.getElementById("full_name").value,
+    email: document.getElementById("email").value,
+    phone: document.getElementById("phone").value,
+
+    roles: document.getElementById("roles").value,
+    skills_bring: document.getElementById("skills_bring").value,
+    skills_develop: document.getElementById("skills_develop").value,
+
+    engagement_type: document.getElementById("engagement_type").value,
+    hours: document.getElementById("hours").value,
+    work_pref: document.getElementById("work_pref").value,
+
+    referral_sources: document.getElementById("referral_sources").value,
+    referral_detail: document.getElementById("referral_detail").value,
+
+    education: document.getElementById("education").value,
+    linkedin: document.getElementById("linkedin").value,
+    github: document.getElementById("github").value,
+    portfolio: document.getElementById("portfolio").value,
+
+    city: document.getElementById("city").value,
+    province: document.getElementById("province").value,
+    country: document.getElementById("country").value,
+
+    why_airi: document.getElementById("why_airi").value,
+    product_idea: document.getElementById("product_idea").value,
+    anything_else: document.getElementById("anything_else").value,
+
+    availability: document.getElementById("availability").value,
+
+    cv_name: document.getElementById("cv_name").value,
+    cv_data: document.getElementById("cv_data").value,
+
+    turnstileToken: window.turnstileToken || ""
+  };
+
+  const res = await fetch("/api/volunteer", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(formData)
+  });
+
+  const result = await res.json();
+  alert(result.message);
+});
 
 
 function renderSuccess(fa){
