@@ -76,7 +76,7 @@ export const mainNav: NavItem[] = [
         title: 'Code & AI Club',
         key: 'codeAiClub',
         href: '/programs/code-ai-club',
-        description: 'Youth coding program for Grades 6–9',
+        description: 'Kids and Youth coding program',
         descriptionKey: 'codeAiClubDesc',
       },
       {
