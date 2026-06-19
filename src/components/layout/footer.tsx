@@ -85,14 +85,14 @@ export function Footer() {
                 </form>
               )}
             </div>
-            <div className="hidden gap-3 lg:flex" aria-hidden="true">
+            {/* <div className="hidden gap-3 lg:flex" aria-hidden="true">
               <div className="h-28 w-28 rounded-lg bg-accent-50" />
               <div className="flex flex-col gap-3">
                 <div className="h-[52px] w-20 rounded-lg bg-lime-50" />
                 <div className="h-[52px] w-20 rounded-lg bg-primary-50" />
               </div>
               <div className="h-28 w-16 rounded-lg bg-accent-100" />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
