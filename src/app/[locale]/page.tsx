@@ -7,6 +7,7 @@ import { VideoPlayButton } from '@/components/sections/video-player';
 import { getImpactStats, getVisibleInsights } from '@/lib/data';
 import type { StatItem } from '@/components/sections/bento-stats';
 import { ArrowRight, ChevronRight } from 'lucide-react';
+import Typewriter from '@/components/typewriter';
 
 function formatInsightDate(dateStr: string) {
   const d = new Date(dateStr);
@@ -85,9 +86,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <div className="home-hero-pixels" aria-hidden="true" />
         <div className="container relative z-10 flex min-h-[calc(100vh-72px)] flex-col justify-center py-20 md:py-28">
           <div className="w-full">
-            <h1 className="text-[clamp(3rem,8vw+1rem,7rem)] font-bold leading-[1.02] text-white">
+            {/* <h1 className="text-[clamp(2rem,6vw+1rem,5rem)] font-bold leading-[1.02] text-white">
               {t('heroTitle')}
-            </h1>
+            </h1> */}
+            <h1 className="text-[clamp(2rem,6vw+1rem,5rem)] font-bold leading-[1.02] text-white">
+          <Typewriter text={t('heroTitle')} />
+          </h1>
           </div>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             {heroCards.map((card) => (
