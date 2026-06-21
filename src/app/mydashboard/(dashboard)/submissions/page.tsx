@@ -7,7 +7,7 @@ const formTypes = [
   { key: 'contact', label: 'Contact' },
   { key: 'newsletter', label: 'Newsletter' },
   { key: 'volunteer', label: 'Volunteer' },
-  { key: 'workshop', label: 'Workshop' },
+  // { key: 'workshop', label: 'Workshop' },
   { key: 'codeai', label: 'Code & AI' },
   { key: 'business', label: 'Business' },
   { key: 'community', label: 'Community' },
