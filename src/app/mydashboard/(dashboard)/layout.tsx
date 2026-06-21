@@ -151,7 +151,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <main className="flex-1 px-5 py-6 lg:px-8 lg:py-8">{children}</main>
 
         {/* Admin footer */}
-        <footer className="border-t border-grey-200 bg-white px-5 py-3 lg:px-8">
+        {/* <footer className="border-t border-grey-200 bg-white px-5 py-3 lg:px-8">
           <p className="text-center text-[12px] text-grey-light lg:text-right">
             V1.4 dashboard by{' '}
             <a
@@ -163,7 +163,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               THEDGIT
             </a>
           </p>
-        </footer>
+        </footer> */}
       </div>
     </div>
   );
