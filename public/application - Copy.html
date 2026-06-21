@@ -772,73 +772,65 @@ async function submitForm(){
     cvType=cvFile.type;
   }
 
-  const payload = {
-  // identity
-  full_name: `${data.firstName || ''} ${data.lastName || ''}`.trim(),
-  first_name: data.firstName || '',
-  last_name: data.lastName || '',
-  email: data.email || '',
-  phone: data.phone || '',
+  const payload={
+    fullName:`${data.firstName||''} ${data.lastName||''}`.trim(),
+    firstName:data.firstName||'',
+    lastName:data.lastName||'',
+    email:data.email||'',
+    phone:data.phone||'',
+    city:data.city||'',
+    province:data.province||'',
+    country:data.country||'',
 
-  // location
-  city: data.city || '',
-  province: data.province || '',
-  country: data.country || '',
+    education:data.education||'',
+    bscYear:data.bscYear||'',
+    bscProgram:data.bscProgram||'',
+    institution:data.institution||'',
+    fieldOfStudy:data.fieldOfStudy||'',
+    linkedin:data.linkedin||'',
+    github:data.github||'',
+    portfolio:data.portfolio||'',
 
-  // education
-  education: data.education || '',
-  bsc_year: data.bscYear || '',
-  bsc_program: data.bscProgram || '',
-  institution: data.institution || '',
-  field_of_study: data.fieldOfStudy || '',
-  linkedin: data.linkedin || '',
-  github: data.github || '',
-  portfolio: data.portfolio || '',
+    engagementType:data.engagementType||'',
+    hours:data.hoursExact||data.hours||'',
+    hoursExact:data.hoursExact||'',
+    workPref:data.workPref||'',
 
-  // engagement
-  engagement_type: data.engagementType || '',
-  hours: data.hoursExact || data.hours || '',
-  hours_exact: data.hoursExact || '',
-  work_pref: data.workPref || '',
+    availability:JSON.stringify(data.availability||{}),
+    referralSources:(data.referralSources||[]).join(', '),
+    referralDetail:data.referralDetail||'',
 
-  // availability (KEEP JSON OBJECT NOT STRING)
-  availability: data.availability || {},
+    roles:data.roles||[],
+    skillsBring:data.skillsBring||[],
+    skillsDevelop:data.skillsDevelop||[],
+    interests:data.interests||[],
 
-  // referral
-  referral_sources: data.referralSources || [],
-  referral_detail: data.referralDetail || '',
+    whyAiri:data.whyAiri||'',
+    productIdea:data.productIdea||'',
+    anythingElse:data.anythingElse||'',
 
-  // skills (KEEP ARRAYS, NOT STRINGS)
-  roles: data.roles || [],
-  skills_bring: data.skillsBring || [],
-  skills_develop: data.skillsDevelop || [],
-  interests: data.interests || [],
+    ageRange:data.ageRange||'',
+    ethnicity:data.ethnicity||'',
+    disability:data.disability||'',
+    firstGen:data.firstGen||'',
+    newcomer:data.newcomer||'',
 
-  // motivation
-  why_airi: data.whyAiri || '',
-  product_idea: data.productIdea || '',
-  anything_else: data.anythingElse || '',
+    legalName:data.legalName||'',
+    signDate:data.signDate||'',
+    chkNda:Boolean(data.chkNda),
+    chkInnovate:Boolean(data.chkInnovate),
+    chkContact:Boolean(data.chkContact),
+    chkAccurate:Boolean(data.chkAccurate),
 
-  // demographics
-  age_range: data.ageRange || '',
-  ethnicity: data.ethnicity || '',
-  disability: data.disability || '',
-  first_gen: data.firstGen || '',
-  newcomer: data.newcomer || '',
+    // Compatibility with the older volunteer endpoint fields.
+    interest:(data.roles||[]).join(', '),
+    experience:data.fieldOfStudy||data.education||'',
+    message:data.anythingElse||data.whyAiri||'',
 
-  // agreement
-  legal_name: data.legalName || '',
-  sign_date: data.signDate || '',
-  chk_nda: !!data.chkNda,
-  chk_innovate: !!data.chkInnovate,
-  chk_contact: !!data.chkContact,
-  chk_accurate: !!data.chkAccurate,
-
-  // CV
-  cv_name: cvName,
-  cv_data: cvData,
-  cv_type: cvType,
-};
+    cvName,
+    cvData,
+    cvType
+  };
 
   console.log('Volunteer payload:',payload);
 

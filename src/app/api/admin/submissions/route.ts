@@ -41,17 +41,17 @@ async function queryTable(table: string, limit: number, offset: number) {
       return { rows, count: countResult[0]?.count ?? 0 };
     }
 
-    case 'workshop': {
-      const rows = await sql`
-        SELECT * FROM workshop_bookings
-        ORDER BY created_at DESC
-        LIMIT ${limit} OFFSET ${offset}
-      `;
-      const countResult = await sql`
-        SELECT COUNT(*)::int as count FROM workshop_bookings
-      `;
-      return { rows, count: countResult[0]?.count ?? 0 };
-    }
+    // case 'workshop': {
+    //   const rows = await sql`
+    //     SELECT * FROM workshop_bookings
+    //     ORDER BY created_at DESC
+    //     LIMIT ${limit} OFFSET ${offset}
+    //   `;
+    //   const countResult = await sql`
+    //     SELECT COUNT(*)::int as count FROM workshop_bookings
+    //   `;
+    //   return { rows, count: countResult[0]?.count ?? 0 };
+    // }
 
     case 'codeai': {
       const rows = await sql`
