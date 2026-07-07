@@ -753,35 +753,6 @@ function getValidationMessage(){
   return 'Please complete all required fields';
 }
 
-async function sendCvEmailOnly(payload) {
-  if (!payload.cv_data) return;
-
-  const role =
-    (payload.roles && payload.roles.length ? payload.roles[0] : '') ||
-    payload.engagement_type ||
-    'Volunteer';
-
-  try {
-    await fetch('/api/send-cv-email', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        full_name: payload.full_name,
-        first_name: payload.first_name,
-        last_name: payload.last_name,
-        email: payload.email,
-        role: role,
-        engagement_type: payload.engagement_type,
-        cv_name: payload.cv_name,
-        cv_data: payload.cv_data,
-        cv_type: payload.cv_type,
-      }),
-    });
-  } catch (error) {
-    console.warn('CV email failed, but application submission continues:', error);
-  }
-}
-
 async function submitForm(){
   saveStep();
 
@@ -865,7 +836,7 @@ async function submitForm(){
 
   // CV
   cv_name: cvName,
-  cv_data: cvData,
+  cv_url: cvUrl,
   cv_type: cvType,
 };
 
@@ -884,16 +855,8 @@ async function submitForm(){
     }));
 
     if(!response.ok||!result.success){
-  throw new Error(result.message||'Submission failed.');
-}
-
-// Send CV email independently.
-// This will not block or affect the database/backend submission.
-if (cvFile && cvData) {
-  sendCvEmailOnly(payload);
-}
-
-renderSuccess(fa);
+      throw new Error(result.message||'Submission failed.');
+    }
 
     renderSuccess(fa);
   }catch(error){
