@@ -9,9 +9,17 @@ import { siteConfig } from '@/config/site';
 import { cn } from '@/lib/utils/cn';
 import { ChevronDown, X } from 'lucide-react';
 
+type NestedNavItem = {
+  key: string;
+  href?: string;
+  descriptionKey?: string;
+  children?: NestedNavItem[];
+};
+
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [activeMobileSubDropdown, setActiveMobileSubDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const dropdownTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const t = useTranslations('nav');
@@ -93,21 +101,63 @@ export function Header() {
                         : 'invisible -translate-y-2 opacity-0 pointer-events-none'
                     )}
                   >
-                    <div className="min-w-[240px] border border-grey-200 bg-white py-2 shadow-md">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className="group flex flex-col px-5 py-3 transition-colors hover:bg-grey-50"
-                        >
-                          <span className="text-[15px] font-medium text-foreground group-hover:text-primary">
-                            {t(child.key)}
-                          </span>
-                          {child.descriptionKey && (
-                            <span className="mt-0.5 text-[13px] text-grey-light">{t(child.descriptionKey)}</span>
-                          )}
-                        </Link>
-                      ))}
+                    <div className="min-w-[260px] border border-grey-200 bg-white py-2 shadow-md">
+                      {item.children.map((child) => {
+                        const nestedChild = child as NestedNavItem;
+                        const childChildren = nestedChild.children || [];
+
+                        return childChildren.length > 0 ? (
+                          <div
+                            key={child.href || child.key}
+                            className="group relative"
+                          >
+                            <button
+                              type="button"
+                              className="flex w-full items-start justify-between gap-4 px-5 py-3 text-left transition-colors hover:bg-grey-50"
+                            >
+                              <span className="flex flex-col">
+                                <span className="text-[15px] font-medium text-foreground group-hover:text-primary">
+                                  {t(child.key)}
+                                </span>
+                                {child.descriptionKey && (
+                                  <span className="mt-0.5 text-[13px] text-grey-light">{t(child.descriptionKey)}</span>
+                                )}
+                              </span>
+                              <ChevronDown className="mt-1 h-3 w-3 -rotate-90 text-grey-light transition-colors group-hover:text-primary" strokeWidth={2.5} />
+                            </button>
+
+                            <div className="invisible absolute left-full top-0 ml-1 min-w-[240px] border border-grey-200 bg-white py-2 opacity-0 shadow-md transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                              {childChildren.map((grandChild) => (
+                                <Link
+                                  key={grandChild.href || grandChild.key}
+                                  href={grandChild.href || '#'}
+                                  className="group/grandchild flex flex-col px-5 py-3 transition-colors hover:bg-grey-50"
+                                >
+                                  <span className="text-[15px] font-medium text-foreground group-hover/grandchild:text-primary">
+                                    {t(grandChild.key)}
+                                  </span>
+                                  {grandChild.descriptionKey && (
+                                    <span className="mt-0.5 text-[13px] text-grey-light">{t(grandChild.descriptionKey)}</span>
+                                  )}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        ) : (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="group flex flex-col px-5 py-3 transition-colors hover:bg-grey-50"
+                          >
+                            <span className="text-[15px] font-medium text-foreground group-hover:text-primary">
+                              {t(child.key)}
+                            </span>
+                            {child.descriptionKey && (
+                              <span className="mt-0.5 text-[13px] text-grey-light">{t(child.descriptionKey)}</span>
+                            )}
+                          </Link>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -179,7 +229,7 @@ export function Header() {
 
           <button
             className="flex items-center gap-2 rounded-full bg-accent-50 px-4 py-2 transition-colors hover:bg-accent-100 lg:hidden"
-            onClick={() => { setMobileOpen(!mobileOpen); setActiveDropdown(null); }}
+            onClick={() => { setMobileOpen(!mobileOpen); setActiveDropdown(null); setActiveMobileSubDropdown(null); }}
             aria-label={mobileOpen ? t('close') : t('menu')}
           >
             <span className="text-[13px] font-semibold text-foreground">
@@ -222,7 +272,10 @@ export function Header() {
                 <>
                   <button
                     className="flex w-full items-center justify-between border-b border-grey-100 py-4 text-base font-medium text-foreground"
-                    onClick={() => setActiveDropdown(activeDropdown === item.key ? null : item.key)}
+                    onClick={() => {
+                      setActiveDropdown(activeDropdown === item.key ? null : item.key);
+                      setActiveMobileSubDropdown(null);
+                    }}
                   >
                     {t(item.key)}
                     <ChevronDown className={cn('h-4 w-4 transition-transform duration-200', activeDropdown === item.key && 'rotate-180')} />
@@ -230,20 +283,59 @@ export function Header() {
                   <div
                     className={cn(
                       'overflow-hidden transition-all duration-250 ease-out',
-                      activeDropdown === item.key ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+                      activeDropdown === item.key ? 'max-h-[900px] opacity-100' : 'max-h-0 opacity-0'
                     )}
                   >
                     <div className="border-b border-grey-100 py-2 pl-4">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className="block py-3 text-[15px] text-grey transition-colors hover:text-primary"
-                          onClick={() => setMobileOpen(false)}
-                        >
-                          {t(child.key)}
-                        </Link>
-                      ))}
+                      {item.children.map((child) => {
+                        const nestedChild = child as NestedNavItem;
+                        const childChildren = nestedChild.children || [];
+
+                        return childChildren.length > 0 ? (
+                          <div key={child.href || child.key}>
+                            <button
+                              className="flex w-full items-center justify-between py-3 text-left text-[15px] text-grey transition-colors hover:text-primary"
+                              onClick={() => setActiveMobileSubDropdown(activeMobileSubDropdown === child.key ? null : child.key)}
+                            >
+                              {t(child.key)}
+                              <ChevronDown className={cn('h-4 w-4 transition-transform duration-200', activeMobileSubDropdown === child.key && 'rotate-180')} />
+                            </button>
+
+                            <div
+                              className={cn(
+                                'overflow-hidden transition-all duration-250 ease-out',
+                                activeMobileSubDropdown === child.key ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
+                              )}
+                            >
+                              <div className="pb-2 pl-4">
+                                {childChildren.map((grandChild) => (
+                                  <Link
+                                    key={grandChild.href || grandChild.key}
+                                    href={grandChild.href || '#'}
+                                    className="block py-2.5 text-[14px] text-grey-light transition-colors hover:text-primary"
+                                    onClick={() => {
+                                      setMobileOpen(false);
+                                      setActiveDropdown(null);
+                                      setActiveMobileSubDropdown(null);
+                                    }}
+                                  >
+                                    {t(grandChild.key)}
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="block py-3 text-[15px] text-grey transition-colors hover:text-primary"
+                            onClick={() => setMobileOpen(false)}
+                          >
+                            {t(child.key)}
+                          </Link>
+                        );
+                      })}
                     </div>
                   </div>
                 </>

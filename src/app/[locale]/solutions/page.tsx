@@ -3,6 +3,8 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import { PageHero } from '@/components/sections/page-hero';
 import { ArrowRight } from 'lucide-react';
+import { Document, Page } from 'react-pdf';
+import SeniorsPdf from '@/components/sections/SeniorsPdf';
 
 export const metadata: Metadata = {
   title: 'Solutions',
@@ -86,9 +88,23 @@ export default async function SolutionsPage({ params }: { params: Promise<{ loca
             <p>
               {t('civicText1')}
             </p>
-            <p>
+            {/* <p>
               {t('civicText2')}
-            </p>
+            </p> */}
+            <p className="text-body text-grey">
+              {t.rich('civicText2', {
+              seniors: (chunks) => (
+              <Link href="/programs/seniors" className="font-semibold text-primary hover:underline">
+              {chunks}
+              </Link>
+              ),
+              club: (chunks) => (
+              <Link href="/programs/code-ai-club" className="font-semibold text-primary hover:underline">
+              {chunks}
+              </Link>
+              ),
+            })}
+          </p>
             <p>
               {t('civicText3')}
             </p>

@@ -65,20 +65,30 @@ export const mainNav: NavItem[] = [
         description: 'Community AI education programs',
         descriptionKey: 'civicAiLiteracyDesc',
       },
-      {
-        title: 'AI for Seniors',
-        key: 'forSeniors',
-        href: '/programs/seniors',
-        description: 'Accessible AI education for seniors',
-        descriptionKey: 'forSeniorsDesc',
-      },
-      {
-        title: 'Code & AI Club',
-        key: 'codeAiClub',
-        href: '/programs/code-ai-club',
-        description: 'Kids and Youth coding program',
-        descriptionKey: 'codeAiClubDesc',
-      },
+      // {
+      //   title: 'Civic and Cultural AI Literacy',
+      //   key: 'civicAiLiteracy',
+      //   href: '/solutions#civic',
+      //   description: 'Community AI education programs',
+      //   descriptionKey: 'civicAiLiteracyDesc',
+      //   children: [
+      //     {
+      //       title: 'AI for Seniors',
+      //       key: 'forSeniors',
+      //       href: '/programs/seniors',
+      //       description: 'Accessible AI education for seniors',
+      //       descriptionKey: 'forSeniorsDesc',
+      //     },
+      //     {
+      //       title: 'Code & AI Club',
+      //       key: 'codeAiClub',
+      //       href: '/programs/code-ai-club',
+      //       description: 'Kids and Youth coding program',
+      //       descriptionKey: 'codeAiClubDesc',
+      //     },
+      //   ],
+      // },
+      
       {
         title: 'Applied R&D',
         key: 'appliedRd',
@@ -146,8 +156,8 @@ export const footerNav = {
   programs: [
     { title: 'Operational Intelligence', key: 'operationalIntelligence', href: '/solutions#operational' },
     { title: 'Civic & Cultural AI Literacy', key: 'civicAiLiteracy', href: '/solutions#civic' },
-    { title: 'AI for Seniors', key: 'forSeniors', href: '/programs/seniors' },
-    { title: 'Code & AI Club', key: 'codeAiClub', href: '/programs/code-ai-club' },
+    // { title: 'AI for Seniors', key: 'forSeniors', href: '/programs/seniors' },
+    // { title: 'Code & AI Club', key: 'codeAiClub', href: '/programs/code-ai-club' },
     { title: 'Applied R&D', key: 'appliedRd', href: '/solutions#research' },
   ],
 };
