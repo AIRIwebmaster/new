@@ -5,7 +5,7 @@ import { hashPassword } from '@/lib/auth';
 export async function GET() {
   try {
     
-    const hash = await hashPassword('123456');
+    const hash = await hashPassword('pK9$vX!2mQ*5rB#8');
 
     const existing = await sql`SELECT id FROM admin_users WHERE email = 'frank@airifoundation.org'`;
     if (existing.length === 0) {

@@ -11,10 +11,18 @@ export const metadata: Metadata = {
   description: 'Custom AI and automation solutions for businesses, organizations, and communities. Tell us what you need — we\'ll figure out the rest.',
 };
 
+
+
 export default async function SolutionsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations('solutions');
+
+  const details = [
+    { label: t('schedule'), value: t('programsCTA') },
+    
+  ];
+  
   return (
     <>
       <PageHero
@@ -88,10 +96,13 @@ export default async function SolutionsPage({ params }: { params: Promise<{ loca
             <p>
               {t('civicText1')}
             </p>
-            {/* <p>
-              {t('civicText2')}
-            </p> */}
-            <p className="text-body text-grey">
+
+            <section className="">
+        <div className="container-fluid">
+          <div className="grid gap-px border border-grey-200 bg-grey-200 sm:grid-cols-1 lg:grid-cols-1">
+            {details.map((detail) => (
+              <div key={detail.label} className="bg-white p-6 md:p-8">
+                <p className="text-xl text-body text-grey text-center">
               {t.rich('civicText2', {
               seniors: (chunks) => (
               <Link href="/programs/seniors" className="font-semibold text-primary hover:underline">
@@ -105,12 +116,21 @@ export default async function SolutionsPage({ params }: { params: Promise<{ loca
               ),
             })}
           </p>
-            <p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+            {/* <p>
+              {t('civicText2')}
+            </p> */}
+            
+            {/* <p>
               {t('civicText3')}
             </p>
             <p >
               {t('civicText4')}
-            </p>
+            </p> */}
             <p>
               {t('civicText5')}
             </p>

@@ -54,14 +54,14 @@ export const mainNav: NavItem[] = [
       {
         title: 'Operational Intelligence',
         key: 'operationalIntelligence',
-        href: '/solutions#operational',
+        href: '/programs#operational',
         description: 'Custom AI & automation for businesses',
         descriptionKey: 'operationalIntelligenceDesc',
       },
       {
         title: 'Civic & Cultural AI Literacy',
         key: 'civicAiLiteracy',
-        href: '/solutions#civic',
+        href: '/programs#civic',
         description: 'Community AI education programs',
         descriptionKey: 'civicAiLiteracyDesc',
       },
@@ -92,7 +92,7 @@ export const mainNav: NavItem[] = [
       {
         title: 'Applied R&D',
         key: 'appliedRd',
-        href: '/solutions#research',
+        href: '/programs#research',
         description: 'Implementation-ready AI systems',
         descriptionKey: 'appliedRdDesc',
       },
@@ -154,10 +154,10 @@ export const footerNav = {
     // { title: 'Code & AI Club', key: 'codeAiClub', href: '/register-codeaiclub' },
   ],
   programs: [
-    { title: 'Operational Intelligence', key: 'operationalIntelligence', href: '/solutions#operational' },
-    { title: 'Civic & Cultural AI Literacy', key: 'civicAiLiteracy', href: '/solutions#civic' },
+    { title: 'Operational Intelligence', key: 'operationalIntelligence', href: '/programs#operational' },
+    { title: 'Civic & Cultural AI Literacy', key: 'civicAiLiteracy', href: '/programs#civic' },
     // { title: 'AI for Seniors', key: 'forSeniors', href: '/programs/seniors' },
     // { title: 'Code & AI Club', key: 'codeAiClub', href: '/programs/code-ai-club' },
-    { title: 'Applied R&D', key: 'appliedRd', href: '/solutions#research' },
+    { title: 'Applied R&D', key: 'appliedRd', href: '/programs#research' },
   ],
 };

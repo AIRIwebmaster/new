@@ -7,7 +7,9 @@ import { VideoPlayButton } from '@/components/sections/video-player';
 import { getImpactStats, getVisibleInsights } from '@/lib/data';
 import type { StatItem } from '@/components/sections/bento-stats';
 import { ArrowRight, ChevronRight } from 'lucide-react';
-import Typewriter from '@/components/typewriter';
+import RichTypewriter from '@/components/rich-typewriter';
+
+
 
 function formatInsightDate(dateStr: string) {
   const d = new Date(dateStr);
@@ -56,8 +58,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     : fallbackNews;
 
   const heroCards = [
-    { text: t('heroCard1'), href: '/solutions#operational'},
-    { text: t('heroCard2'), href: '/solutions#civic'},
+    { text: t('heroCard1'), href: '/programs#operational'},
+    { text: t('heroCard2'), href: '/programs#civic'},
   ];
 
   const programs = [
@@ -74,8 +76,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   ];
 
   const solutions = [
-    { title: t('solution1Title'), description: t('solution1Desc'), href: '/solutions#operational' },
-    { title: t('solution2Title'), description: t('solution2Desc'), href: '/solutions#civic' },
+    { title: t('solution1Title'), description: t('solution1Desc'), href: '/programs#operational' },
+    { title: t('solution2Title'), description: t('solution2Desc'), href: '/programs#civic' },
     // { title: t('solution3Title'), description: t('solution3Desc'), href: '/solutions#research' },
   ];
 
@@ -89,9 +91,17 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             {/* <h1 className="text-[clamp(2rem,6vw+1rem,5rem)] font-bold leading-[1.02] text-white">
               {t('heroTitle')}
             </h1> */}
-            <h1 className="text-[clamp(2rem,6vw+1rem,5rem)] font-bold leading-[1.02] text-white">
-          <Typewriter text={t('heroTitle')} />
-          </h1>
+            <h2 className="text-[clamp(2rem,6vw+1rem,5rem)] font-bold leading-[1.02] text-white">
+              <RichTypewriter
+              text={t('heroTitle')}
+              italicTexts={[
+             'AI Training',
+              'Adoption',
+              'Technical Implementation',
+            ]}
+            speed={35}
+            />
+            </h2>
           </div>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             {heroCards.map((card) => (
