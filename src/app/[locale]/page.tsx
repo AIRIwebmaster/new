@@ -58,8 +58,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     : fallbackNews;
 
   const heroCards = [
-    { text: t('heroCard1'), href: '/programs#operational'},
-    { text: t('heroCard2'), href: '/programs#civic'},
+    { text: t('heroCard1'), href: '/programs#operational' },
+    { text: t('heroCard2'), href: '/programs#civic' },
   ];
 
   const programs = [
@@ -93,14 +93,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             </h1> */}
             <h2 className="text-[clamp(2rem,6vw+1rem,5rem)] font-bold leading-[1.02] text-white">
               <RichTypewriter
-              text={t('heroTitle')}
-              italicTexts={[
-             'AI Training',
-              'Adoption',
-              'Technical Implementation',
-            ]}
-            speed={35}
-            />
+                text={t('heroTitle')}
+                //   italicTexts={[
+                //  'AI Training',
+                //   'Adoption',
+                //   'Technical Implementation',
+                // ]}
+                speed={35}
+              />
             </h2>
           </div>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
@@ -133,7 +133,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <VideoSection />
         </div>
 
-        
+
       </section>
 
       {/* Two-column programs */}
