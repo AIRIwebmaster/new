@@ -10,7 +10,7 @@ const partners = [
   { name: 'NordBridge Senior Centre', logo: '/images/partners/NordBridhe.png', href: 'https://nordbridgeseniorcentre.com' },
   { name: 'Destination Exploration', logo: '/images/partners/DE-Logo-Full-Colour-scaled.png', href: 'https://destinationexploration.ca' },
   { name: 'SECA', logo: '/images/partners/SECA-logo_-SVG.svg', href: 'https://seca-ab.ca' },
-  { name: 'Lethbridge Chamber of Commerce', logo: '/images/partners/lethbridge-coc.png', href: 'https://lethbridgechamber.com' },
+  { name: 'Lethbridge Chamber of Commerce', logo: '/images/partners/lethbridge-coc1.png', href: 'https://lethbridgechamber.com' },
   { name: 'Young Engineers', logo: '/images/partners/ye-logo.png', href: 'https://youngengineers.org/' },
 ];
 
@@ -31,7 +31,7 @@ export function PartnersGrid() {
   }, []);
 
   return (
-    <div className="grid grid-cols-2 gap-px border border-grey-200 bg-grey-200 sm:grid-cols-3 lg:grid-cols-5">
+    <div className="grid grid-cols-2 gap-px border border-grey-200 bg-grey-200 sm:grid-cols-3 lg:grid-cols-4">
       {items.map((partner) => (
         <a
           key={partner.name}
@@ -43,9 +43,9 @@ export function PartnersGrid() {
           <Image
             src={partner.logo}
             alt={partner.name}
-            width={140}
-            height={60}
-            className="h-10 w-auto object-contain opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 md:h-12"
+            width={400}
+            height={200}
+            className="h-10 w-auto object-cover opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 md:h-12"
           />
         </a>
       ))}
