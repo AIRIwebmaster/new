@@ -10,6 +10,8 @@ const partners = [
   { name: 'NordBridge Senior Centre', logo: '/images/partners/NordBridhe.png', href: 'https://nordbridgeseniorcentre.com' },
   { name: 'Destination Exploration', logo: '/images/partners/DE-Logo-Full-Colour-scaled.png', href: 'https://destinationexploration.ca' },
   { name: 'SECA', logo: '/images/partners/SECA-logo_-SVG.svg', href: 'https://seca-ab.ca' },
+  { name: 'Lethbridge Chamber of Commerce', logo: '/images/partners/lethbridge-coc.png', href: 'https://lethbridgechamber.com' },
+  { name: 'Young Engineers', logo: '/images/partners/ye-logo.png', href: 'https://youngengineers.org/' },
 ];
 
 function shuffle<T>(arr: T[]): T[] {
