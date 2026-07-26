@@ -7,8 +7,8 @@ import { useState } from 'react';
 const partners = [
   { name: 'Lethbridge Public Library', logo: '/images/partners/Lethbridge-Public-library.png', href: 'https://lethlib.ca' },
   { name: 'BIPOC Foundation', logo: '/images/partners/BF-BIPOC-LOGOS-V1-01-1-scaled.png', href: 'https://bipocfoundation.com' },
-  { name: 'NordBridge Senior Centre', logo: '/images/partners/NordBridhe.png', href: 'https://nordbridgeseniorcentre.com' },
   { name: 'Lethbridge Chamber of Commerce', logo: '/images/partners/lethbridge-coc1.png', href: 'https://lethbridgechamber.com' },
+  { name: 'NordBridge Senior Centre', logo: '/images/partners/NordBridhe.png', href: 'https://nordbridgeseniorcentre.com' },
   { name: 'Destination Exploration', logo: '/images/partners/DE-Logo-Full-Colour-scaled.png', href: 'https://destinationexploration.ca' },
   { name: 'SECA', logo: '/images/partners/SECA-logo_-SVG.svg', href: 'https://seca-ab.ca' },
   { name: 'Young Engineers', logo: '/images/partners/ye-logo.png', href: 'https://youngengineers.org/' },
@@ -38,14 +38,17 @@ export function PartnersGrid() {
           href={partner.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center bg-white px-2 py-3 transition-colors hover:bg-grey-50"
-        >
+          className={`flex items-center justify-center bg-white px-2 py-3 transition-colors hover:bg-grey-50 ${partner.name === 'Lethbridge Chamber of Commerce' ? 'lg:col-span-2' : ''
+            }`}>
           <Image
             src={partner.logo}
             alt={partner.name}
             width={400}
             height={200}
-            className="h-20 w-auto object-cover opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 md:h-24"
+            className={`w-auto object-contain opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 ${partner.name === 'Lethbridge Chamber of Commerce'
+              ? 'h-36'
+              : 'h-20 md:h-24'
+              }`}
           />
         </a>
       ))}
