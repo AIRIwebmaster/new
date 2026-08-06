@@ -7,7 +7,7 @@ export const siteConfig = {
   links: {
     linkedin: 'https://linkedin.com/company/airi-foundation',
     instagram: 'https://www.instagram.com/airi.foundation/?utm_source=ig_web_button_share_sheet',
-    facebook: 'https://facebook.com/airifoundation',
+    facebook: 'https://www.facebook.com/AIRIFoundation',
     donate: 'https://www.zeffy.com/en-CA/donation-form/help-build-ai-literacy-for-all-in-canada-join-us',
   },
   emails: {
