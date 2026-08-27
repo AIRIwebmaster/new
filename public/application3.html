@@ -369,7 +369,7 @@ function render(){
     <div class="field-group full"><div class="field"><label>Anything else? <span class="opt">(optional)</span></label><textarea id="anythingElse" placeholder="Anything else you want us to know about you, your background, or your goals...">${esc(data.anythingElse)}</textarea></div></div>
     <hr class="section-divider">
     <div class="field-group full"><div class="field">
-      <label>Upload your CV<span class="required-star">*</span></label>
+      <label>Upload your CV <span class="opt">(optional but strongly encouraged)</span></label>
       <div class="cv-upload-area" id="cvArea" ondragover="event.preventDefault();this.classList.add('drag')" ondragleave="this.classList.remove('drag')" ondrop="handleDrop(event)">
         <input type="file" accept=".pdf,application/pdf" onchange="handleCvSelect(this)">
         <div class="cv-icon"><i class="ti ti-file-type-pdf" aria-hidden="true"></i></div>
@@ -688,10 +688,7 @@ function validate(){
       (data.interests||[]).length>0;
   }
 
-  if(s.id==='about') return Boolean(
-      (data.whyAiri||'').trim() &&
-      cvFile
-    );
+  if(s.id==='about') return Boolean((data.whyAiri||'').trim());
 
   // Demographic questions are optional.
   if(s.id==='demographics') return true;
@@ -750,10 +747,7 @@ function getValidationMessage(){
     if(!(data.interests||[]).length) return 'Please select at least one area of AI interest';
   }
 
-  if(s.id==='about'){
-    if(!(data.whyAiri||'').trim()) return 'Please tell us why AIRI Foundation';
-    if(!cvFile) return 'Please upload your CV before continuing';
-  }
+  if(s.id==='about') return 'Please tell us why AIRI Foundation';
   if(s.id==='agreement') return 'Please enter your legal name, date, and accept all agreements';
 
   return 'Please complete all required fields';
