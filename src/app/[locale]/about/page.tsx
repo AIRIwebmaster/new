@@ -5,6 +5,7 @@ import { PageHero } from '@/components/sections/page-hero';
 import { BentoStats } from '@/components/sections/bento-stats';
 import { PartnersGrid } from '@/components/sections/partners-grid';
 import { TeamGrid } from '@/components/sections/team-grid';
+import { LeadershipGrid } from '@/components/sections/leadership-grid';
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -77,12 +78,20 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         </div>
       </section>
 
+        <section id="leadership" className="scroll-mt-20 container py-16 md:py-24">
+        <h2 className="mb-4 text-h2">{t('leadershipTitle')}</h2>
+        {/* <p className="mb-10 text-body text-grey">{t('leadershipSubtitle')}</p> */}
+        <LeadershipGrid />
+      </section>
+
+
       {/* Team */}
       <section id="leadership" className="scroll-mt-20 container py-16 md:py-24">
-        <h2 className="mb-4 text-h2">{t('leadershipTitle')}</h2>
+        <h2 className="mb-4 text-h2">{t('boardTitle')}</h2>
         {/* <p className="mb-10 text-body text-grey">{t('leadershipSubtitle')}</p> */}
         <TeamGrid />
       </section>
+
 
       {/* Interns */}
       <section id="leadership" className="scroll-mt-20 container py-16 md:py-24">

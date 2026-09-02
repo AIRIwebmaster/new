@@ -14,14 +14,7 @@ interface TeamMember {
 }
 
 const team: TeamMember[] = [
-  {
-    name: 'Frank Onuh',
-    role: 'Executive Director',
-    photo: '/images/team/frank-onuh.jpg',
-    bio: 'Executive Director of AIRI Foundation and a member of Alberta Machine Intelligence Institute. Extensive leadership and R&D experience in Applied Generative AI.',
-    linkedin: 'https://www.linkedin.com/in/frank-onuh/',
-    fullBio: 'Frank Onuh is the Executive Director of AIRI Foundation and a member of Alberta Machine Intelligence Institute. He has extensive leadership and R&D experience in Applied Generative AI and misinformation studies.\n\nFrank is a consistent voice in AI ethics and digital empowerment and has designed and led major cross-sectoral projects that span AI literacy and capacity building, including designing low-cost AI-powered auto systems. As part of this work on de-biasing GenAI outputs, he developed the AI Bias Detection Canvas, a structured framework for identifying and mitigating algorithmic inequities. Frank has facilitated digital training partnerships that help provide training to BIPOC professionals in the data science and AI fields across Canada.',
-  },
+  
   {
     name: 'Sidney Shapiro',
     role: 'Business Analytics',
