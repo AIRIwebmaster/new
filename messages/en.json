@@ -13,7 +13,7 @@
     "codeAiClubDesc": "Kids and Youth coding program",
     "forProfessionals": "For Professionals",
     "forProfessionalsDesc": "Workshops & AI Solutions for Organizations",
-    "forSeniors": "AI for Seniors",
+    "forSeniors": "AI with Seniors",
     "forSeniorsDesc": "Accessible AI education for seniors",
     "forNewCanadians": "For New Canadians",
     "forNewCanadiansDesc": "Civic and cultural AI literacy",
@@ -33,11 +33,14 @@
     "close": "Close",
     "volunteerInternship": "Volunteer & Internship",
     "insights": "AI News",
-    "insightsDesc": "News, updates and stories"
+    "insightsDesc": "News, updates and stories",
+    "aiLiteracy": "AI Literacy",
+    "responsibleAdoption": "Responsible Adoption",
+    "technicalImplementation": "Technical Implementation"
   },
   "home": {
-    "heroTitle": "Supporting organizations and businesses through AI Training, Adoption and Technical Implementation",
-    "heroCard1": "Let's Design Your Solution",
+    "heroTitle": "Supporting Organizations and Businesses through AI literacy, adoption and technical implementation.",
+    "heroCard1": "Explore our Programs",
     "heroCard2": "Explore Civic & Cultural AI Literacy",
     "heroTagline": "Because AI impacts everyone,",
     "introTitle": "Our focuses for the next five years",
@@ -86,9 +89,9 @@
     "breadcrumbHome": "Home",
     "breadcrumbAbout": "About",
     "missionTitle": "Our Mission",
-    "missionText": "AIRI Foundation is a non-profit organization that advances AI literacy and workflow automation across Canada. By combining research, consulting, and custom software development with hands-on automation services and training, we empower individuals and businesses to successfully deploy ethical AI solutions in their daily operations.",
+    "missionText": "To equip underserved communities and organizations with the knowledge, evidence, and AI solutions they need to understand, adopt, and use AI responsibly.",
     "visionTitle": "Our Vision",
-    "visionText": "Every Canadian and organization can access, shape, and benefit from the power of AI to co-create and share in a just and innovative world.",
+    "visionText": "A Canada where everyone can understand, shape, and benefit from AI in ways that support a just and inclusive society.",
     "whyTitle": "Why AIRI?",
     "whySubtitle": "What sets us apart in the AI education space",
     "value1Title": "Expertise That Matters",
@@ -103,7 +106,7 @@
     "boardTitle": "Board of Directors",
     "leadershipSubtitle": "Meet the team driving AI literacy across Canada",
     "internTitle": "Interns Highlight",
- "internSubtitle": "We give young creators the opportunity to to work on real projects and build their AI skills",
+    "internSubtitle": "We give young creators the opportunity to to work on real projects and build their AI skills",
     "impactTitle": "Our Impact",
     "impactText": "Since 2024, AIRI Foundation has been building Canada's AI-literate communities, connecting educators with learners and delivering programs that drive real understanding.",
     "partnersTitle": "Building Canada's AI future together",
@@ -384,10 +387,10 @@
     "ctaContact": "Contact us"
   },
   "seniors": {
-    "heroTitle": "AI for Seniors",
+    "heroTitle": "AI with Seniors",
     "heroSubtitle": "Seniors didn't ask for an AI revolution — but they deserve to navigate it with dignity, confidence, and the tools to protect what matters most. Our SafeAge Canada program meets you exactly where you are, with accessible, jargon-free education that builds real confidence.",
     "breadcrumbPrograms": "Programs",
-    "breadcrumbSeniors": "AI for Seniors",
+    "breadcrumbSeniors": "AI with Seniors",
     "learnTitle": "What This Program Covers",
     "topic1": "Using AI assistants for daily tasks",
     "topic2": "Navigating digital services and platforms",
@@ -395,7 +398,6 @@
     "topic4": "Staying safe online with AI-powered tools",
     "topic5": "Practical applications for health and wellbeing",
     "topic6": "Communicating with family through digital tools",
-
     "topic1Title": "Introduction",
     "topic1Desc": "Understanding Artificial Intelligence — What AI actually is, how it processes information differently from human judgment, what it genuinely costs to use in money, data, and privacy — and where it helps vs. where it should never be trusted to decide alone.",
     "topic2Title": "AI Fluency",
@@ -408,8 +410,6 @@
     "topic5Desc": "Hands-on training to identify AI-generated voice clones, manipulated images, and fabricated video content.",
     "topic6Title": "Privacy and Security",
     "topic6Desc": "The essentials of digital self-protection — robust password practices, two-factor authentication, and a clear-eyed understanding of what AI platforms collect and retain about their users — so participants can engage with technology entirely on their own terms.",
-
-
     "howTitle": "How it works",
     "howText": "Small group sessions designed specifically for seniors. Patient, hands-on instruction with no prior technical experience required. Available at community centers and libraries across Lethbridge.",
     "partnerText": "Delivered in partnership with NordBridge Senior Centre and Lethbridge Public Library.",
