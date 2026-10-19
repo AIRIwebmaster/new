@@ -37,13 +37,6 @@ export const mainNav: NavItem[] = [
         description: 'Our Impact in the Community',
         descriptionKey: 'ourImpactDesc',
       },
-      {
-        title: 'Insights',
-        key: 'insights',
-        href: '/insights',
-        description: 'News, updates and stories',
-        descriptionKey: 'insightsDesc',
-      },
     ],
   },
   {
