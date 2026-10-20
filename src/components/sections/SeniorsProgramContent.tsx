@@ -85,18 +85,22 @@ export async function SeniorsProgramContent({
       <section className="bg-white">
         <div className="container py-16 md:py-20">
           <h2 className="mb-8 text-h2">AI with Seniors in action</h2>
-          <div className="grid gap-8 lg:grid-cols-2">
-            <div>
-              <div className="relative aspect-video overflow-hidden rounded-xl bg-grey-100">
-                <iframe className="absolute inset-0 h-full w-full" src="https://www.youtube.com/embed/CnNT5Uaw-kA" title="AIRI is helping seniors stay informed and safe in AI era." loading="lazy" referrerPolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
+          <div className="grid items-start gap-8 lg:grid-cols-2">
+            <div className="flex flex-col">
+              <div className="relative flex h-[420px] w-full items-center justify-center overflow-hidden rounded-xl bg-grey-100 sm:h-[500px] lg:h-[520px]">
+                <div className="relative aspect-video w-full">
+                  <iframe className="absolute inset-0 h-full w-full" src="https://www.youtube.com/embed/CnNT5Uaw-kA" title="AIRI is helping seniors stay informed and safe in AI era." loading="lazy" referrerPolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
+                </div>
               </div>
               <p className="mt-3 text-sm font-medium text-grey">Helping seniors stay informed and safe in the AI era</p>
             </div>
-            <div>
-              <div className="relative mx-auto aspect-[9/16] max-w-[330px] overflow-hidden rounded-xl bg-grey-100">
-                <iframe className="absolute inset-0 h-full w-full" src="https://www.youtube.com/embed/gczH10nJZQQ" title="WHO SAID AI IS FOR THE YOUNG?" loading="lazy" referrerPolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
+            <div className="flex flex-col">
+              <div className="relative flex h-[420px] w-full items-center justify-center overflow-hidden rounded-xl bg-grey-100 sm:h-[500px] lg:h-[520px]">
+                <div className="relative aspect-[9/16] h-full max-w-full">
+                  <iframe className="absolute inset-0 h-full w-full" src="https://www.youtube.com/embed/gczH10nJZQQ" title="WHO SAID AI IS FOR THE YOUNG?" loading="lazy" referrerPolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
+                </div>
               </div>
-              <p className="mt-3 text-center text-sm font-medium text-grey">Who said AI is for the young?</p>
+              <p className="mt-3 text-sm font-medium text-grey">Who said AI is for the young?</p>
             </div>
           </div>
         </div>
