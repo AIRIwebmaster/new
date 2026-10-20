@@ -16,7 +16,7 @@ export default async function ProgramsPage({ params }: { params: Promise<{ local
 
   const areas = fr ? [
     {
-      id: 'ai-literacy', title: 'Littératie en IA',
+      id: 'ai-literacy', title: 'Littératie en IA en ligne',
       intro: 'Aider les personnes et les organisations à comprendre l’IA.',
       paragraphs: [
         'AIRI rend l’IA compréhensible grâce à un apprentissage accessible, ancré dans la vie quotidienne. Nous aidons les gens à explorer le fonctionnement de l’IA et ce qu’elle peut accomplir.',
@@ -62,7 +62,7 @@ export default async function ProgramsPage({ params }: { params: Promise<{ local
     }
   ] : [
     {
-      id: 'ai-literacy', title: 'AI Literacy',
+      id: 'ai-literacy', title: 'AI Literacy Online',
       intro: 'Helping people and organizations understand AI.',
       paragraphs: [
         'AIRI makes AI understandable through accessible learning grounded in everyday life. We help people explore how AI works and what it can do.',
