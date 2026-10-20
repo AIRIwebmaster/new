@@ -45,7 +45,7 @@ export const mainNav: NavItem[] = [
     href: '/programs',
     children: [
       {
-        title: 'AI Literacy Online',
+        title: 'AI Literacy',
         key: 'aiLiteracy',
         href: '/programs#ai-literacy',
         children: [
@@ -97,7 +97,7 @@ export const footerNav = {
     // { title: 'Code & AI Club', key: 'codeAiClub', href: '/register-codeaiclub' },
   ],
   programs: [
-    { title: 'AI Literacy Online', key: 'aiLiteracy', href: '/programs#ai-literacy' },
+    { title: 'AI Literacy', key: 'aiLiteracy', href: '/programs#ai-literacy' },
     { title: 'Responsible Adoption', key: 'responsibleAdoption', href: '/programs#responsible-adoption' },
     { title: 'Technical Implementation', key: 'technicalImplementation', href: '/programs#technical-implementation' },
   ],
