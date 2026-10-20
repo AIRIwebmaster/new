@@ -62,7 +62,7 @@ export default async function ProgramsPage({ params }: { params: Promise<{ local
     }
   ] : [
     {
-      id: 'ai-literacy', title: 'AI Literacy Online',
+      id: 'ai-literacy', title: 'AI Literacy',
       intro: 'Helping people and organizations understand AI.',
       paragraphs: [
         'AIRI makes AI understandable through accessible learning grounded in everyday life. We help people explore how AI works and what it can do.',
@@ -98,7 +98,7 @@ export default async function ProgramsPage({ params }: { params: Promise<{ local
       paragraphs: [
         'Our work begins with understanding the people who will use a solution and the setting in which it will operate. We assess where AI can provide value, then design and implement tools that fit existing workflows and available resources.'
       ],
-      focusTitle: 'Our Focus',
+      focusTitle: 'What We Do',
       points: [
         ['Custom AI solutions', 'Developing tools that address specific community and organizational needs.'],
         ['Workflow integration', 'Incorporating AI into everyday operations to reduce repetitive work and improve access to information.'],
