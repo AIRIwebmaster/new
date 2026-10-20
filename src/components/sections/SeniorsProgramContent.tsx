@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import { PageHero } from '@/components/sections/page-hero';
+import { SeniorsPhotoGallery } from '@/components/sections/SeniorsPhotoGallery';
 
 type SeniorsProgramContentProps = {
   showHero?: boolean;
@@ -101,6 +102,7 @@ export async function SeniorsProgramContent({
           </div>
         </div>
       </section>
+      <SeniorsPhotoGallery />
       <section className="bg-primary">
         <div className="container py-16 md:py-20">
           <h2 className="mb-4 text-h2 text-white">{t('ctaTitle')}</h2>
