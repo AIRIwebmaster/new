@@ -88,15 +88,13 @@ export async function SeniorsProgramContent({
           <div className="grid items-start gap-8 lg:grid-cols-2">
             <div className="flex flex-col">
               <div className="relative h-[300px] w-full overflow-hidden rounded-xl bg-black sm:h-[380px] lg:h-[420px]">
-                  <iframe className="absolute inset-0 h-full w-full" src="https://www.youtube.com/embed/CnNT5Uaw-kA" title="AIRI is helping seniors stay informed and safe in AI era." loading="lazy" referrerPolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
-                </div>
+                <iframe className="absolute inset-0 h-full w-full" src="https://www.youtube.com/embed/CnNT5Uaw-kA" title="AIRI is helping seniors stay informed and safe in AI era." loading="lazy" referrerPolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
               </div>
               <p className="mt-3 text-sm font-medium text-grey">Helping seniors stay informed and safe in the AI era</p>
             </div>
             <div className="flex flex-col">
               <div className="relative h-[300px] w-full overflow-hidden rounded-xl bg-black sm:h-[380px] lg:h-[420px]">
-                  <iframe className="absolute inset-0 h-full w-full" src="https://www.youtube.com/embed/gczH10nJZQQ" title="WHO SAID AI IS FOR THE YOUNG?" loading="lazy" referrerPolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
-                </div>
+                <iframe className="absolute inset-0 h-full w-full" src="https://www.youtube.com/embed/gczH10nJZQQ" title="WHO SAID AI IS FOR THE YOUNG?" loading="lazy" referrerPolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
               </div>
               <p className="mt-3 text-sm font-medium text-grey">Who said AI is for the young?</p>
             </div>
