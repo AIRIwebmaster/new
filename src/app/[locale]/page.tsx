@@ -58,9 +58,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   ];
 
   const solutions = [
-    { title: t('solution1Title'), description: t('solution1Desc'), href: '/programs#technical-implementation' },
-    { title: t('solution2Title'), description: t('solution2Desc'), href: '/programs#ai-literacy' },
-    // { title: t('solution3Title'), description: t('solution3Desc'), href: '/solutions#research' },
+    { title: t('solution1Title'), description: t('solution1Desc'), href: '/programs#ai-literacy' },
+    { title: t('solution2Title'), description: t('solution2Desc'), href: '/programs#responsible-adoption' },
+    { title: t('solution3Title'), description: t('solution3Desc'), href: '/programs#technical-implementation' },
   ];
 
   return (
@@ -132,7 +132,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <div className="container py-16 md:py-20">
           <h2 className="mb-4 text-h2">{t('solutionsTitle')}</h2>
           <p className="mb-10 max-w-2xl text-body text-grey">{t('solutionsSubtitle')}</p>
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-4 md:grid-cols-3">
             {solutions.map((solution) => (
               <Link
                 key={solution.title}
