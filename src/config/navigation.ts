@@ -44,11 +44,17 @@ export const mainNav: NavItem[] = [
     key: 'programs',
     href: '/programs',
     children: [
-      { title: 'AI Literacy', key: 'aiLiteracy', href: '/programs#ai-literacy' },
+      {
+        title: 'AI Literacy Online',
+        key: 'aiLiteracy',
+        href: '/programs#ai-literacy',
+        children: [
+          { title: 'AI with Seniors', key: 'forSeniors', href: '/programs/seniors' },
+          { title: 'Code & AI Club', key: 'codeAiClub', href: '/programs/code-ai-club' },
+        ],
+      },
       { title: 'Responsible Adoption', key: 'responsibleAdoption', href: '/programs#responsible-adoption' },
       { title: 'Technical Implementation', key: 'technicalImplementation', href: '/programs#technical-implementation' },
-      { title: 'AI with Seniors', key: 'forSeniors', href: '/programs/seniors' },
-      { title: 'Code & AI Club', key: 'codeAiClub', href: '/programs/code-ai-club' },
     ]
   },
   {
@@ -91,10 +97,8 @@ export const footerNav = {
     // { title: 'Code & AI Club', key: 'codeAiClub', href: '/register-codeaiclub' },
   ],
   programs: [
-    { title: 'AI Literacy', key: 'aiLiteracy', href: '/programs#ai-literacy' },
+    { title: 'AI Literacy Online', key: 'aiLiteracy', href: '/programs#ai-literacy' },
     { title: 'Responsible Adoption', key: 'responsibleAdoption', href: '/programs#responsible-adoption' },
     { title: 'Technical Implementation', key: 'technicalImplementation', href: '/programs#technical-implementation' },
-    { title: 'AI with Seniors', key: 'forSeniors', href: '/programs/seniors' },
-    { title: 'Code & AI Club', key: 'codeAiClub', href: '/programs/code-ai-club' },
   ],
 };
