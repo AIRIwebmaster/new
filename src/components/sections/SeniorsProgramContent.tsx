@@ -94,7 +94,7 @@ export async function SeniorsProgramContent({
             </div>
             <div>
               <div className="relative mx-auto aspect-[9/16] max-w-[330px] overflow-hidden rounded-xl bg-grey-100">
-                <iframe className="absolute inset-0 h-full w-full" src="https://www.youtube.com/embed/9XkLUWDeiBI" title="WHO SAID AI IS FOR THE YOUNG?" loading="lazy" referrerPolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
+                <iframe className="absolute inset-0 h-full w-full" src="https://www.youtube.com/embed/gczH10nJZQQ" title="WHO SAID AI IS FOR THE YOUNG?" loading="lazy" referrerPolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
               </div>
               <p className="mt-3 text-center text-sm font-medium text-grey">Who said AI is for the young?</p>
             </div>
