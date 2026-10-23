@@ -5,11 +5,22 @@ import { useCallback, useEffect, useState } from 'react';
 import { ChevronLeft, ChevronRight, X, Expand } from 'lucide-react';
 
 const photos = [
-  { src: '/images/seniors/IMG_9084.jpg', alt: 'AI with Seniors community learning session' },
-  { src: '/images/seniors/IMG_9522.jpg', alt: 'Seniors learning to use digital tools together' },
-  { src: '/images/seniors/IMG_9563.jpg', alt: 'AI literacy instructor presenting to seniors' },
-  { src: '/images/seniors/IMG_9576.jpg', alt: 'Interactive AI literacy discussion with participants' },
-  { src: '/images/seniors/IMG_9807.jpg', alt: 'Senior participant practising digital skills' },
+  { src: '/images/seniors/IMG_9084.jpg', alt: 'Instructor presenting an AI literacy session' },
+  { src: '/images/seniors/Frank5.jpg', alt: 'Instructor explaining AI concepts during a presentation' },
+  { src: '/images/seniors/A7I04875.jpg', alt: 'Participants listening during an AI workshop' },
+  { src: '/images/seniors/IMG_9522.jpg', alt: 'Senior learners practising smartphone skills' },
+  { src: '/images/seniors/A7I04926.jpg', alt: 'Senior participants talking after a workshop' },
+  { src: '/images/seniors/Frank2.jpg', alt: 'Instructor speaking to participants' },
+  { src: '/images/seniors/IMG_9563.jpg', alt: 'AI literacy session with seated participants' },
+  { src: '/images/seniors/A7I04892.jpg', alt: 'Senior participant taking notes' },
+  { src: '/images/seniors/A7I04854.jpg', alt: 'Senior learners following a session' },
+  { src: '/images/seniors/IMG_9576.jpg', alt: 'Group learning and discussion' },
+  { src: '/images/seniors/Frank3.jpg', alt: 'Instructor delivering an AI lesson' },
+  { src: '/images/seniors/A7I04861.jpg', alt: 'Senior participants working together' },
+  { src: '/images/seniors/A7I04911.jpg', alt: 'Participants listening attentively' },
+  { src: '/images/seniors/IMG_9807.jpg', alt: 'Senior participant exploring digital tools' },
+  { src: '/images/seniors/A7I04873.jpg', alt: 'Interactive group training session' },
+  { src: '/images/seniors/A7I04856.jpg', alt: 'Seniors collaborating during training' },
 ];
 
 export function SeniorsPhotoGallery() {
