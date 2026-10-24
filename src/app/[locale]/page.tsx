@@ -20,21 +20,6 @@ function formatInsightDate(dateStr: string) {
   };
 }
 
-function VideoSection() {
-  return (
-    <div className="flex justify-center items-center w-full py-10">
-      <div className="relative w-full max-w-4xl overflow-hidden rounded-xl pb-[56.25%]">
-        <iframe
-          className="absolute top-0 left-0 h-full w-full"
-          src="https://www.youtube.com/embed/d1QolvxB8Pc"
-          title="Creating your AI solutions"
-          allowFullScreen
-        />
-      </div>
-    </div>
-  );
-}
-
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
@@ -57,10 +42,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     ? dbInsights.map((i: any) => ({ ...formatInsightDate(i.published_date), headline: i.headline, href: i.href }))
     : fallbackNews;
 
-  const heroCards = [
-    { text: t('heroCard1'), href: '/programs#operational' },
-    { text: t('heroCard2'), href: '/programs#civic' },
-  ];
+  const heroCards = [{ text: t('heroCard1'), href: '/programs' }];
 
   const programs = [
     {
@@ -76,9 +58,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   ];
 
   const solutions = [
-    { title: t('solution1Title'), description: t('solution1Desc'), href: '/programs#operational' },
-    { title: t('solution2Title'), description: t('solution2Desc'), href: '/programs#civic' },
-    // { title: t('solution3Title'), description: t('solution3Desc'), href: '/solutions#research' },
+    { title: t('solution1Title'), description: t('solution1Desc'), href: '/programs#ai-literacy' },
+    { title: t('solution2Title'), description: t('solution2Desc'), href: '/programs#responsible-adoption' },
+    { title: t('solution3Title'), description: t('solution3Desc'), href: '/programs#technical-implementation' },
   ];
 
   return (
@@ -123,19 +105,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      {/* Intro */}
-      <section className="container py-16 md:py-24">
-        <div className="flex flex-col items-center gap-10 md:flex-row md:gap-16">
-          {/* <div className="flex-1">
-            <h2 className="mb-6 text-h2 md:text-h1">{t('introTitle')}</h2>
-            <p className="text-body-lg text-grey">{t('introText')}</p>
-          </div> */}
-          <VideoSection />
-        </div>
-
-
-      </section>
-
       {/* Two-column programs */}
       {/* <section className="border-t border-grey-200">
         <div className="container grid md:grid-cols-2">
@@ -163,7 +132,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <div className="container py-16 md:py-20">
           <h2 className="mb-4 text-h2">{t('solutionsTitle')}</h2>
           <p className="mb-10 max-w-2xl text-body text-grey">{t('solutionsSubtitle')}</p>
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-4 md:grid-cols-3">
             {solutions.map((solution) => (
               <Link
                 key={solution.title}

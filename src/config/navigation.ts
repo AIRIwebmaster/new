@@ -37,13 +37,6 @@ export const mainNav: NavItem[] = [
         description: 'Our Impact in the Community',
         descriptionKey: 'ourImpactDesc',
       },
-      {
-        title: 'Insights',
-        key: 'insights',
-        href: '/insights',
-        description: 'News, updates and stories',
-        descriptionKey: 'insightsDesc',
-      },
     ],
   },
   {
@@ -52,67 +45,17 @@ export const mainNav: NavItem[] = [
     href: '/programs',
     children: [
       {
-        title: 'Operational Intelligence',
-        key: 'operationalIntelligence',
-        href: '/programs#operational',
-        description: 'Custom AI & automation for businesses',
-        descriptionKey: 'operationalIntelligenceDesc',
+        title: 'AI Literacy',
+        key: 'aiLiteracy',
+        href: '/programs#ai-literacy',
+        children: [
+          { title: 'AI with Seniors', key: 'forSeniors', href: '/programs/seniors' },
+          { title: 'Code & AI Club', key: 'codeAiClub', href: '/programs/code-ai-club' },
+        ],
       },
-      {
-        title: 'Civic & Cultural AI Literacy',
-        key: 'civicAiLiteracy',
-        href: '/programs#civic',
-        description: 'Community AI education programs',
-        descriptionKey: 'civicAiLiteracyDesc',
-      },
-      // {
-      //   title: 'Civic and Cultural AI Literacy',
-      //   key: 'civicAiLiteracy',
-      //   href: '/solutions#civic',
-      //   description: 'Community AI education programs',
-      //   descriptionKey: 'civicAiLiteracyDesc',
-      //   children: [
-      //     {
-      //       title: 'AI for Seniors',
-      //       key: 'forSeniors',
-      //       href: '/programs/seniors',
-      //       description: 'Accessible AI education for seniors',
-      //       descriptionKey: 'forSeniorsDesc',
-      //     },
-      //     {
-      //       title: 'Code & AI Club',
-      //       key: 'codeAiClub',
-      //       href: '/programs/code-ai-club',
-      //       description: 'Kids and Youth coding program',
-      //       descriptionKey: 'codeAiClubDesc',
-      //     },
-      //   ],
-      // },
-      
-      {
-        title: 'Applied R&D',
-        key: 'appliedRd',
-        href: '/programs#research',
-        description: 'Implementation-ready AI systems',
-        descriptionKey: 'appliedRdDesc',
-      },
-      // {
-      //   title: 'AI for Professionals',
-      //   key: 'forProfessionals',
-      //   href: '/programs/professionals',
-      //   description: 'Workshops & AI Solutions for Organizations',
-      //   descriptionKey: 'forProfessionalsDesc',
-      // },
-      
-      // {
-      //   title: 'AI for New Canadians',
-      //   key: 'forNewCanadians',
-      //   href: '/programs/new-canadians',
-      //   description: 'Civic and cultural AI literacy',
-      //   descriptionKey: 'forNewCanadiansDesc',
-      // },
-      
-    ],
+      { title: 'Responsible Adoption', key: 'responsibleAdoption', href: '/programs#responsible-adoption' },
+      { title: 'Technical Implementation', key: 'technicalImplementation', href: '/programs#technical-implementation' },
+    ]
   },
   {
     title: 'Opportunities',
@@ -154,10 +97,8 @@ export const footerNav = {
     // { title: 'Code & AI Club', key: 'codeAiClub', href: '/register-codeaiclub' },
   ],
   programs: [
-    { title: 'Operational Intelligence', key: 'operationalIntelligence', href: '/programs#operational' },
-    { title: 'Civic & Cultural AI Literacy', key: 'civicAiLiteracy', href: '/programs#civic' },
-    // { title: 'AI for Seniors', key: 'forSeniors', href: '/programs/seniors' },
-    // { title: 'Code & AI Club', key: 'codeAiClub', href: '/programs/code-ai-club' },
-    { title: 'Applied R&D', key: 'appliedRd', href: '/programs#research' },
+    { title: 'AI Literacy', key: 'aiLiteracy', href: '/programs#ai-literacy' },
+    { title: 'Responsible Adoption', key: 'responsibleAdoption', href: '/programs#responsible-adoption' },
+    { title: 'Technical Implementation', key: 'technicalImplementation', href: '/programs#technical-implementation' },
   ],
 };

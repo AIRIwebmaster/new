@@ -60,11 +60,22 @@ export function BentoStats({ variant = 'dark', stats }: BentoStatsProps) {
   const defaultStats: StatItem[] = [
     { value: 1625, suffix: '', label: t('defaultStat1Label'), description: t('defaultStat1Desc'), featured: true },
     { value: 165,suffix: '', label: t('defaultStat2Label'), description: t('defaultStat2Desc') },
-    { value: 49, suffix: '', label: t('defaultStat3Label'), description: t('defaultStat3Desc') },
-    { value: 48,suffix: '', label: t('defaultStat4Label'), description: t('defaultStat4Desc') },
+    { value: 19, suffix: '', label: t('defaultStat3Label'), description: t('defaultStat3Desc') },
+    { value: 38,suffix: '', label: t('defaultStat4Label'), description: t('defaultStat4Desc') },
   ];
 
-  const data = stats && stats.length > 0 ? stats : defaultStats;
+  // The two corrections also apply when the statistics come from the database.
+  // Do not change the underlying impact_stats records.
+  const originalData = stats && stats.length > 0 ? stats : defaultStats;
+  const data = originalData.map((stat, index) => {
+    const label = stat.label.trim().toLowerCase();
+    const isCities = label === t('defaultStat3Label').toLowerCase() || label === 'cities reached';
+    const isInternships = label === t('defaultStat4Label').toLowerCase() || label === 'student internships';
+    // Preserve the existing ordered four-stat display even if database labels differ slightly.
+    if (isCities || (originalData.length === 4 && index === 2)) return { ...stat, value: 19 };
+    if (isInternships || (originalData.length === 4 && index === 3)) return { ...stat, value: 38 };
+    return stat;
+  });
   const featured = data.find((s) => s.featured) || data[0];
   const rest = data.filter((s) => s !== featured);
 
