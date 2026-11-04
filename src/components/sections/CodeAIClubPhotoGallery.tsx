@@ -5,19 +5,19 @@ import { ChevronLeft, ChevronRight, X, Expand } from 'lucide-react';
 
 const photos = [
   {
-    src: 'https://omaltd.org/archives/wp-content/uploads/2026/11/signal-2026-08-11-22-45-41-763_014.jpg',
+    src: '/images/code-ai-club/signal-2026-08-11-22-45-41-763_014.jpg',
     alt: 'Students taking part in a Code and AI Club learning activity',
   },
   {
-    src: 'https://omaltd.org/archives/wp-content/uploads/2026/11/signal-2026-08-11-22-45-41-763_013.jpg',
+    src: '/images/code-ai-club/signal-2026-08-11-22-45-41-763_013.jpg',
     alt: 'Students participating in a hands-on coding and AI session',
   },
   {
-    src: 'https://omaltd.org/archives/wp-content/uploads/2026/11/signal-2026-08-11-22-45-41-763_012.jpg',
+    src: '/images/code-ai-club/signal-2026-08-11-22-45-41-763_012.jpg',
     alt: 'Young learners exploring technology at the Code and AI Club',
   },
   {
-    src: 'https://omaltd.org/archives/wp-content/uploads/2026/11/signal-2026-08-11-22-45-41-763_011.jpg',
+    src: '/images/code-ai-club/signal-2026-08-11-22-45-41-763_011.jpg',
     alt: 'Students learning and collaborating during the Code and AI Club',
   },
 ];
