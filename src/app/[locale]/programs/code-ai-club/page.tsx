@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import { PageHero } from '@/components/sections/page-hero';
+import { CodeAIClubPhotoGallery } from '@/components/sections/CodeAIClubPhotoGallery';
 
 export const metadata: Metadata = {
   title: 'Code & AI Club',
@@ -78,6 +79,8 @@ export default async function CodeAIClubPage({ params }: { params: Promise<{ loc
           </ul>
         </div>
       </section>
+
+      <CodeAIClubPhotoGallery />
 
       {/* Key features */}
       <section className="bg-grey-50">
