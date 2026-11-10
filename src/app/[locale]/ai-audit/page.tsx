@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { PageHero } from '@/components/sections/page-hero';
 
 export const metadata: Metadata = {
-  title: 'AI Assessment – Service Update',
+  title: 'AI Audit',
   description:
     'The AIRI Foundation AI Assessment is temporarily unavailable while we make improvements to enhance your experience and provide more relevant and actionable insights.',
 };
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function AIAuditPage() {
   return (
     <>
-      <PageHero title="AI Assessment – Service Update" />
+      <PageHero title="AI Audit" />
 
       <section className="border-t border-grey-200">
         <div className="container py-16 md:py-24">
